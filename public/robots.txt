@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://santohomobono.com.br/sitemap-index.xml

@@ -1,0 +1,60 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SEO, { type BreadcrumbItem, type FAQItem, type EventData } from '../components/SEO.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  canonicalURL?: string | URL;
+  type?: 'website' | 'article';
+  publishDate?: Date | string;
+  updatedDate?: Date | string;
+  breadcrumbs?: BreadcrumbItem[];
+  faqs?: FAQItem[];
+  event?: EventData;
+  includePerson?: boolean;
+  includeWebsite?: boolean;
+  includeEvent?: boolean;
+}
+
+const props = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <SEO {...props} />
+    <slot name="head" />
+
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-3EP42Q2BW5"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3EP42Q2BW5');
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col bg-[var(--pergaminho)] text-[var(--tinta)] transition-colors duration-200">
+    <!-- Atalho de acessibilidade WCAG AA -->
+    <a
+      href="#conteudo-principal"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-[var(--cardinal)] text-white rounded-md shadow-lg font-bold"
+    >
+      Pular para o conteúdo principal
+    </a>
+
+    <Header />
+
+    <main id="conteudo-principal" class="flex-grow">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

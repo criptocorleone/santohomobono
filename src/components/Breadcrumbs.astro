@@ -1,0 +1,44 @@
+---
+export interface BreadcrumbItem {
+  name: string;
+  item: string;
+}
+
+export interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="py-3 text-xs sm:text-sm text-[var(--pedra)]">
+  <ol class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+    <li>
+      <a href="/" class="hover:text-[var(--cardinal)] hover:underline transition-colors flex items-center gap-1">
+        <span class="sr-only">Início</span>
+        <svg class="w-4 h-4 text-[var(--ouro)]" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+        </svg>
+        <span>Início</span>
+      </a>
+    </li>
+
+    {items.map((crumb, index) => {
+      const isLast = index === items.length - 1;
+      return (
+        <li class="flex items-center gap-1.5 sm:gap-2">
+          <span class="text-[var(--ouro-claro)]" aria-hidden="true">/</span>
+          {isLast ? (
+            <span class="font-semibold text-[var(--cardinal)] truncate max-w-[200px] sm:max-w-md" aria-current="page">
+              {crumb.name}
+            </span>
+          ) : (
+            <a href={crumb.item} class="hover:text-[var(--cardinal)] hover:underline transition-colors truncate max-w-[150px] sm:max-w-xs">
+              {crumb.name}
+            </a>
+          )}
+        </li>
+      );
+    })}
+  </ol>
+</nav>

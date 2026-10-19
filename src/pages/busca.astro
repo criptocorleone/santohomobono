@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CTAComunidade from '../components/CTAComunidade.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Busca', item: '/busca' },
+];
+---
+
+<BaseLayout
+  title="Busca no Portal Santo Homobono"
+  description="Pesquise em todo o acervo histórico, orações, obras de arte e artigos sobre Santo Homobono."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <header class="text-center my-8">
+      <span class="text-xs uppercase tracking-widest font-['Cinzel'] text-[var(--ouro)] font-bold">
+        Pesquisa Interna
+      </span>
+      <h1 class="font-['Cormorant_Garamond'] text-3xl sm:text-5xl font-bold text-[var(--cardinal)] mt-2">
+        Buscar no Portal
+      </h1>
+      <p class="text-sm sm:text-base text-[var(--pedra)] font-['Source_Serif_4'] mt-2 max-w-xl mx-auto">
+        Pesquise por temas históricos, orações específicas, documentos ou tópicos de ética empresarial.
+      </p>
+    </header>
+
+    <div class="my-8 max-w-2xl mx-auto">
+      <div class="relative">
+        <input
+          type="search"
+          id="campo-busca"
+          placeholder="Ex: justa medida, novena, cremona, inocêncio iii..."
+          class="w-full px-5 py-4 pl-12 rounded-2xl border-2 border-[var(--ouro-claro)] focus:border-[var(--cardinal)] bg-[var(--pergaminho)] text-[var(--tinta)] text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--ouro)]"
+        />
+        <svg class="w-6 h-6 text-[var(--ouro)] absolute left-4 top-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+
+      <div id="resultados-busca" class="mt-8 space-y-4">
+        <!-- Renderizado dinamicamente via Pagefind -->
+      </div>
+    </div>
+
+    <!-- CTA da Comunidade -->
+    <CTAComunidade />
+  </div>
+
+  <script is:inline>
+    // Integração dinâmica com Pagefind
+    async function inicializarBusca() {
+      const campo = document.getElementById('campo-busca');
+      const containerResultados = document.getElementById('resultados-busca');
+      if (!campo || !containerResultados) return;
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryInicial = urlParams.get('q');
+      if (queryInicial) {
+        campo.value = queryInicial;
+      }
+
+      try {
+        const pagefind = await import('/pagefind/pagefind.js');
+        await pagefind.init();
+
+        async function executarBusca(termo) {
+          if (!containerResultados) return;
+          if (!termo.trim()) {
+            containerResultados.innerHTML = '<p class="text-sm text-center text-[var(--pedra)]">Digite um termo acima para iniciar a pesquisa.</p>';
+            return;
+          }
+
+          containerResultados.innerHTML = '<p class="text-sm text-center text-[var(--pedra)]">Buscando...</p>';
+          const search = await pagefind.search(termo);
+
+          if (!search.results || search.results.length === 0) {
+            containerResultados.innerHTML = `<p class="text-sm text-center text-[var(--pedra)]">Nenhum resultado encontrado para "<strong>${termo}</strong>".</p>`;
+            return;
+          }
+
+          containerResultados.innerHTML = '';
+          for (const result of search.results.slice(0, 8)) {
+            const data = await result.data();
+            const item = document.createElement('div');
+            item.className = 'p-5 rounded-xl bg-[var(--pergaminho-escuro)]/60 border border-[var(--ouro-claro)] hover:border-[var(--ouro)] transition-all';
+            item.innerHTML = `
+              <h3 class="font-['Cormorant_Garamond'] text-xl font-bold text-[var(--cardinal)]">
+                <a href="${data.url}" class="hover:underline">${data.meta.title || data.url}</a>
+              </h3>
+              <p class="text-xs sm:text-sm text-[var(--tinta)]/80 font-['Source_Serif_4'] mt-1 leading-relaxed">
+                ${data.excerpt}
+              </p>
+            `;
+            containerResultados.appendChild(item);
+          }
+        }
+
+        if (queryInicial) {
+          executarBusca(queryInicial);
+        }
+
+        campo.addEventListener('input', (e) => {
+          executarBusca(e.target.value);
+        });
+      } catch (err) {
+        containerResultados.innerHTML = '<p class="text-xs text-center text-[var(--pedra)]">O índice de busca estática é gerado durante o build de produção (npm run build).</p>';
+      }
+    }
+
+    inicializarBusca();
+  </script>
+</BaseLayout>

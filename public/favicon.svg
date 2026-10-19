@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Símbolo da Bolsa de Esmolas Medieval de Santo Homobono -->
+  <path d="M22 16C22 13.7909 23.7909 12 26 12H38C40.2091 12 42 13.7909 42 16V20H22V16Z" fill="#B08D3E" />
+  <path d="M14 24C14 21.7909 15.7909 20 18 20H46C48.2091 20 50 21.7909 50 24L53 50C53 55.5228 48.5228 60 43 60H21C15.4772 60 11 55.5228 11 50L14 24Z" fill="#7A1E25" stroke="#B08D3E" stroke-width="2" />
+  <!-- Cordão da bolsa -->
+  <path d="M20 22C20 22 24 28 32 28C40 28 44 22 44 22" stroke="#D9C08A" stroke-width="3" stroke-linecap="round" />
+  <circle cx="20" cy="23" r="2.5" fill="#D9C08A" />
+  <circle cx="44" cy="23" r="2.5" fill="#D9C08A" />
+  <!-- Cruz / Emblema central dourado -->
+  <path d="M32 34V46M26 38H38" stroke="#D9C08A" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="32" cy="40" r="10" stroke="#B08D3E" stroke-width="1.5" stroke-dasharray="2 2" />
+</svg>

@@ -1,0 +1,93 @@
+---
+import ArtigoLayout from '../layouts/ArtigoLayout.astro';
+import SeloFonte from '../components/SeloFonte.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Sobre o Projeto', item: '/sobre' },
+];
+
+const sources = [
+  'Projeto Editorial Santo Homobono Brasil.',
+  'Compêndio da Doutrina Social da Igreja.',
+  'Arquivos Diocesanos de Cremona.',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'Fontes & Documentos Históricos',
+    href: '/fontes-e-documentos',
+    categoria: 'Autoridade',
+    descricao: 'Conheça o catálogo de manuscritos, bulas e estudos acadêmicos que sustentam este portal.',
+  },
+  {
+    titulo: 'Comunidade de Empresários',
+    href: '/comunidade',
+    categoria: 'Comunidade',
+    descricao: 'Junte-se à iniciativa que une fé católica, gestão de negócios e partilha fraterna.',
+  },
+  {
+    titulo: 'Biografia de Santo Homobono',
+    href: '/quem-foi-santo-homobono',
+    categoria: 'História',
+    descricao: 'A narrativa histórica do comerciante de Cremona que inspirou este portal.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="Sobre o Projeto Santo Homobono: Missão, Rigor e Propósito"
+  description="Conheça a missão do portal Santo Homobono: preencher a lacuna de conteúdo aprofundado em língua portuguesa sobre o padroeiro dos empresários."
+  subtitulo="Construindo a principal referência lusófona sobre o homem que provou que a integridade comercial glorifica a Deus."
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  tipoFonte="documental"
+  linksRelacionados={linksRelacionados}
+>
+  <p>
+    O portal <strong>Santo Homobono — O Padroeiro dos Empresários</strong> nasceu de uma constatação evidente no ecossistema digital em língua portuguesa: enquanto o público católico, devoto e empresarial busca referências sólidas sobre ética, santidade no trabalho e orações para os negócios, a quase totalidade do material disponível na internet restringia-se a resumos breves de "santo do dia" desprovidos de fontes e sem aplicação prática para o cotidiano corporativo.
+  </p>
+
+  <div class="my-6">
+    <SeloFonte tipo="documental" label="Propósito Editorial Independente" detalhe="Fé Católica em Comunhão com a Igreja e Rigor Historiográfico" />
+  </div>
+
+  <h2>Nossos Três Pilares Fundamentais</h2>
+
+  <div class="space-y-6 my-8">
+    <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border-l-4 border-[var(--cardinal)]">
+      <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
+        1. Rigor Histórico e E-E-A-T
+      </h3>
+      <p class="text-sm sm:text-base text-[var(--tinta)] mt-2 font-['Source_Serif_4'] leading-relaxed">
+        Não reproduzimos lendas apócrifas como se fossem fatos consumados. Nossos artigos distinguem com clareza a documentação canônica primária (como a bula <em>Quia pietas</em> e as crônicas do Bispo Sicardo) das tradições da devoção popular oral, conferindo aos leitores uma base de confiança inquestionável.
+      </p>
+    </div>
+
+    <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border-l-4 border-[var(--ouro)]">
+      <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
+        2. Aplicação Viva para o Empresário de Hoje
+      </h3>
+      <p class="text-sm sm:text-base text-[var(--tinta)] mt-2 font-['Source_Serif_4'] leading-relaxed">
+        Santo Homobono não é um personagem de museu. Suas lições sobre o justo preço, o cumprimento pontual de contratos, a remuneração honesta de colaboradores e a doação generosa aos necessitados dialogam diretamente com os dilemas morais da liderança moderna.
+      </p>
+    </div>
+
+    <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border-l-4 border-[var(--ouro-claro)]">
+      <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
+        3. Devoção Sóbria e Profunda
+      </h3>
+      <p class="text-sm sm:text-base text-[var(--tinta)] mt-2 font-['Source_Serif_4'] leading-relaxed">
+        Disponibilizamos as orações tradicionais da Igreja, a novena de nove dias e as ladainhas com traduções cuidadas, facilitando a oração individual, em família ou no ambiente corporativo.
+      </p>
+    </div>
+  </div>
+
+  <h2>Quem Mantém o Portal</h2>
+  <p>
+    O projeto é mantido pela <a href="https://apostolic.com.br" target="_blank" rel="noopener noreferrer" class="text-[var(--cardinal)] hover:underline font-semibold">Apostolic</a>, uma iniciativa dedicada à difusão da fé católica, à pesquisa de fontes históricas e à espiritualidade do trabalho na Doutrina Social da Igreja.
+  </p>
+  <p>
+    Nosso compromisso é preservar a integridade das fontes originais, manter a alta performance e acessibilidade técnica da plataforma e servir como ponte fraterna para empresários e trabalhadores que desejam trilhar o caminho da retidão.
+  </p>
+</ArtigoLayout>

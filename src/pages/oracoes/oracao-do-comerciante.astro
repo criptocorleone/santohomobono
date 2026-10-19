@@ -1,0 +1,55 @@
+---
+import OracaoLayout from '../../layouts/OracaoLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Orações', item: '/oracoes' },
+  { name: 'Oração do Comerciante', item: '/oracoes/oracao-do-comerciante' },
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'Oração Tradicional a Santo Homobono',
+    href: '/oracoes/oracao-a-santo-homobono',
+    categoria: 'Devoção',
+    descricao: 'A fórmula secular de consagração das atividades mercantis.',
+  },
+  {
+    titulo: 'Novena de Santo Homobono',
+    href: '/oracoes/novena-de-santo-homobono',
+    categoria: 'Novena',
+    descricao: 'Nove dias de súplicas para vencer crises no comércio e atrair a bênção divina.',
+  },
+  {
+    titulo: 'Quem Foi Santo Homobono?',
+    href: '/quem-foi-santo-homobono',
+    categoria: 'Biografia',
+    descricao: 'A história do homem que atendia clientes no balcão e socorria os desamparados.',
+  },
+];
+---
+
+<OracaoLayout
+  title="Oração do Comerciante e Lojista a Santo Homobono"
+  description="Oração especial para comerciantes, lojistas e prestadores de serviços, pedindo honestidade nas vendas, acolhimento aos clientes e bênção financeira."
+  subtitulo="Para rezar ao abrir o comércio, na abertura do caixa ou ao iniciar o expediente nas vendas."
+  tipo="oracao"
+  breadcrumbs={breadcrumbs}
+  linksRelacionados={linksRelacionados}
+>
+  <p>
+    Senhor Deus, fonte de todo bem e providência de todas as criaturas, abençoai este comércio e todas as pessoas que hoje cruzarem suas portas.
+  </p>
+  <p>
+    Por intercessão de Santo Homobono, que com sorriso acolhedor e medidas exatas atendia a todos os que buscavam seus tecidos em Cremona, concedei-me a graça da cordialidade no atendimento, da paciência nas contrariedades e da serenidade nas vendas.
+  </p>
+  <p>
+    Que as balanças deste estabelecimento sejam justas, que os preços cobrados correspondam ao valor real das mercadorias e que cada cliente saia daqui satisfeito e respeitado em sua dignidade.
+  </p>
+  <p>
+    Livrai meu comércio de roubos, prejuízos desmedidos e inadimplências. Concedei-me o ganho necessário para saldar minhas contas, honrar meus fornecedores e garantir o pão da minha família, reservando sempre uma parcela generosa para os irmãos que passam necessidade.
+  </p>
+  <p>
+    Santo Homobono, padroeiro dos comerciantes, rogai por nós! Amém.
+  </p>
+</OracaoLayout>

@@ -1,0 +1,105 @@
+---
+import { Image } from 'astro:assets';
+import ArtigoLayout from '../../layouts/ArtigoLayout.astro';
+import SeloFonte from '../../components/SeloFonte.astro';
+import imagensData from '../../data/imagens.json';
+import imgVistaTorrazzo from '../../assets/images/vista-do-torrazzo-praca-do-duomo-cremona.jpg';
+
+const metaImgVista = imagensData.find(i => i.arquivo === 'vista-do-torrazzo-praca-do-duomo-cremona.jpg')!;
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Cremona', item: '/cremona' },
+  { name: 'Roteiro de Peregrinação', item: '/cremona/roteiro-de-peregrinacao' },
+];
+
+const sources = [
+  'Ufficio Turismo del Comune di Cremona, Itinerari storici e religiosi.',
+  'Diocesi di Cremona, Ufficio per la Pastorale del Turismo e Pellegrinaggi.',
+  'Guida Touring Club Italiano: Lombardia.',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'A Catedral e a Cripta de Cremona',
+    href: '/cremona/catedral-e-cripta',
+    categoria: 'Lugares',
+    descricao: 'A arca funerária de bronze e prata que guarda as relíquias do santo.',
+  },
+  {
+    titulo: 'Igreja de Sant\'Omobono',
+    href: '/cremona/igreja-de-santomobono',
+    categoria: 'Lugares',
+    descricao: 'O templo barroco no local exato de sua morte santa durante a missa.',
+  },
+  {
+    titulo: 'Festa de 13 de Novembro',
+    href: '/festa-13-de-novembro',
+    categoria: 'Liturgia',
+    descricao: 'Como programar a sua viagem para a maior festa do ano na cidade.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="Roteiro de Peregrinação dos Empresários em Cremona: Guia Completo"
+  description="Itinerário a pé pelos lugares sagrados e históricos de Santo Homobono em Cremona: da Catedral à Igreja de Sant'Omobono e ao bairro dos mercadores medievais."
+  subtitulo="Um percurso de fé, história e arquitetura pelas ruelas da cidade lombarda onde o comércio se encontrou com a santidade."
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  tipoFonte="documental"
+  linksRelacionados={linksRelacionados}
+>
+  <p>
+    Para o empresário, comerciante ou devoto que visita a região da Lombardia, a charmosa cidade de <strong>Cremona</strong> — mundialmente famosa também pela fabricação artesanal de violinos Stradivarius — oferece um dos mais belos roteiros de peregrinação laical da Europa. A pé, em um trajeto de cerca de duas horas, é possível percorrer os mesmos caminhos medievais por onde Homobono caminhava com seus fardos de tecidos e sua bolsa de esmolas.
+  </p>
+
+  <div class="my-6">
+    <SeloFonte tipo="historico" label="Roteiro Turístico e Religioso" detalhe="Itinerário Histórico no Centro Medieval de Cremona" />
+  </div>
+
+  <h2>Etapa 1: A Piazza del Comune e o Torrazzo</h2>
+  <figure class="my-8 rounded-2xl overflow-hidden border border-[var(--ouro)]/40 shadow-xl bg-[var(--pergaminho-escuro)]">
+    <Image
+      src={imgVistaTorrazzo}
+      alt={metaImgVista.alt}
+      width={1200}
+      height={800}
+      format="avif"
+      class="w-full h-auto max-h-[500px] object-cover"
+    />
+    <figcaption class="p-4 text-xs font-['Source_Serif_4'] text-[var(--terra-cota)] border-t border-[var(--ouro)]/20 bg-[var(--pergaminho)]/70">
+      {metaImgVista.titulo}. Foto por {metaImgVista.autor} (<a href={metaImgVista.urlLicenca} target="_blank" rel="noopener noreferrer" class="underline hover:text-[var(--cardinal)]">{metaImgVista.licenca}</a> via <a href={metaImgVista.urlOrigem} target="_blank" rel="noopener noreferrer" class="underline hover:text-[var(--cardinal)]">Wikimedia Commons</a>).
+    </figcaption>
+  </figure>
+  <p>
+    Inicie seu percurso na monumental praça central de Cremona, cercada pelo imponente <strong>Torrazzo</strong> (a mais alta torre sineira de tijolos da Itália, com quase 112 metros de altura) e pelo <strong>Palazzo Comunale</strong> medieval. Era nesta praça que se realizava o mercado de tecidos e grãos onde Homobono negociava publicamente seus panos.
+  </p>
+
+  <h2>Etapa 2: A Cripta da Catedral de Santa Maria Assunta</h2>
+  <p>
+    Adentre a Catedral de Cremona e desça as escadarias laterais que conduzem à <strong>Cripta de Santo Homobono</strong>. Diante da urna monumental de bronze, faça sua oração pessoal consagrando os negócios, sua família e todos os colaboradores da sua empresa. Acenda uma vela votiva no candelabro do santo.
+  </p>
+
+  <h2>Etapa 3: Caminhada pelas Ruas dos Antigos Ofícios</h2>
+  <p>
+    Ao sair da catedral, siga pela <em>Via Solferino</em> em direção ao antigo bairro das corporações artesanais (hoje repleto de ateliês de luthiers e cafés históricos). Observe as lajes medievais e as fachadas com detalhes em terracota que evocam o ambiente urbano do século XII.
+  </p>
+
+  <h2>Etapa 4: A Igreja de Sant'Omobono</h2>
+  <p>
+    Chegando à <em>Piazza Sant'Omobono</em>, visite a igreja construída sobre o templo de Sant'Egidio. Contemple os afrescos de Il Malosso no teto e ajoelhe-se em silêncio diante do altar-mor, no ponto exato onde o santo faleceu rezando o Gloria.
+  </p>
+
+  <h2>Etapa 5: Museu Cívico Ala Ponzone (Acervo de Arte)</h2>
+  <p>
+    Finalize o roteiro na Pinacoteca do <strong>Museo Civico Ala Ponzone</strong> (a cerca de 10 minutos a pé), onde estão expostas pinturas e gravuras dos séculos XV e XVI que retratam o santo com a tesoura de alfaiate, encomendadas pelas guildas de Cremona.
+  </p>
+
+  <div class="my-8 p-6 rounded-xl bg-[var(--pergaminho-escuro)] border border-[var(--ouro)] text-sm">
+    <strong class="font-['Cinzel'] text-xs font-bold uppercase tracking-wider text-[var(--cardinal)] block mb-1">
+      💡 Dica Prática para o Viajante
+    </strong>
+    Cremona fica a apenas 1 hora de trem de Milão (estação Milano Centrale) e cerca de 45 minutos de Piacenza. É um passeio perfeitamente viável em bate-volta de um dia durante uma viagem de negócios ou turismo pela Itália.
+  </div>
+</ArtigoLayout>

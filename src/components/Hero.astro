@@ -1,0 +1,161 @@
+---
+import { Image } from 'astro:assets';
+import imgCremonaPiazza from '../assets/images/cremona-piazza-del-comune-duomo-torrazzo.jpg';
+import imgSantoHomobonoHero from '../assets/images/santo-homobono-retrato-hero.jpg';
+
+export interface Props {
+  h1?: string;
+  subtitulo?: string;
+  linkHistoria?: string;
+  linkOracao?: string;
+}
+
+const {
+  h1 = 'Santo Homobono, o padroeiro dos empresários',
+  subtitulo = 'O mercador de Cremona que se tornou o primeiro leigo comum canonizado na Idade Média.',
+  linkHistoria = '/quem-foi-santo-homobono',
+  linkOracao = '/oracoes/oracao-a-santo-homobono',
+} = Astro.props;
+---
+
+<section class="relative overflow-hidden py-14 lg:py-24 border-b border-[var(--ouro-claro)]/40 transition-colors">
+  <!-- Imagem 1 no fundo com loading eager, fetchpriority high e overlay em gradiente (sem CLS) -->
+  <div class="absolute inset-0 z-0">
+    <Image
+      src={imgCremonaPiazza}
+      alt="Piazza del Comune de Cremona com a Catedral, o Torrazzo e o Batistério, cidade de Santo Homobono"
+      width={1920}
+      height={1080}
+      loading="eager"
+      fetchpriority="high"
+      format="webp"
+      class="w-full h-full object-cover object-center"
+    />
+    <!-- Overlay escuro em gradiente para legibilidade impecável (WCAG AA) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[var(--pergaminho)] via-[var(--pergaminho)]/95 to-[var(--pergaminho)]/75 dark:from-[#16120F] dark:via-[#16120F]/95 dark:to-[#16120F]/80 backdrop-blur-[1px]"></div>
+    <div class="absolute inset-0 bg-radial from-transparent to-[var(--pergaminho)]/90 dark:to-[#16120F]/90"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      
+      <!-- Coluna de Texto Principal -->
+      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        
+        <!-- Rótulo Nobre Medieval -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--pergaminho-escuro)]/90 border border-[var(--ouro)] text-[var(--cardinal)] text-xs font-['Cinzel'] font-bold tracking-widest uppercase shadow-sm">
+          <span>⚜</span>
+          <span>CREMONA · 1197 · BULA QUIA PIETAS</span>
+          <span>⚜</span>
+        </div>
+
+        <h1 class="font-['Cormorant_Garamond'] text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--cardinal)] leading-[1.08] tracking-tight">
+          {h1}
+        </h1>
+
+        <p class="font-['Source_Serif_4'] text-lg sm:text-xl text-[var(--tinta)]/95 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+          {subtitulo}
+        </p>
+
+        <p class="text-sm sm:text-base text-[var(--pedra)] leading-relaxed max-w-xl mx-auto lg:mx-0">
+          Descubra como um bem-sucedido comerciante têxtil transformou sua loja em instrumento de caridade, praticou a justiça contratual e provou que a integridade nos negócios é o verdadeiro caminho para a santidade.
+        </p>
+
+        <!-- Ações Primárias (CTAs) -->
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+          <a
+            href={linkHistoria}
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-[var(--cardinal)] hover:bg-[#63181e] text-white font-['Cinzel'] font-bold text-sm tracking-wider uppercase shadow-md hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-[var(--ouro)]"
+          >
+            <span>Conheça a História</span>
+            <span>→</span>
+          </a>
+
+          <a
+            href={linkOracao}
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] hover:bg-[var(--pergaminho-escuro)] text-[var(--cardinal)] border-2 border-[var(--ouro)] font-['Cinzel'] font-bold text-sm tracking-wider uppercase transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--ouro)]"
+          >
+            <span class="text-[var(--ouro)]">✝</span>
+            <span>Rezar a Oração</span>
+          </a>
+        </div>
+
+        <!-- Citação da Bula Papal -->
+        <div class="pt-4 flex items-center justify-center lg:justify-start gap-3 text-xs text-[var(--pedra)]">
+          <span class="text-[var(--ouro)] text-base">“</span>
+          <span class="italic font-['Source_Serif_4']">
+            Homo bonus et nomine et actu (Homem bom de nome e de fato)
+          </span>
+          <span class="text-[var(--pedra)] font-['Cinzel'] uppercase tracking-wider">— Inocêncio III</span>
+        </div>
+
+      </div>
+
+      <!-- Coluna Visual: Retrato Sacro com Moldura Iluminada -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative w-full max-w-md">
+          
+          <!-- Moldura Ornamental Sacra -->
+          <div class="relative rounded-2xl p-3 sm:p-4 bg-[var(--pergaminho-escuro)]/95 border-2 border-[var(--ouro)] shadow-2xl moldura-sacra backdrop-blur-sm">
+            
+            <div class="relative aspect-[4/5] rounded-xl overflow-hidden border border-[var(--ouro-claro)]/60 shadow-inner group">
+              <!-- Pintura Sacra Real de Santo Homobono -->
+              <Image
+                src={imgSantoHomobonoHero}
+                alt="Pintura medieval de Pietro Lianori (c. 1450) retratando Santo Homobono de Cremona com trajes de mercador"
+                width={800}
+                height={1000}
+                loading="eager"
+                format="webp"
+                class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              />
+
+              <!-- Overlay escuro elegante em gradiente na parte inferior para legibilidade -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-5 text-center text-white">
+                <span class="font-['Cinzel'] text-[0.65rem] tracking-widest uppercase text-[var(--ouro-claro)] font-bold mb-1 drop-shadow">
+                  Iconografia Histórica · c. 1450
+                </span>
+                <h2 class="font-['Cormorant_Garamond'] text-2xl sm:text-3xl font-bold text-amber-100 leading-tight drop-shadow">
+                  Omobono Tucenghi
+                </h2>
+                <p class="text-xs text-stone-200 font-['Source_Serif_4'] italic mt-1 max-w-xs mx-auto drop-shadow">
+                  O mercador de tecidos patrono dos empresários e trabalhadores
+                </p>
+
+                <!-- Atributos do Santo -->
+                <div class="mt-3 pt-2.5 border-t border-[var(--ouro)]/40 flex items-center justify-center gap-3 text-xs font-['Cinzel'] text-[var(--ouro-claro)]">
+                  <span>✂ Tesoura</span>
+                  <span>·</span>
+                  <span>💰 Bolsa</span>
+                  <span>·</span>
+                  <span>🥖 Pão</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Legenda da Imagem com Atribuição Rigorosa -->
+            <p class="text-[0.7rem] text-center text-[var(--pedra)] mt-3">
+              Pintura de Pietro Lianori · Pinacoteca de Bolonha · Festa: 13 de Novembro
+            </p>
+
+          </div>
+
+          <!-- Medalhão Flutuante no Canto -->
+          <div class="absolute -bottom-4 -left-4 bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] border border-[var(--ouro)] p-3 rounded-xl shadow-lg flex items-center gap-2.5">
+            <span class="text-2xl select-none">🕊️</span>
+            <div>
+              <span class="block text-[0.65rem] uppercase font-['Cinzel'] tracking-wider text-[var(--ouro)] font-bold">
+                1º Leigo Comum
+              </span>
+              <span class="block text-xs font-bold text-[var(--cardinal)]">
+                Canonizado em 14 meses
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,163 @@
+---
+import OracaoLayout from '../../layouts/OracaoLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Orações', item: '/oracoes' },
+  { name: 'Novena de Santo Homobono', item: '/oracoes/novena-de-santo-homobono' },
+];
+
+const diasNovena = [
+  {
+    dia: 1,
+    tema: 'A Pureza de Intenção no Trabalho',
+    oracao: 'Santo Homobono, que desde a juventude colocastes Deus no centro de vossas atividades mercantis, ensinai-me a trabalhar não apenas pelo lucro passageiro, mas para cumprir com honra a minha vocação cristã e servir aos meus irmãos.',
+  },
+  {
+    dia: 2,
+    tema: 'A Justiça nos Contratos e Preços',
+    oracao: 'Vós que fostes conhecido pela exatidão nas medidas e pela transparência nas negociações, livrai-me da mentira, da propaganda ilusória e de qualquer forma de logro em meus negócios.',
+  },
+  {
+    dia: 3,
+    tema: 'A Santificação da Vida Familiar',
+    oracao: 'Santo Homobono, que vivestes o sacramento do matrimônio em fidelidade e harmonia, concedei paz à minha família e fazei com que meu esforço profissional sustente com dignidade os meus entes queridos.',
+  },
+  {
+    dia: 4,
+    tema: 'A Dignidade dos Colaboradores',
+    oracao: 'Vós que tratáveis vossos artesãos e costureiros como irmãos e pagáveis com pontualidade o salário devido, dai-me um coração paternal e justo para com todos os que trabalham sob minha liderança.',
+  },
+  {
+    dia: 5,
+    tema: 'A Caridade Concreta com os Pobres',
+    oracao: 'Glorioso Homobono, cuja bolsa de esmolas socorreu órfãos, viúvas e enfermos de Cremona, não permitais que meu coração se endureça diante da miséria alheia, mas dai-me a generosidade de partilhar meus lucros.',
+  },
+  {
+    dia: 6,
+    tema: 'A Pacificação de Conflitos e Desavenças',
+    oracao: 'Santo pacificador, que reconciliastes facções rivais em vossa cidade, dai-me serenidade e brandura para resolver litígios comerciais e desavenças profissionais pelo caminho do diálogo e da reconciliação.',
+  },
+  {
+    dia: 7,
+    tema: 'A Fidelidade na Adversidade e na Crise',
+    oracao: 'Vós que superastes os períodos de crise com inabalável confiança na Providência divina, dai-me coragem nos momentos de aperto financeiro, afastando o desespero e guiando meus passos.',
+  },
+  {
+    dia: 8,
+    tema: 'O Desapego dos Bens Materiais',
+    oracao: 'Santo Homobono, que utilizastes as riquezas terrenas como simples instrumentos para alcançar os bens eternos, livrai-me da idolatria do dinheiro e do consumismo desenfreado.',
+  },
+  {
+    dia: 9,
+    tema: 'A Perseverança Final na Graça',
+    oracao: 'Vós que coroastes vossa existência expirando suavemente diante do crucifixo durante a Santa Missa, concedei-me a graça da perseverança na fé e na retidão moral até o último suspiro de minha vida.',
+  },
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'Oração Tradicional a Santo Homobono',
+    href: '/oracoes/oracao-a-santo-homobono',
+    categoria: 'Devoção',
+    descricao: 'A prece devocional para a consagração diária do trabalho.',
+  },
+  {
+    titulo: 'Ladainha de Santo Homobono',
+    href: '/oracoes/ladainha',
+    categoria: 'Liturgia',
+    descricao: 'Invocação cantada ou recitada em honra às virtudes do santo.',
+  },
+  {
+    titulo: 'Festa de 13 de Novembro',
+    href: '/festa-13-de-novembro',
+    categoria: 'Liturgia',
+    descricao: 'Como culminar a novena com a celebração da solenidade patronal.',
+  },
+];
+---
+
+<OracaoLayout
+  title="Novena de Santo Homobono: 9 Dias de Prece para os Negócios"
+  description="Novena completa de 9 dias a Santo Homobono com navegação dia a dia. Para alcançar graças no comércio, prosperidade justa e paz nas empresas."
+  subtitulo="Rezada tradicionalmente de 4 a 12 de novembro em preparação para a festa litúrgica, ou em momentos de necessidade urgente nos negócios."
+  tipo="novena"
+  breadcrumbs={breadcrumbs}
+  linksRelacionados={linksRelacionados}
+>
+  <div class="space-y-4 text-left max-w-3xl mx-auto">
+    <p class="text-center font-['Source_Serif_4'] text-sm sm:text-base text-[var(--pedra)] mb-6">
+      Reze um dia por vez. Para cada dia, faça o sinal da cruz, reze a intenção diária correspondente e conclua com um <em>Pai-Nosso</em>, uma <em>Ave-Maria</em> e um <em>Glória ao Pai</em>.
+    </p>
+
+    <!-- Navegação Interativa da Novena -->
+    <div class="grid grid-cols-3 sm:grid-cols-9 gap-1.5 sm:gap-2 mb-8" id="novena-dias-nav">
+      {diasNovena.map((d) => (
+        <button
+          type="button"
+          class={`dia-tab-btn py-2 px-1 text-center rounded-lg border text-xs font-['Cinzel'] font-bold transition-all cursor-pointer ${
+            d.dia === 1
+              ? 'bg-[var(--cardinal)] text-white border-[var(--cardinal)] shadow-sm'
+              : 'bg-[var(--pergaminho-escuro)] text-[var(--tinta)] border-[var(--ouro-claro)] hover:border-[var(--ouro)]'
+          }`}
+          data-dia={d.dia}
+        >
+          Dia {d.dia}
+        </button>
+      ))}
+    </div>
+
+    <!-- Conteúdo dos 9 Dias da Novena -->
+    <div id="novena-conteudo-container">
+      {diasNovena.map((d) => (
+        <div
+          id={`dia-conteudo-${d.dia}`}
+          class={`dia-painel p-6 sm:p-8 rounded-2xl bg-[var(--pergaminho-escuro)]/60 border border-[var(--ouro)] transition-all ${
+            d.dia === 1 ? 'block' : 'hidden'
+          }`}
+        >
+          <div class="flex items-center justify-between border-b border-[var(--ouro-claro)]/40 pb-3 mb-4">
+            <span class="font-['Cinzel'] text-xs uppercase tracking-widest text-[var(--ouro)] font-bold">
+              {d.dia}º Dia da Novena
+            </span>
+            <span class="text-xs text-[var(--pedra)] font-['Cinzel']">Intenção Diária</span>
+          </div>
+          <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)] mb-3">
+            {d.tema}
+          </h3>
+          <p class="text-base sm:text-lg text-[var(--tinta)] font-['Source_Serif_4'] leading-relaxed italic mb-6">
+            “{d.oracao}”
+          </p>
+          <div class="pt-4 border-t border-[var(--ouro-claro)]/30 text-xs text-[var(--pedra)] text-center font-['Cinzel']">
+            Rezar 1 Pai-Nosso, 1 Ave-Maria e 1 Glória ao Pai.
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <script>
+    const btns = document.querySelectorAll('.dia-tab-btn');
+    const paineis = document.querySelectorAll('.dia-painel');
+
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const dia = btn.getAttribute('data-dia');
+        btns.forEach((b) => {
+          b.classList.remove('bg-[var(--cardinal)]', 'text-white', 'border-[var(--cardinal)]');
+          b.classList.add('bg-[var(--pergaminho-escuro)]', 'text-[var(--tinta)]', 'border-[var(--ouro-claro)]');
+        });
+        btn.classList.add('bg-[var(--cardinal)]', 'text-white', 'border-[var(--cardinal)]');
+        btn.classList.remove('bg-[var(--pergaminho-escuro)]', 'text-[var(--tinta)]', 'border-[var(--ouro-claro)]');
+
+        paineis.forEach((p) => {
+          if (p.id === `dia-conteudo-${dia}`) {
+            p.classList.remove('hidden');
+          } else {
+            p.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+</OracaoLayout>

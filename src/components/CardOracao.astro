@@ -1,0 +1,96 @@
+---
+export interface Props {
+  titulo: string;
+  subtitulo?: string;
+  texto?: string;
+  referencia?: string;
+  cardId?: string;
+}
+
+const {
+  titulo,
+  subtitulo = 'Oração para bênção no trabalho e integridade nos negócios',
+  texto = '',
+  referencia = 'Tradição da Igreja Católica · Memória de Santo Homobono',
+  cardId = 'oracao-box-' + Math.random().toString(36).substring(2, 9),
+} = Astro.props;
+---
+
+<div id={cardId} class="oracao-card my-8 rounded-2xl bg-[var(--pergaminho)] border-2 border-[var(--ouro)]/70 p-6 sm:p-10 shadow-lg relative transition-all duration-300 hover:shadow-xl dark:bg-[var(--pergaminho-escuro)]">
+  <!-- Adorno superior sacral -->
+  <div class="flex items-center justify-center gap-3 mb-6">
+    <div class="h-px bg-gradient-to-r from-transparent via-[var(--ouro)] to-transparent flex-1"></div>
+    <span class="text-[var(--ouro)] text-xl font-['Cinzel'] select-none">✠</span>
+    <div class="h-px bg-gradient-to-r from-transparent via-[var(--ouro)] to-transparent flex-1"></div>
+  </div>
+
+  <div class="text-center mb-6">
+    <span class="text-xs uppercase tracking-widest font-['Cinzel'] text-[var(--ouro)] font-bold block mb-1">
+      Devoção Católica
+    </span>
+    <h3 class="font-['Cormorant_Garamond'] text-2xl sm:text-3xl font-bold text-[var(--cardinal)]">
+      {titulo}
+    </h3>
+    {subtitulo && (
+      <p class="text-sm text-[var(--pedra)] mt-1 font-['Source_Serif_4'] italic">
+        {subtitulo}
+      </p>
+    )}
+  </div>
+
+  <!-- Corpo da Oração -->
+  <div class="oracao-texto prose prose-stone dark:prose-invert max-w-none text-base sm:text-lg leading-relaxed text-[var(--tinta)]/95 font-['Source_Serif_4'] text-justify sm:text-center space-y-4 my-6">
+    <slot>
+      {texto.split('\n\n').map((paragrafo) => (
+        <p>{paragrafo}</p>
+      ))}
+    </slot>
+  </div>
+
+  <div class="text-center font-['Cinzel'] text-xs uppercase tracking-wider text-[var(--pedra)] pt-4 border-t border-[var(--ouro-claro)]/40 mb-6">
+    {referencia}
+  </div>
+
+  <!-- Botão de Ação: Copiar Oração -->
+  <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+    <button
+      type="button"
+      class="btn-copiar inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-[var(--ouro)] bg-[var(--pergaminho-escuro)] hover:bg-[var(--ouro-claro)]/40 text-[var(--tinta)] text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-[var(--ouro)] cursor-pointer shadow-sm"
+      data-card-id={cardId}
+      aria-label="Copiar o texto desta oração"
+    >
+      <svg class="w-4 h-4 text-[var(--ouro)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+      </svg>
+      <span class="btn-copiar-label">Copiar Oração</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  // Script para copiar a oração para a área de transferência
+  document.querySelectorAll('.btn-copiar').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const cardId = btn.getAttribute('data-card-id');
+      const card = document.getElementById(cardId || '');
+      const textoEl = card?.querySelector('.oracao-texto');
+      const label = btn.querySelector('.btn-copiar-label');
+      
+      if (textoEl && label) {
+        const textToCopy = (textoEl as HTMLElement).innerText;
+        try {
+          await navigator.clipboard.writeText(textToCopy);
+          const original = label.textContent;
+          label.textContent = 'Copiado!';
+          btn.classList.add('bg-emerald-100', 'text-emerald-800', 'border-emerald-500');
+          setTimeout(() => {
+            label.textContent = original;
+            btn.classList.remove('bg-emerald-100', 'text-emerald-800', 'border-emerald-500');
+          }, 2500);
+        } catch (err) {
+          console.error('Erro ao copiar texto:', err);
+        }
+      }
+    });
+  });
+</script>

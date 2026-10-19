@@ -1,0 +1,129 @@
+---
+import ArtigoLayout from '../../layouts/ArtigoLayout.astro';
+import CitacaoLatina from '../../components/CitacaoLatina.astro';
+import SeloFonte from '../../components/SeloFonte.astro';
+import PlaceholderArte from '../../components/PlaceholderArte.astro';
+import { Image } from 'astro:assets';
+import img5Inocencio from '../../assets/images/papa-inocencio-iii-afresco-subiaco.jpg';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'História', item: '/historia' },
+  { name: 'A Canonização Recorde', item: '/historia/a-canonizacao' },
+];
+
+const sources = [
+  'Bula Quia pietas (12 de janeiro de 1199), Papa Inocêncio III, Archivio Apostolico Vaticano.',
+  'André Vauchez, La sainteté en Occident: Inocêncio III e a canonização dos leigos.',
+  'D. S. Prudlo, Certain Sainthood: Canonization and the Origins of Papal Infallibility (Cornell University Press).',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'Fontes & Documentos Históricos',
+    href: '/fontes-e-documentos',
+    categoria: 'Documentação',
+    descricao: 'Leia a tradução da bula Quia pietas e a análise jurídica medieval.',
+  },
+  {
+    titulo: 'A Morte na Missa (1197)',
+    href: '/historia/a-morte-na-missa',
+    categoria: 'História',
+    descricao: 'Os acontecimentos que deram início imediato ao processo canônico.',
+  },
+  {
+    titulo: 'Linha do Tempo 1117 → Hoje',
+    href: '/historia/linha-do-tempo',
+    categoria: 'História',
+    descricao: 'Todos os marcos históricos desde o nascimento até a proclamação como padroeiro.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="A Canonização Recorde de Santo Homobono em 14 Meses: A Bula Quia Pietas"
+  description="Como o Papa Inocêncio III estabeleceu um marco na história da Igreja ao canonizar o comerciante de Cremona em apenas 14 meses após sua morte, promulgando a bula Quia pietas em 1199."
+  subtitulo="A velocidade extraordinária de um processo pontifício rigoroso que rompeu os paradigmas da santidade medieval e elevou um homem de negócios aos altares."
+  image="/og-canonizacao.jpg"
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  tipoFonte="documental"
+  linksRelacionados={linksRelacionados}
+>
+  <!-- Imagem 5 como Hero da Página -->
+  <figure class="my-8 rounded-2xl overflow-hidden bg-[var(--pergaminho-escuro)] moldura-sacra">
+    <Image
+      src={img5Inocencio}
+      alt="Afresco do século XIII do papa Inocêncio III, que canonizou Santo Homobono em 1199, no Sacro Speco de Subiaco"
+      width={1200}
+      height={700}
+      format="webp"
+      class="w-full h-auto max-h-[550px] object-cover object-center"
+      loading="eager"
+    />
+    <figcaption class="p-4 text-xs text-[var(--pedra)] flex flex-col sm:flex-row items-baseline justify-between gap-1 border-t border-[var(--ouro-claro)]/40">
+      <span><strong>Papa Inocêncio III</strong> · Afresco medieval (séc. XIII), Mosteiro do Sacro Speco em Subiaco</span>
+      <span>Foto: Carlo Raso · Domínio Público</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    Nos tempos atuais, um processo de canonização na Igreja Católica costuma levar décadas, quando não séculos, exigindo comissões históricas, exames médicos de peritos internacionais e rigorosos escrutínios teológicos. Por isso, quando historiadores examinam o processo de <strong>Santo Homobono</strong>, deparam-se com um fenômeno quase inédito: <strong>ele foi formalmente canonizado pelo Papa Inocêncio III em 12 de janeiro de 1199, exatamente catorze meses após sua morte</strong>.
+  </p>
+
+  <div class="my-6">
+    <SeloFonte tipo="documental" label="Marco Canônico Papal" detalhe="Primeiro Leigo Comum da História Canonizado por Bula Pontifícia" />
+  </div>
+
+  <h2>O Papado de Inocêncio III e a Centralização das Canonizações</h2>
+  <p>
+    Eleito pontífice no início de 1198 com apenas 37 anos, Lotário de Segni assumiu o nome de <strong>Inocêncio III</strong> e tornou-se um dos mais brilhantes juristas e teólogos a ocupar a Sé de Pedro. Foi sob seu pontificado que a Sé Apostólica reservou exclusivamente para o Papa a autoridade de declarar a santidade de um fiel, retirando essa prerrogativa das aclamações locais dos bispos diocesanos.
+  </p>
+  <p>
+    Homobono foi a primeira canonização realizada por Inocêncio III. O pontífice usou o processo de Cremona como <strong>modelo normativo</strong> para todo o futuro do direito canônico ocidental.
+  </p>
+
+  <!-- Placeholder para o Bispo Sicardo -->
+  <PlaceholderArte
+    titulo="Bispo Sicardo de Cremona (1155–1215)"
+    subtitulo="Instrução do Processo Diocesano em Roma"
+    descricao="Retrato histórico do jurista e prelado que organizou os depoimentos das testemunhas e levou a causa a Inocêncio III."
+  />
+
+  <h2>A Instrução do Processo pelo Bispo Sicardo</h2>
+  <p>
+    O segredo da rapidez do processo esteve na competência jurídica do Bispo Sicardo de Cremona. Em vez de levar a Roma boatos vagos de milagres, Sicardo estabeleceu um tribunal investigativo formal:
+  </p>
+  <ul>
+    <li>Coletou depoimentos sob juramento de vizinhos, clientes, empregados e sacerdotes sobre a integridade de Homobono ao longo de décadas.</li>
+    <li>Convocou médicos e testemunhas fidedignas para atestar curas instantâneas inexplicáveis ocorridas no túmulo do comerciante.</li>
+    <li>Viajou pessoalmente a Roma acompanhado de uma delegação representativa de magistrados civis e cônsules de Cremona, demonstrando a unanimidade entre a Igreja e o poder civil.</li>
+  </ul>
+
+  <CitacaoLatina
+    latim="Duo quippe sunt quae faciunt sanctum: virtus scilicet morum et virtus signorum, merita videlicet et miracula."
+    traducao="Duas coisas sem dúvida fazem o santo: a virtude dos costumes e o poder dos sinais, isto é, os méritos em vida e os milagres após a morte."
+    autorOuFonte="Papa Inocêncio III · Bula Quia pietas (1199)"
+  />
+
+  <!-- Placeholder para a Bula Quia Pietas -->
+  <PlaceholderArte
+    titulo="Manuscrito Original da Bula Quia Pietas"
+    subtitulo="Archivio Apostolico Vaticano · Reg. Vat. 4, f. 116r"
+    descricao="Reprodução fac-símile em alta resolução do pergaminho pontifício selado com chumbo pelo Papa Inocêncio III em 1199."
+  />
+
+  <h2>A Regra de Ouro: Virtus Morum e Virtus Signorum</h2>
+  <p>
+    Na bula <em>Quia pietas</em>, Inocêncio III formulou o célebre princípio que rege as canonizações até os dias de hoje: para que alguém seja canonizado, é necessária a conjugação harmoniosa de dois fatores:
+  </p>
+  <ol>
+    <li><strong>Virtus morum (Virtude dos costumes):</strong> A vida moral em conformidade heroica com os mandamentos de Cristo, demonstrada na justiça nos negócios, na caridade com os pobres e na fidelidade matrimonial. Sem virtude comprovada, nenhum sinal extraordinário tem valor.</li>
+    <li><strong>Virtus signorum (Poder dos sinais):</strong> A confirmação divina através de milagres verdadeiros ocorridos pela intercessão do santo após o falecimento.</li>
+  </ol>
+
+  <h2>Um Recado Revolucionário para a Cristandade Medieval</h2>
+  <p>
+    Ao canonizar um mercador de tecidos, alfaiate, casado e pai de família, o Papa Inocêncio III enviou uma mensagem impactante para as cidades europeias em plena efervescência econômica: <strong>a santidade não é monopólio dos mosteiros nem privilégio de príncipes</strong>.
+  </p>
+</ArtigoLayout>

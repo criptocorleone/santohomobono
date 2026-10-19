@@ -1,0 +1,128 @@
+---
+import ArtigoLayout from '../layouts/ArtigoLayout.astro';
+import CitacaoLatina from '../components/CitacaoLatina.astro';
+import SeloFonte from '../components/SeloFonte.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Padroeiro dos Empresários', item: '/padroeiro-dos-empresarios' },
+];
+
+const sources = [
+  'Compêndio da Doutrina Social da Igreja (Pontifício Conselho Justiça e Paz).',
+  'Papa João Paulo II, Carta à Diocese de Cremona no VIII Centenário da Morte de Santo Homobono (1997).',
+  'G. Todeschini, I mercanti e il tempio: La società cristiana ed il circolo virtuoso della ricchezza fra Medioevo ed Età Moderna.',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'Oração do Empresário e do Comerciante',
+    href: '/oracoes/oracao-do-empresario',
+    categoria: 'Devoção',
+    descricao: 'Prece consagrando o negócio, as decisões de liderança e os funcionários.',
+  },
+  {
+    titulo: 'Quem Foi Santo Homobono?',
+    href: '/quem-foi-santo-homobono',
+    categoria: 'Biografia',
+    descricao: 'A história do comerciante que se tornou o primeiro leigo canonizado na Idade Média.',
+  },
+  {
+    titulo: 'Comunidade de Empresários Católicos',
+    href: '/comunidade',
+    categoria: 'Comunidade',
+    descricao: 'Faça parte da lista de espera da irmandade de empreendedores e líderes de mercado.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="Santo Homobono: O Padroeiro dos Empresários e a Ética no Mercado"
+  description="Como Santo Homobono inspira empresários e comerciantes hoje: princípios cristãos de justo preço, honestidade nos contratos e a dignidade do trabalho como vocação."
+  subtitulo="A santidade através do comércio: princípios históricos e teológicos para liderar empresas com integridade e propósito eterno."
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  tipoFonte="documental"
+  linksRelacionados={linksRelacionados}
+>
+  <p>
+    Para muitos homens e mulheres contemporâneos, a atividade empresarial e a vida de fé cristã parecem habitar mundos irreconciliáveis. O ambiente corporativo é frequentemente retratado como uma arena impiedosa de competição sem escrúpulos, na qual o lucro justifica qualquer expediente. No entanto, mais de oito séculos atrás, nas movimentadas ruas de Cremona, um homem quebrou para sempre essa dicotomia: <strong>Santo Homobono provou que a atividade empresarial, quando exercida com retidão, é um caminho legítimo e glorioso de santificação pessoal.</strong>
+  </p>
+
+  <h2>Por que os empresários precisam de Santo Homobono?</h2>
+  <p>
+    A maioria dos santos do calendário litúrgico católico era composta por eremitas, monges enclausurados, mártires dos primeiros séculos, bispos ou reis. Para quem vive no século XXI calculando folhas de pagamento, negociando prazos com bancos, gerindo equipes e atendendo clientes exigentes, muitas dessas hagiografias tradicionais parecem distantes da realidade cotidiana.
+  </p>
+  <p>
+    Homobono, por outro lado, enfrentava as mesmas preocupações materiais que tiram o sono de um comerciante moderno: a flutuação do preço das matérias-primas têxteis, a cobrança de tributos municipais abusivos, o risco de inadimplência de compradores e o compromisso ético de remunerar pontualmente seus artesãos.
+  </p>
+
+  <div class="my-6">
+    <SeloFonte tipo="historico" label="Doutrina Social Aplicada" detalhe="Precursor da Ética Mercantil Cristã" />
+  </div>
+
+  <h2>Os Quatro Pilares do Empreendedorismo de Santo Homobono</h2>
+
+  <div class="space-y-6 my-8">
+    <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border-l-4 border-[var(--ouro)]">
+      <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
+        1. A Teologia do Justo Preço
+      </h3>
+      <p class="text-sm sm:text-base text-[var(--tinta)] mt-2 leading-relaxed font-['Source_Serif_4']">
+        Décadas antes de São Tomás de Aquino sistematizar o conceito filosófico do <em>justum pretium</em> na <em>Suma Teológica</em>, Homobono já o praticava diariamente no balcão da sua alfaiataria. Cobrar o preço justo significa nunca se aproveitar da vulnerabilidade ou da ignorância do cliente para inflacionar margens de lucro, oferecendo mercadorias com a exata qualidade e metragem prometidas.
+      </p>
+    </div>
+
+    <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border-l-4 border-[var(--ouro)]">
+      <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
+        2. A Dignidade e Pontualidade com os Colaboradores
+      </h3>
+      <p class="text-sm sm:text-base text-[var(--tinta)] mt-2 leading-relaxed font-['Source_Serif_4']">
+        Para Homobono, quem tecia, cortava e costurava os tecidos em sua oficina não era mera "mão de obra", mas irmãos em Cristo dotados de dignidade inviolável. Ele cumpria com estrito zelo o mandamento bíblico de jamais reter o salário do diarista até o dia seguinte, garantindo sustento digno e estabilidade aos lares que dependiam do seu negócio.
+      </p>
+    </div>
+
+    <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border-l-4 border-[var(--ouro)]">
+      <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
+        3. A Função Social do Lucro
+      </h3>
+      <p class="text-sm sm:text-base text-[var(--tinta)] mt-2 leading-relaxed font-['Source_Serif_4']">
+        O cristianismo não condena a prosperidade nem a geração de lucro; condena a avareza idólatra. Homobono acumulou patrimônio substancial graças à sua competência técnica e diligência, mas compreendia que o excedente financeiro pertencia aos pobres. O empresário católico é convidado a enxergar sua empresa como uma fonte geradora de bem comum e de amparo aos vulneráveis da comunidade.
+      </p>
+    </div>
+
+    <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border-l-4 border-[var(--ouro)]">
+      <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
+        4. A Pacificação no Mercado e nas Relações
+      </h3>
+      <p class="text-sm sm:text-base text-[var(--tinta)] mt-2 leading-relaxed font-['Source_Serif_4']">
+        Num ambiente dominado por brigas judiciais e deslealdade entre corporações, Homobono servia como árbitro imparcial. Ele demonstra que o verdadeiro líder sabe resolver controvérsias com diálogo, humildade e serenidade, mantendo seu nome ilibado mesmo nas circunstâncias mais adversas.
+      </p>
+    </div>
+  </div>
+
+  <CitacaoLatina
+    latim="Divitias non sibi, sed pauperibus cumulavit; negotiando enim terrena, mercatus est coelestia."
+    traducao="Não acumulou riquezas para si, mas para os pobres; negociando os bens terrenos, adquiriu os tesouros celestiais."
+    autorOuFonte="Ofício Próprio da Liturgia de Cremona"
+  />
+
+  <h2>A Mensagem de São João Paulo II aos Empresários</h2>
+  <p>
+    Em 1997, por ocasião dos oitocentos anos da morte de Santo Homobono, o Papa João Paulo II dirigiu uma carta solene destacando que a mensagem deste mercador é mais urgente hoje do que na Idade Média:
+  </p>
+  <blockquote class="p-6 bg-[var(--pergaminho-escuro)] border-l-4 border-[var(--cardinal)] italic text-base sm:text-lg text-[var(--tinta)] my-6">
+    “Santo Homobono recorda aos homens e mulheres de negócios de nosso tempo que a vida profissional é o lugar teológico onde se manifesta a caridade evangélica. O lucro econômico nunca pode ser obtido ao preço da dignidade da pessoa humana nem ao custo da verdade nas relações comerciais.”
+  </blockquote>
+
+  <h2>Como colocar isso em prática na sua empresa amanhã</h2>
+  <p>
+    Ser devoto de Santo Homobono não é apenas carregar uma medalha na carteira; é tomar decisões diárias baseadas no seu exemplo:
+  </p>
+  <ul>
+    <li>Revisar contratos para assegurar que não haja cláusulas obscuras ou desvantagens desleais para os clientes e parceiros.</li>
+    <li>Honrar pontualmente os compromissos com fornecedores, considerando que cada empresa depende da sua palavra para honrar seus próprios pagamentos.</li>
+    <li>Destinar uma porcentagem constante dos lucros da empresa para obras concretas de caridade e apoio a famílias necessitadas.</li>
+    <li>Começar cada dia de trabalho com uma prece pedindo sabedoria, calma e honestidade.</li>
+  </ul>
+</ArtigoLayout>

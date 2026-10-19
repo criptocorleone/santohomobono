@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTAComunidade from '../../components/CTAComunidade.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'História', item: '/historia' },
+];
+
+const artigosHistoria = [
+  {
+    titulo: 'Cremona no Século XII',
+    subtitulo: 'Comunas, Guildas e o Florescimento do Comércio Têxtil',
+    href: '/historia/cremona-no-seculo-xii',
+    descricao: 'O contexto político e econômico da revolução comercial italiana onde floresceu o ministério de Homobono.',
+    icone: '🏛️',
+  },
+  {
+    titulo: 'A Conversão aos 50 Anos',
+    subtitulo: 'A Virada Radical nos Negócios e no Lar',
+    href: '/historia/a-conversao',
+    descricao: 'Como a maturidade do mercador o impeliu a transformar sua oficina e casa em abrigo e caridade para os pobres.',
+    icone: '🥖',
+  },
+  {
+    titulo: 'A Morte Santa na Missa (1197)',
+    subtitulo: '13 de Novembro na Igreja de Sant\'Egidio',
+    href: '/historia/a-morte-na-missa',
+    descricao: 'O trânsito suave do santo ancião perante o crucifixo enquanto se entoava o canto solene do Gloria.',
+    icone: '✝️',
+  },
+  {
+    titulo: 'A Canonização Recorde em 14 Meses',
+    subtitulo: 'A Bula Quia Pietas de Inocêncio III (1199)',
+    href: '/historia/a-canonizacao',
+    descricao: 'O processo pontifício histórico que consagrou o primeiro leigo burguês nos altares da Igreja.',
+    icone: '📜',
+  },
+  {
+    titulo: 'Linha do Tempo Interativa',
+    subtitulo: 'De 1117 aos Dias Atuais',
+    href: '/historia/linha-do-tempo',
+    descricao: 'Todos os marcos cronológicos dos mais de 800 anos de memória e devoção ao padroeiro dos negócios.',
+    icone: '⏳',
+  },
+];
+---
+
+<BaseLayout
+  title="História e Vida de Santo Homobono de Cremona"
+  description="Acervo completo de estudos históricos e documentais sobre Santo Homobono: contexto medieval, conversão, morte na missa, canonização e cronologia."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <header class="text-center my-8">
+      <span class="text-xs uppercase tracking-widest font-['Cinzel'] text-[var(--ouro)] font-bold">
+        Dossiê Histórico & Biográfico
+      </span>
+      <h1 class="font-['Cormorant_Garamond'] text-4xl sm:text-6xl font-bold text-[var(--cardinal)] mt-2">
+        A História de Santo Homobono
+      </h1>
+      <p class="text-base sm:text-lg text-[var(--pedra)] font-['Source_Serif_4'] mt-3 max-w-2xl mx-auto leading-relaxed">
+        Conheça a história documentada do homem que transformou o comércio em via de santidade, analisada através de fontes primárias e pesquisa rigorosa.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-12">
+      {artigosHistoria.map((artigo) => (
+        <a
+          href={artigo.href}
+          class="group p-6 sm:p-8 rounded-2xl bg-[var(--pergaminho-escuro)]/60 hover:bg-[var(--pergaminho-escuro)] border border-[var(--ouro-claro)] hover:border-[var(--ouro)] transition-all shadow-sm hover:shadow-md flex flex-col justify-between"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-3xl select-none" aria-hidden="true">{artigo.icone}</span>
+              <span class="font-['Cinzel'] text-xs uppercase tracking-wider text-[var(--ouro)] font-bold">
+                Artigo Histórico
+              </span>
+            </div>
+            <h2 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)] group-hover:text-[var(--ouro)] transition-colors">
+              {artigo.titulo}
+            </h2>
+            <p class="font-['Cinzel'] text-xs uppercase tracking-wider text-[var(--pedra)] mt-1">
+              {artigo.subtitulo}
+            </p>
+            <p class="text-sm text-[var(--pedra)] font-['Source_Serif_4'] mt-3 leading-relaxed">
+              {artigo.descricao}
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[var(--ouro-claro)]/40 flex items-center justify-between text-xs font-['Cinzel'] font-bold text-[var(--cardinal)]">
+            <span>Acessar estudo</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-14">
+      <CTAComunidade variante="compacta" />
+    </div>
+  </div>
+</BaseLayout>

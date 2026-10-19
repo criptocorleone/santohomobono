@@ -1,0 +1,365 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CardOracao from '../components/CardOracao.astro';
+import Timeline from '../components/Timeline.astro';
+import GaleriaArte from '../components/GaleriaArte.astro';
+import ContadorFesta from '../components/ContadorFesta.astro';
+import CTAComunidade from '../components/CTAComunidade.astro';
+import FAQ from '../components/FAQ.astro';
+import CitacaoLatina from '../components/CitacaoLatina.astro';
+import SeloFonte from '../components/SeloFonte.astro';
+
+// FAQ para Home e Schema JSON-LD
+const faqHome = [
+  {
+    question: 'Quem foi Santo Homobono?',
+    answer: 'Homobono Tucenghi foi um comerciante de tecidos e alfaiate medieval em Cremona (norte da Itália), nascido por volta de 1117 e falecido em 1197. Conhecido por sua estrita retidão nos negócios e caridade aos pobres, tornou-se o primeiro leigo não-pertencente à nobreza canonizado na história da Igreja.',
+  },
+  {
+    question: 'Por que Santo Homobono é o padroeiro dos empresários?',
+    answer: 'Porque ele alcançou a santidade dentro da atividade mercantil diária, negociando tecidos, cumprindo contratos e administrando seus lucros com justiça social, sem precisar abandonar sua família ou seu comércio para entrar em um mosteiro.',
+  },
+  {
+    question: 'Quando é o dia de Santo Homobono?',
+    answer: 'A festa litúrgica de Santo Homobono é celebrada anualmente em 13 de novembro, data de sua morte santa durante a celebração da missa na Igreja de Sant\'Egidio em Cremona no ano de 1197.',
+  },
+  {
+    question: 'Qual o significado da expressão "Homem bom de nome e de fato"?',
+    answer: 'É a famosa declaração em latim ("Homo bonus et nomine et actu") registrada pelo Papa Inocêncio III na bula papal Quia pietas (1199), reconhecendo que a vida do santo correspondia perfeitamente ao seu nome de batismo.',
+  },
+  {
+    question: 'Como recorrer à intercessão de Santo Homobono nos negócios?',
+    answer: 'Muitos empresários e comerciantes católicos rezam sua oração diária antes de abrir as portas do trabalho, consagram suas decisões e contratos à sua guarda e oferecem uma parte de seus frutos aos pobres como esmola e gratidão.',
+  },
+];
+---
+
+<BaseLayout
+  title="Santo Homobono — O Padroeiro dos Empresários"
+  description="A referência em português sobre Santo Homobono de Cremona: o mercador do séc. XII que provou que é possível ser santo fazendo negócios com integridade e caridade."
+  faqs={faqHome}
+  includeWebsite={true}
+  includePerson={true}
+  includeEvent={true}
+>
+  <!-- SEÇÃO 1: HERO -->
+  <Hero
+    h1="Santo Homobono, o padroeiro dos empresários"
+    subtitulo="O mercador de Cremona que se tornou o primeiro leigo comum canonizado na Idade Média."
+    linkHistoria="/quem-foi-santo-homobono"
+    linkOracao="/oracoes/oracao-a-santo-homobono"
+  />
+
+  <!-- SEÇÃO 2: FAIXA DE NÚMEROS HISTÓRICOS -->
+  <section class="border-y border-[var(--ouro-claro)]/40 bg-[var(--pergaminho-escuro)]/60 py-8 lg:py-10 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        
+        <div class="space-y-1">
+          <span class="block font-['Cinzel'] text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--cardinal)]">
+            1197
+          </span>
+          <span class="text-xs sm:text-sm font-['Cinzel'] tracking-wider uppercase text-[var(--pedra)]">
+            Ano de sua Morte Santa
+          </span>
+        </div>
+
+        <div class="space-y-1">
+          <span class="block font-['Cinzel'] text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--ouro)]">
+            14 Meses
+          </span>
+          <span class="text-xs sm:text-sm font-['Cinzel'] tracking-wider uppercase text-[var(--pedra)]">
+            Canonização Recorde
+          </span>
+        </div>
+
+        <div class="space-y-1">
+          <span class="block font-['Cinzel'] text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--cardinal)]">
+            13 de Nov.
+          </span>
+          <span class="text-xs sm:text-sm font-['Cinzel'] tracking-wider uppercase text-[var(--pedra)]">
+            Festa Litúrgica Anual
+          </span>
+        </div>
+
+        <div class="space-y-1">
+          <span class="block font-['Cinzel'] text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--ouro)]">
+            800+ Anos
+          </span>
+          <span class="text-xs sm:text-sm font-['Cinzel'] tracking-wider uppercase text-[var(--pedra)]">
+            De Devoção Contínua
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 3: "HOMEM BOM DE NOME E DE FATO" (RESUMO EM 3 PARÁGRAFOS) -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+    <div class="text-center mb-10">
+      <SeloFonte tipo="documental" label="Bula Quia Pietas · Papa Inocêncio III (1199)" />
+      <h2 class="font-['Cormorant_Garamond'] text-3xl sm:text-5xl font-bold text-[var(--cardinal)] mt-2">
+        “Homem bom de nome e de fato”
+      </h2>
+      <p class="text-sm font-['Cinzel'] tracking-widest text-[var(--ouro)] uppercase mt-2">
+        A santidade encarnada na oficina e no mercado de Cremona
+      </p>
+    </div>
+
+    <div class="prose prose-lg dark:prose-invert max-w-none text-[var(--tinta)] font-['Source_Serif_4'] leading-relaxed space-y-6 [&>p:first-of-type]:capitular text-justify sm:text-left">
+      <p>
+        Nascido na pujante comuna mercantil de Cremona, no norte da Itália, por volta de 1117, Homobono Tucenghi aprendeu desde cedo a arte do comércio têxtil e da alfaiataria. Numa época em que a atividade mercantil era frequentemente vista pela sociedade com desconfiança e suspeita de usura, ele demonstrou que o trabalho comercial pode ser um nobre e fecundo apostolado cristão quando guiado pela justiça nos preços, pela exatidão nos pesos e pela retidão da palavra empenhada.
+      </p>
+      <p>
+        Casado e estabelecido como próspero burguês, Homobono experimentou por volta dos cinquenta anos de idade uma profunda conversão do coração. Em vez de se retirar para um claustro ou renunciar ao mundo, decidiu converter sua própria residência e seus ganhos em instrumentos de alívio aos pobres e órfãos. Alimentava os famintos que batiam à sua porta, vestia os nus com os panos de sua oficina e pacificava os violentos conflitos políticos entre facções rivais da comuna italiana.
+      </p>
+      <p>
+        Em 13 de novembro de 1197, enquanto assistia fervorosamente à celebração eucarística na igreja de Sant'Egidio, prostrou-se no chão em oração durante o cântico do <em>Gloria in excelsis</em> e exalou mansamente o último suspiro aos pés da cruz. Sua fama de santidade era tão inquestionável e profunda que, apenas quatorze meses após sua páscoa, o Papa Inocêncio III o elevou solenemente aos altares com a célebre bula <em>Quia pietas</em>, consagrando para a posteridade o padroeiro daqueles que produzem, contratam e empreendem.
+      </p>
+    </div>
+
+    <!-- Citação Latina da Bula -->
+    <CitacaoLatina
+      latim="Homo bonus et nomine et actu, quia in bonis operibus perseverans usque in finem, tandem glorioso fine requievit."
+      traducao="Homem bom tanto de nome quanto de fato, porque, perseverando em boas obras até o fim, finalmente repousou em glorioso termo."
+      autorOuFonte="Papa Inocêncio III · Bula Quia Pietas (1199)"
+    />
+
+    <div class="text-center mt-8">
+      <a
+        href="/quem-foi-santo-homobono"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--pergaminho-escuro)] hover:bg-[var(--ouro-claro)]/40 border border-[var(--ouro)] text-[var(--cardinal)] font-['Cinzel'] font-bold text-xs uppercase tracking-wider transition-all shadow-sm"
+      >
+        <span>Ler a Biografia Completa e Fontes Primárias</span>
+        <span>→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 4: ORAÇÃO DO EMPRESÁRIO EM DESTAQUE -->
+  <section class="bg-[var(--pergaminho-escuro)]/40 py-16 lg:py-20 border-y border-[var(--ouro-claro)]/40 transition-colors">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-8">
+        <span class="text-xs uppercase tracking-widest font-['Cinzel'] text-[var(--ouro)] font-bold">
+          Prece Cotidiana para o Trabalho
+        </span>
+        <h2 class="font-['Cormorant_Garamond'] text-3xl sm:text-5xl font-bold text-[var(--cardinal)] mt-1">
+          Oração do Empresário e do Comerciante
+        </h2>
+        <p class="text-sm sm:text-base text-[var(--pedra)] font-['Source_Serif_4'] mt-2 max-w-xl mx-auto">
+          Reze diariamente antes de iniciar as atividades profissionais, pedindo discernimento, sabedoria contratual e prosperidade com propósito.
+        </p>
+      </div>
+
+      <CardOracao
+        titulo="Oração a Santo Homobono pelos Negócios e pelo Trabalho"
+        subtitulo="Para a retidão no comércio, fidelidade aos princípios cristãos e prosperidade com justiça"
+        referencia="Aprovada com bênção eclesiástica para o uso de empresários, lojistas e trabalhadores"
+      >
+        <p>
+          Glorioso Santo Homobono, que pela retidão de vossos atos e pela caridade de vosso coração fostes chamado "homem bom de nome e de fato", olhai com bondade para mim e para o meu trabalho.
+        </p>
+        <p>
+          Vós que conhecestes as exigências do mercado, as negociações diárias e a responsabilidade de administrar com honestidade, dai-me sabedoria para conduzir meus empreendimentos com integridade e retidão inegociável.
+        </p>
+        <p>
+          Livrai-me da ganância desmedida, da concorrência desleal e de toda palavra enganosa. Fazei com que os frutos do meu labor sustentem dignamente minha família, honrem meus colaboradores e fornecedores, e me permitam partilhar com generosidade aquilo que recebo das mãos de Deus.
+        </p>
+        <p>
+          Abençoai os clientes que entram em meu estabelecimento, guardai minha empresa em tempos de incerteza e fazei com que meu negócio seja, acima de tudo, um instrumento de serviço ao próximo e louvor ao Altíssimo.
+        </p>
+      </CardOracao>
+
+      <div class="text-center mt-6">
+        <a
+          href="/oracoes/novena-de-santo-homobono"
+          class="text-xs font-['Cinzel'] tracking-wider uppercase text-[var(--cardinal)] hover:text-[var(--ouro)] font-bold underline transition-colors"
+        >
+          Rezar também a Novena de 9 Dias de Santo Homobono →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEÇÃO 5: LINHA DO TEMPO RESUMIDA -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+    <div class="text-center mb-10">
+      <span class="text-xs uppercase tracking-widest font-['Cinzel'] text-[var(--ouro)] font-bold">
+        Trajetória Histórica
+      </span>
+      <h2 class="font-['Cormorant_Garamond'] text-3xl sm:text-5xl font-bold text-[var(--cardinal)] mt-1">
+        Marcos da Vida de Santo Homobono
+      </h2>
+      <p class="text-sm sm:text-base text-[var(--pedra)] font-['Source_Serif_4'] mt-2 max-w-xl mx-auto">
+        Do nascimento no coração do comércio medieval italiano até sua consagração perene na Igreja universal.
+      </p>
+    </div>
+
+    <!-- Timeline compacta com scroll horizontal no mobile -->
+    <Timeline modoCompacto={true} />
+
+    <div class="text-center mt-8">
+      <a
+        href="/historia/linha-do-tempo"
+        class="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-[var(--ouro)] text-[var(--cardinal)] hover:bg-[var(--ouro-claro)]/30 font-['Cinzel'] text-xs uppercase tracking-wider font-bold transition-all"
+      >
+        <span>Explorar Linha do Tempo Interativa Completa (1117 → 2026)</span>
+        <span>→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 6: POR QUE ELE IMPORTA PARA QUEM EMPREENDE HOJE (3 PILARES) -->
+  <section class="bg-[var(--pergaminho-escuro)]/60 py-16 lg:py-20 border-y border-[var(--ouro-claro)]/40 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs uppercase tracking-widest font-['Cinzel'] text-[var(--ouro)] font-bold">
+          Valores Intemporais
+        </span>
+        <h2 class="font-['Cormorant_Garamond'] text-3xl sm:text-5xl font-bold text-[var(--cardinal)] mt-1">
+          Por Que Ele Importa para Quem Empreende Hoje
+        </h2>
+        <p class="text-base sm:text-lg text-[var(--pedra)] font-['Source_Serif_4'] mt-3 leading-relaxed">
+          Num ecossistema empresarial marcado pelo imediatismo e pelo lucro a qualquer custo, o testemunho de Santo Homobono sustenta três pilares inegociáveis para o sucesso duradouro.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Pilar 1: Honestidade -->
+        <div class="rounded-2xl bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] border border-[var(--ouro-claro)] p-8 shadow-sm hover:shadow-md hover:border-[var(--ouro)] transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-[var(--pergaminho-escuro)] border border-[var(--ouro)] flex items-center justify-center text-2xl mb-6 shadow-inner">
+              ⚖️
+            </div>
+            <span class="text-xs font-['Cinzel'] font-bold tracking-wider uppercase text-[var(--ouro)]">
+              Pilar I
+            </span>
+            <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)] mt-1 mb-3">
+              Honestidade & Justo Preço
+            </h3>
+            <p class="text-sm sm:text-base text-[var(--pedra)] font-['Source_Serif_4'] leading-relaxed">
+              Santo Homobono nunca buscou a riqueza pela fraude, pela manipulação de medidas ou pela exploração da ignorância de seus clientes. Sua palavra era uma garantia solene de fidelidade. Nos negócios modernos, a transparência e a integridade são o maior ativo reputacional de um líder.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[var(--ouro-claro)]/30 text-xs text-[var(--cardinal)] font-['Cinzel'] font-semibold">
+            Princípio da Justiça Contratual
+          </div>
+        </div>
+
+        <!-- Pilar 2: Generosidade -->
+        <div class="rounded-2xl bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] border border-[var(--ouro-claro)] p-8 shadow-sm hover:shadow-md hover:border-[var(--ouro)] transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-[var(--pergaminho-escuro)] border border-[var(--ouro)] flex items-center justify-center text-2xl mb-6 shadow-inner">
+              🥖
+            </div>
+            <span class="text-xs font-['Cinzel'] font-bold tracking-wider uppercase text-[var(--ouro)]">
+              Pilar II
+            </span>
+            <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)] mt-1 mb-3">
+              Generosidade & Destino dos Bens
+            </h3>
+            <p class="text-sm sm:text-base text-[var(--pedra)] font-['Source_Serif_4'] leading-relaxed">
+              Para o santo de Cremona, o lucro legítimo não existia para o acúmulo vaidoso, mas como providência para gerar empregos dignos e socorrer os necessitados. Ele considerava-se apenas um administrador dos bens de Deus, distribuindo o excedente aos órfãos e viúvas da sua comunidade.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[var(--ouro-claro)]/30 text-xs text-[var(--cardinal)] font-['Cinzel'] font-semibold">
+            Doutrina Social da Igreja (DSI)
+          </div>
+        </div>
+
+        <!-- Pilar 3: Paz -->
+        <div class="rounded-2xl bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] border border-[var(--ouro-claro)] p-8 shadow-sm hover:shadow-md hover:border-[var(--ouro)] transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-[var(--pergaminho-escuro)] border border-[var(--ouro)] flex items-center justify-center text-2xl mb-6 shadow-inner">
+              🕊️
+            </div>
+            <span class="text-xs font-['Cinzel'] font-bold tracking-wider uppercase text-[var(--ouro)]">
+              Pilar III
+            </span>
+            <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)] mt-1 mb-3">
+              Paz & Pacificação Social
+            </h3>
+            <p class="text-sm sm:text-base text-[var(--pedra)] font-['Source_Serif_4'] leading-relaxed">
+              Cremona ardia em disputas entre nobres, bispos e corporações de ofício. Homobono usou sua reputação de homem justo e desinteressado para mediar desavenças e reconciliar facções inimigas. O líder católico é, por vocação, um promotor da concórdia no ambiente de trabalho.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[var(--ouro-claro)]/30 text-xs text-[var(--cardinal)] font-['Cinzel'] font-semibold">
+            Conciliação e Liderança Ética
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="/padroeiro-dos-empresarios"
+          class="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-[var(--cardinal)] text-white hover:opacity-90 font-['Cinzel'] text-xs uppercase tracking-wider font-bold transition-all shadow-md"
+        >
+          <span>Conhecer o Tratado sobre Ética nos Negócios</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 7: GALERIA DE ARTE (4 OBRAS + VER TODAS) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <span class="text-xs uppercase tracking-widest font-['Cinzel'] text-[var(--ouro)] font-bold">
+        Memória Visual da Cristandade
+      </span>
+      <h2 class="font-['Cormorant_Garamond'] text-3xl sm:text-5xl font-bold text-[var(--cardinal)] mt-1">
+        Galeria de Arte Sacra & Iconografia
+      </h2>
+      <p class="text-sm sm:text-base text-[var(--pedra)] font-['Source_Serif_4'] mt-2">
+        Pinturas e afrescos históricos de museus europeus e catedrais italianas retratando Santo Homobono com seus atributos tradicionais.
+      </p>
+    </div>
+
+    <!-- Componente Galeria com Lightbox (4 obras) -->
+    <GaleriaArte limite={4} mostrarLinkTodas={true} />
+  </section>
+
+  <!-- SEÇÃO 8: CONTADOR PARA 13 DE NOVEMBRO + COMO CELEBRAR -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <ContadorFesta
+      titulo="Prepare-se para o Dia de Santo Homobono"
+      subtitulo="Acompanhe a contagem regressiva para a festa litúrgica de 13 de novembro e veja como consagrar seu trabalho."
+    />
+  </section>
+
+  <!-- SEÇÃO 9: CTA COMUNIDADE DE EMPRESÁRIOS -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <CTAComunidade variante="completa" />
+  </section>
+
+  <!-- SEÇÃO 10: FAQ CURTO (5 PERGUNTAS) COM SCHEMA RICH SNIPPETS -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 border-t border-[var(--ouro-claro)]/40">
+    <FAQ
+      itens={faqHome}
+      titulo="Perguntas Frequentes sobre Santo Homobono"
+      subtitulo="Respostas precisas fundamentadas nos documentos canônicos e nos registros da diocese de Cremona"
+    />
+
+    <div class="mt-12 p-6 rounded-2xl bg-[var(--pergaminho-escuro)]/50 border border-[var(--ouro-claro)] text-center max-w-2xl mx-auto">
+      <h3 class="font-['Cinzel'] text-xs uppercase tracking-wider font-bold text-[var(--cardinal)] mb-2">
+        Tem outras perguntas sobre a devoção ou história?
+      </h3>
+      <p class="text-sm text-[var(--pedra)] font-['Source_Serif_4'] mb-4">
+        Explore nosso portal completo de dúvidas frequentes com explicações sobre relíquias, milagres e documentos pontifícios.
+      </p>
+      <a
+        href="/perguntas-frequentes"
+        class="inline-flex items-center gap-2 text-xs font-['Cinzel'] uppercase font-bold text-[var(--cardinal)] hover:text-[var(--ouro)] underline transition-colors"
+      >
+        <span>Ver todas as perguntas na FAQ Geral</span>
+        <span>→</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

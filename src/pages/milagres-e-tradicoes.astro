@@ -1,0 +1,102 @@
+---
+import ArtigoLayout from '../layouts/ArtigoLayout.astro';
+import SeloFonte from '../components/SeloFonte.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Milagres & Tradições', item: '/milagres-e-tradicoes' },
+];
+
+const sources = [
+  'Processo Canônico de Canonização (1198), citado na Bula Quia pietas.',
+  'André Vauchez, La sainteté en Occident: les miracles de Sant\'Omobono.',
+  'Tradições Populares da Diocese de Cremona e Lombardia.',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'Fontes & Documentos Históricos',
+    href: '/fontes-e-documentos',
+    categoria: 'Documentação',
+    descricao: 'Consulte os manuscritos e bulas originais que atestam a vida do santo.',
+  },
+  {
+    titulo: 'A Morte Santa na Missa (1197)',
+    href: '/historia/a-morte-na-missa',
+    categoria: 'História',
+    descricao: 'O momento da passagem perante o crucifixo e as primeiras graças obtidas.',
+  },
+  {
+    titulo: 'Arte e Iconografia Sacra',
+    href: '/arte-e-iconografia',
+    categoria: 'Iconografia',
+    descricao: 'Veja como os milagres foram representados por grandes mestres da pintura.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="Milagres e Tradições de Santo Homobono: História vs. Piedade Popular"
+  description="Um exame crítico e reverente separando os fatos canonicamente atestados na bula de 1199 das comoventes narrativas piedosas da tradição de Cremona."
+  subtitulo="Discernindo o rigor histórico da devoção afetuosa: curas, sinais e os relatos transmitidos pelos séculos."
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  tipoFonte="historico"
+  linksRelacionados={linksRelacionados}
+>
+  <p>
+    Um dos diferenciais deste portal é o respeito simultâneo pela fé católica e pela verdade historiográfica. Na tradição da Igreja, o processo que levou à canonização de <strong>Santo Homobono</strong> em 1199 foi um dos primeiros a exigir depoimentos sob juramento de médicos e testemunhas oculares, estabelecendo uma distinção nítida entre <strong>milagres juridicamente comprovados</strong> e <strong>tradições lendárias piedosas</strong> transmitidas pelo carinho do povo.
+  </p>
+
+  <h2>1. Os Milagres Canonicamente Atestados em 1198</h2>
+  <div class="my-4">
+    <SeloFonte tipo="historico" label="Fato Canonicamente Registrado" detalhe="Processo Diocesano e Bula Pontifícia de Inocêncio III" />
+  </div>
+  <p>
+    Quando o Bispo Sicardo de Cremona instaurou o tribunal investigativo para instruir o processo de canonização, dezenas de cidadãos prestaram depoimento sobre curas físicas instantâneas ocorridas junto ao corpo e ao sepulcro de Homobono na cripta da catedral:
+  </p>
+  <ul>
+    <li><strong>A cura de paralíticos congênitos:</strong> Cidadãos de Cremona que nunca haviam caminhado e eram sustentados por esmolas públicas recuperaram a força motora após tocarem as vestes mortuárias do comerciante.</li>
+    <li><strong>Recuperação da visão:</strong> Homens e mulheres cegos conhecidos na cidade recuperaram a visão plena, fato atestado pelos magistrados da comuna sob juramento cívico.</li>
+    <li><strong>Libertação de possessões e aflições severas:</strong> Registros eclesiásticos descrevem a pacificação interior instantânea de pessoas acometidas por graves tormentos psíquicos e espirituais.</li>
+  </ul>
+
+  <h2>2. Tradições Piedosas da Cultura Lombarda</h2>
+  <div class="my-4">
+    <SeloFonte tipo="tradicao" label="Tradição Piedosa / Hagiografia" detalhe="Memória Oral e Devoção Popular dos Séculos XIII a XVII" />
+  </div>
+  <p>
+    Ao longo dos séculos, a piedade popular de Cremona e das guildas de tecelões enriqueceu a narrativa da vida de Santo Homobono com comoventes parábolas devocionais. Embora essas histórias não constem na bula oficial de Inocêncio III, elas expressam com perfeição o impacto espiritual que a generosidade do santo causou no povo simples:
+  </p>
+
+  <div class="space-y-6 my-8">
+    <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border-l-4 border-amber-600">
+      <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
+        O Milagre do Vinho e da Água no Cantil
+      </h3>
+      <p class="text-sm sm:text-base text-[var(--tinta)] mt-2 font-['Source_Serif_4'] leading-relaxed">
+        Conta uma antiga tradição cremonesa que a esposa de Homobono, temerosa de que a prodigalidade do marido levasse a família à ruína, o repreendeu asperamente por ter esvaziado os barris de vinho da casa para dá-lo aos doentes e mendigos. Homobono, com paciência evangélica, pediu-lhe que fosse até o poço buscar água para a refeição. Ao provarem a água retirada do poço, ela havia se transformado em um vinho de excelência superior ao que fora doado aos pobres.
+      </p>
+      <div class="mt-3">
+        <SeloFonte tipo="tradicao" label="Tradição Popular Educativa" detalhe="Simboliza a multiplicação divina dos frutos da caridade" />
+      </div>
+    </div>
+
+    <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border-l-4 border-amber-600">
+      <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
+        A Bolsa de Esmolas que Nunca se Esvaziava
+      </h3>
+      <p class="text-sm sm:text-base text-[var(--tinta)] mt-2 font-['Source_Serif_4'] leading-relaxed">
+        Outra narrativa muito querida pelas corporações de mercadores diz que a bolsa de couro pendurada no cinto de Homobono continha sempre moedas suficientes para socorrer o próximo necessitado que surgisse no caminho, mesmo nos dias em que as vendas na oficina haviam sido modestas.
+      </p>
+      <div class="mt-3">
+        <SeloFonte tipo="tradicao" label="Símbolo Iconográfico" detalhe="Origem do atributo da bolsa de moedas nas pinturas" />
+      </div>
+    </div>
+  </div>
+
+  <h2>Por Que Separar Fato de Tradição Gera Confiança?</h2>
+  <p>
+    Para o empresário contemporâneo, a credibilidade é tudo. Apresentar Santo Homobono com rigor histórico não diminui sua glória — ao contrário, torna-o infinitamente mais atraente e inspirador. Saber que ele foi um homem real, de carne e osso, que pagava impostos, negociava preços e cumpria contratos sem artifícios mágicos, dá ao trabalhador moderno a certeza de que a santidade é um objetivo perfeitamente alcançável no mundo real.
+  </p>
+</ArtigoLayout>

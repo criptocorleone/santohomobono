@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CTAComunidade from '../components/CTAComunidade.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Comunidade de Empresários', item: '/comunidade' },
+];
+---
+
+<BaseLayout
+  title="Comunidade Santo Homobono — A Rede de Empresários e Comerciantes Cristãos"
+  description="Participe da Comunidade Santo Homobono: empresários e profissionais que buscam excelência no mercado e santidade no trabalho."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <!-- Mensagem de Confirmação Interativa caso haja parâmetro ou âncora -->
+    <div id="confirmacao" class="hidden mb-8 p-6 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border-2 border-emerald-500 text-emerald-900 dark:text-emerald-100 text-center shadow-lg">
+      <div class="text-3xl mb-2">🎉</div>
+      <h2 class="font-['Cormorant_Garamond'] text-2xl font-bold">
+        Inscrição Confirmada com Sucesso!
+      </h2>
+      <p class="text-sm mt-1 font-['Source_Serif_4'] text-emerald-800 dark:text-emerald-200">
+        Obrigado por se juntar à Comunidade Santo Homobono. Entraremos em contato por e-mail com as informações do primeiro encontro de oração e formação.
+      </p>
+    </div>
+
+    <header class="text-center my-8">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--ouro)]/15 text-[var(--cardinal)] text-xs font-['Cinzel'] font-bold tracking-widest uppercase mb-4 border border-[var(--ouro)]/40">
+        <span>⚜</span> Fase de Fundação <span>⚜</span>
+      </div>
+
+      <h1 class="font-['Cormorant_Garamond'] text-4xl sm:text-6xl font-bold text-[var(--cardinal)] leading-tight">
+        Comunidade Santo Homobono
+      </h1>
+      <p class="text-lg sm:text-xl text-[var(--pedra)] font-['Source_Serif_4'] mt-4 max-w-2xl mx-auto leading-relaxed">
+        Uma aliança de empresários, executivos, comerciantes e profissionais autônomos comprometidos com a ética cristã, a excelência profissional e o apoio fraterno.
+      </p>
+    </header>
+
+    <!-- Pilares da Comunidade -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-12">
+      <div class="p-6 rounded-2xl bg-[var(--pergaminho-escuro)]/60 border border-[var(--ouro-claro)] text-center">
+        <span class="text-3xl mb-3 block">🙏</span>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)] mb-2">
+          Oração e Intercessão
+        </h3>
+        <p class="text-xs sm:text-sm text-[var(--pedra)] font-['Source_Serif_4'] leading-relaxed">
+          Encontros virtuais mensais de consagração dos negócios, pedidos mútuos de oração e recitação da oração de Santo Homobono.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-[var(--pergaminho-escuro)]/60 border border-[var(--ouro-claro)] text-center">
+        <span class="text-3xl mb-3 block">📜</span>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)] mb-2">
+          Formação em DSI & Ética
+        </h3>
+        <p class="text-xs sm:text-sm text-[var(--pedra)] font-['Source_Serif_4'] leading-relaxed">
+          Estudos práticos sobre a Doutrina Social da Igreja, o justo preço, gestão de pessoas e integridade tributária.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-[var(--pergaminho-escuro)]/60 border border-[var(--ouro-claro)] text-center">
+        <span class="text-3xl mb-3 block">🤝</span>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)] mb-2">
+          Rede Confiável de Negócios
+        </h3>
+        <p class="text-xs sm:text-sm text-[var(--pedra)] font-['Source_Serif_4'] leading-relaxed">
+          Parcerias comerciais e indicações mútuas baseadas na confiança inegociável da palavra empenhada.
+        </p>
+      </div>
+    </div>
+
+    <!-- Formulário Principal Padronizado -->
+    <CTAComunidade />
+  </div>
+
+  <script>
+    if (window.location.hash === '#confirmacao' || window.location.search.includes('nome=')) {
+      const confirmBox = document.getElementById('confirmacao');
+      confirmBox?.classList.remove('hidden');
+    }
+  </script>
+</BaseLayout>

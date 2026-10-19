@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTAComunidade from '../../components/CTAComunidade.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Cremona', item: '/cremona' },
+];
+
+const lugaresCremona = [
+  {
+    titulo: 'A Catedral e a Cripta',
+    subtitulo: 'Duomo di Santa Maria Assunta',
+    href: '/cremona/catedral-e-cripta',
+    descricao: 'A monumental basílica românica e a cripta subterrânea onde repousam as relíquias de Santo Homobono.',
+    icone: '⛪',
+  },
+  {
+    titulo: 'A Igreja de Sant\'Omobono',
+    subtitulo: 'Santuário do Local da Morte',
+    href: '/cremona/igreja-de-santomobono',
+    descricao: 'Construída sobre o templo de Sant\'Egidio, adornada com os afrescos de Il Malosso de 1599.',
+    icone: '🏛️',
+  },
+  {
+    titulo: 'Roteiro de Peregrinação',
+    subtitulo: 'Guia Passo a Passo a Pé',
+    href: '/cremona/roteiro-de-peregrinacao',
+    descricao: 'Itinerário completo pelas ruas dos antigos mercadores, praças e museus da cidade lombarda.',
+    icone: '🗺️',
+  },
+];
+---
+
+<BaseLayout
+  title="Cremona e os Lugares Sagrados de Santo Homobono"
+  description="Guia dos santuários, cripta, igrejas e roteiros de peregrinação de Santo Homobono em Cremona, Itália."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <header class="text-center my-8">
+      <span class="text-xs uppercase tracking-widest font-['Cinzel'] text-[var(--ouro)] font-bold">
+        Geografia Sagrada & Peregrinação
+      </span>
+      <h1 class="font-['Cormorant_Garamond'] text-4xl sm:text-6xl font-bold text-[var(--cardinal)] mt-2">
+        Cremona: A Cidade do Padroeiro
+      </h1>
+      <p class="text-base sm:text-lg text-[var(--pedra)] font-['Source_Serif_4'] mt-3 max-w-2xl mx-auto leading-relaxed">
+        Descubra os monumentos e locais históricos onde Santo Homobono viveu, negociou tecidos e entregou sua alma a Deus.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-12">
+      {lugaresCremona.map((lugar) => (
+        <a
+          href={lugar.href}
+          class="group p-6 rounded-2xl bg-[var(--pergaminho-escuro)]/60 hover:bg-[var(--pergaminho-escuro)] border border-[var(--ouro-claro)] hover:border-[var(--ouro)] transition-all shadow-sm hover:shadow-md flex flex-col justify-between"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-3xl select-none" aria-hidden="true">{lugar.icone}</span>
+              <span class="font-['Cinzel'] text-xs uppercase tracking-wider text-[var(--ouro)] font-bold">
+                Lugar Sagrado
+              </span>
+            </div>
+            <h2 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)] group-hover:text-[var(--ouro)] transition-colors">
+              {lugar.titulo}
+            </h2>
+            <p class="font-['Cinzel'] text-xs uppercase tracking-wider text-[var(--pedra)] mt-1">
+              {lugar.subtitulo}
+            </p>
+            <p class="text-sm text-[var(--pedra)] font-['Source_Serif_4'] mt-3 leading-relaxed">
+              {lugar.descricao}
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[var(--ouro-claro)]/40 flex items-center justify-between text-xs font-['Cinzel'] font-bold text-[var(--cardinal)]">
+            <span>Explorar lugar</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-14">
+      <CTAComunidade variante="compacta" />
+    </div>
+  </div>
+</BaseLayout>

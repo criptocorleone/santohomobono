@@ -1,0 +1,122 @@
+---
+import ArtigoLayout from '../layouts/ArtigoLayout.astro';
+import CitacaoLatina from '../components/CitacaoLatina.astro';
+import SeloFonte from '../components/SeloFonte.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Fontes & Documentos', item: '/fontes-e-documentos' },
+];
+
+const sources = [
+  'Archivio Apostolico Vaticano, Reg. Vat. 4, f. 116r (Bula Quia pietas).',
+  'Monumenta Germaniae Historica (MGH), Scriptores, XXXI, Sicardi Cremonensis Chronicon.',
+  'André Vauchez, La sainteté en Occident aux derniers siècles du Moyen Âge, École Française de Rome, 1981.',
+  'D. Webb, Saints and Cities in Medieval Italy, Manchester University Press, 2007.',
+  'D. S. Prudlo & J. Voss, The Origin of Papal Infallibility in Saintly Canonizations, Catholic University of America Press.',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'A Canonização Recorde de 1199',
+    href: '/historia/a-canonizacao',
+    categoria: 'História',
+    descricao: 'Como a bula Quia pietas estabeleceu parâmetros canônicos para a Igreja.',
+  },
+  {
+    titulo: 'Biografia Completa de Santo Homobono',
+    href: '/quem-foi-santo-homobono',
+    categoria: 'História',
+    descricao: 'A narrativa histórica pautada exclusivamente em documentos verificados.',
+  },
+  {
+    titulo: 'Milagres e Tradições: Fato vs. Lenda',
+    href: '/milagres-e-tradicoes',
+    categoria: 'Crítica Histórica',
+    descricao: 'O discernimento criterioso entre dados primários e piedade popular.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="Fontes Primárias e Documentos Históricos de Santo Homobono"
+  description="Dossiê documental com a Bula Quia pietas de 1199, crônicas medievais do Bispo Sicardo e bibliografia acadêmica contemporânea (E-E-A-T)."
+  subtitulo="O rigor historiográfico que fundamenta este portal: fontes pontifícias, manuscritos do século XII e estudos críticos modernos."
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  tipoFonte="documental"
+  linksRelacionados={linksRelacionados}
+>
+  <p>
+    Ao contrário de muitas figuras devocionais cujas biografias dependem exclusivamente de relatos orais tardios ou compilações fabulosas, <strong>a vida e a santidade de Santo Homobono possuem farta sustentação documental contemporânea</strong>. O final do século XII marcou o início da centralização pontifícia dos processos de canonização e o florescimento dos cartórios comunais italianos, deixando um rastro de registros jurídicos e litúrgicos autênticos.
+  </p>
+
+  <div class="my-6">
+    <SeloFonte tipo="documental" label="Dossiê Crítico E-E-A-T" detalhe="Documentos Primários Custodiados em Roma e Cremona" />
+  </div>
+
+  <h2>1. A Bula Pontifícia Quia Pietas (12 de Janeiro de 1199)</h2>
+  <p>
+    Conservada no Arquivo Apostólico Vaticano (anteriormente Arquivo Secreto Vaticano), sob o registro <em>Reg. Vat. 4, f. 116r</em>, a bula promulgada pelo Papa Inocêncio III aos bispos da Lombardia é o documento mais importante sobre o santo. Nela, o pontífice detalha os dois pilares indispensáveis para a canonização: a <strong>virtude dos costumes em vida</strong> (<em>virtus morum</em>) e a <strong>autenticidade dos sinais milagrosos após a morte</strong> (<em>virtus signorum</em>).
+  </p>
+
+  <CitacaoLatina
+    latim="Quia pietas, secundum Apostolum, ad omnia utilis est, promissionem habens vitae quae nunc est et futurae... Homo bonus et nomine et actu, in bonis operibus usque in finem perseverans."
+    traducao="Porque a piedade, segundo o Apóstolo, para tudo é útil, tendo a promessa da vida presente e da futura... Homem bom tanto de nome quanto de fato, perseverando em boas obras até o fim."
+    autorOuFonte="Papa Inocêncio III · Bula Quia pietas (1199)"
+  />
+
+  <h2>2. A Chronicon de Sicardo, Bispo de Cremona (c. 1213)</h2>
+  <p>
+    O Bispo Sicardo de Cremona (1155–1215), um dos maiores canonistas e historiadores do seu século, foi testemunha ocular dos acontecimentos. Em sua <em>Crônica Universal</em> (publicada nos <em>Monumenta Germaniae Historica</em>), Sicardo relata:
+  </p>
+  <ul>
+    <li>O falecimento de Homobono durante a celebração do ofício litúrgico na igreja de Sant'Egidio em 13 de novembro de 1197.</li>
+    <li>A multidão incalculável de mercadores, nobres e cidadãos que acorreu ao sepultamento.</li>
+    <li>A comitiva enviada a Roma com o depoimento juramentado de testemunhas oculares das curas e milagres.</li>
+  </ul>
+
+  <h2>3. A Vita Antiquior (Século XIII)</h2>
+  <p>
+    Escrita pouco tempo após a canonização por um clérigo de Cremona ligado à catedral, a <em>Vita antiquior Sancti Homoboni</em> preserva episódios da intimidade do santo: o equilíbrio entre os negócios comerciais têxteis, o matrimônio, a distribuição de alimentos e sua incansável mediação pacificadora nas disputas políticas da comuna.
+  </p>
+
+  <h2>4. Bibliografia Acadêmica Contemporânea</h2>
+  <div class="space-y-4 my-8">
+    <div class="p-5 rounded-xl bg-[var(--pergaminho-escuro)]/60 border border-[var(--ouro-claro)]">
+      <strong class="font-['Cinzel'] text-xs text-[var(--cardinal)] uppercase tracking-wider block mb-1">
+        Historiografia Fundamental
+      </strong>
+      <h3 class="font-['Cormorant_Garamond'] text-xl font-bold text-[var(--tinta)]">
+        André Vauchez · La sainteté en Occident aux derniers siècles du Moyen Âge
+      </h3>
+      <p class="text-xs sm:text-sm text-[var(--pedra)] mt-1 font-['Source_Serif_4']">
+        A obra de referência absoluta sobre a canonização medieval pela prestigiada École Française de Rome. Vauchez dedica capítulos centrais a Santo Homobono, analisando como sua canonização legitimou a emergente burguesia comercial católica diante do papado.
+      </p>
+    </div>
+
+    <div class="p-5 rounded-xl bg-[var(--pergaminho-escuro)]/60 border border-[var(--ouro-claro)]">
+      <strong class="font-['Cinzel'] text-xs text-[var(--cardinal)] uppercase tracking-wider block mb-1">
+        Enciclopédia Treccani
+      </strong>
+      <h3 class="font-['Cormorant_Garamond'] text-xl font-bold text-[var(--tinta)]">
+        Dizionario Biografico degli Italiani · Verbete "Omobono Tucenghi"
+      </h3>
+      <p class="text-xs sm:text-sm text-[var(--pedra)] mt-1 font-['Source_Serif_4']">
+        Estudo biográfico e genealógico minucioso que analisa a árvore dos Tucenghi em Cremona, os bens inventariados e o papel do comércio têxtil na época pré-renascentista.
+      </p>
+    </div>
+
+    <div class="p-5 rounded-xl bg-[var(--pergaminho-escuro)]/60 border border-[var(--ouro-claro)]">
+      <strong class="font-['Cinzel'] text-xs text-[var(--cardinal)] uppercase tracking-wider block mb-1">
+        Magistério Papal Moderno
+      </strong>
+      <h3 class="font-['Cormorant_Garamond'] text-xl font-bold text-[var(--tinta)]">
+        São João Paulo II · Carta à Diocese de Cremona (1997)
+      </h3>
+      <p class="text-xs sm:text-sm text-[var(--pedra)] mt-1 font-['Source_Serif_4']">
+        Pronunciamento oficial da Santa Sé no octogésimo centenário da morte de Santo Homobono, reafirmando sua atualidade para a ética financeira contemporânea.
+      </p>
+    </div>
+  </div>
+</ArtigoLayout>

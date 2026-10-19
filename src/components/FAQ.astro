@@ -1,0 +1,57 @@
+---
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export interface Props {
+  itens: FAQItem[];
+  titulo?: string;
+  subtitulo?: string;
+}
+
+const {
+  itens,
+  titulo = 'Perguntas Frequentes',
+  subtitulo = 'Respostas fundamentadas na história, na liturgia e na doutrina católica',
+} = Astro.props;
+---
+
+<section class="my-12">
+  {titulo && (
+    <div class="text-center mb-8">
+      <h2 class="font-['Cormorant_Garamond'] text-3xl sm:text-4xl font-bold text-[var(--cardinal)]">
+        {titulo}
+      </h2>
+      {subtitulo && (
+        <p class="text-sm sm:text-base text-[var(--pedra)] mt-2 font-['Source_Serif_4'] max-w-2xl mx-auto">
+          {subtitulo}
+        </p>
+      )}
+    </div>
+  )}
+
+  <div class="max-w-3xl mx-auto space-y-4">
+    {itens.map((item, index) => (
+      <details
+        class="faq-item group rounded-xl bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] border border-[var(--ouro-claro)]/70 p-5 shadow-sm transition-all duration-200 hover:border-[var(--ouro)] [&[open]]:shadow-md"
+        data-index={index}
+      >
+        <summary class="flex items-center justify-between cursor-pointer list-none select-none font-semibold text-[var(--tinta)] group-open:text-[var(--cardinal)] text-base sm:text-lg font-['Cormorant_Garamond'] focus:outline-none focus:ring-2 focus:ring-[var(--ouro)] rounded-md py-1">
+          <span class="flex items-center gap-3">
+            <span class="text-[var(--ouro)] font-['Cinzel'] text-sm">Q{index + 1}.</span>
+            <span>{item.question}</span>
+          </span>
+          <span class="ml-4 shrink-0 w-6 h-6 rounded-full border border-[var(--ouro-claro)] flex items-center justify-center text-[var(--ouro)] transition-transform duration-200 group-open:rotate-180">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+            </svg>
+          </span>
+        </summary>
+        <div class="mt-4 pt-3 border-t border-[var(--ouro-claro)]/40 text-sm sm:text-base text-[var(--pedra)] leading-relaxed font-['Source_Serif_4']">
+          <p>{item.answer}</p>
+        </div>
+      </details>
+    ))}
+  </div>
+</section>

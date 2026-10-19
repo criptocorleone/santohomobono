@@ -1,0 +1,49 @@
+---
+export interface Props {
+  tipo?: 'historico' | 'tradicao' | 'documental';
+  label?: string;
+  detalhe?: string;
+}
+
+const {
+  tipo = 'historico',
+  label,
+  detalhe,
+} = Astro.props;
+
+const config = {
+  historico: {
+    icone: '📜',
+    defaultLabel: 'Fato Histórico Documentado',
+    bg: 'bg-amber-100/70 dark:bg-amber-950/40',
+    border: 'border-amber-300 dark:border-amber-700/60',
+    text: 'text-amber-900 dark:text-amber-200',
+  },
+  tradicao: {
+    icone: '🕯️',
+    defaultLabel: 'Tradição Piedosa / Hagiografia',
+    bg: 'bg-rose-100/70 dark:bg-rose-950/40',
+    border: 'border-rose-300 dark:border-rose-700/60',
+    text: 'text-rose-900 dark:text-rose-200',
+  },
+  documental: {
+    icone: '🏛️',
+    defaultLabel: 'Fonte Pontifícia Primária',
+    bg: 'bg-stone-200/70 dark:bg-stone-800/60',
+    border: 'border-stone-400 dark:border-stone-600',
+    text: 'text-stone-900 dark:text-stone-200',
+  },
+};
+
+const current = config[tipo];
+---
+
+<div class={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border ${current.bg} ${current.border} ${current.text} transition-colors my-2`} role="note">
+  <span class="text-sm" aria-hidden="true">{current.icone}</span>
+  <span class="font-semibold tracking-wide">{label || current.defaultLabel}</span>
+  {detalhe && (
+    <span class="text-[0.7rem] opacity-80 border-l border-current/30 pl-2">
+      {detalhe}
+    </span>
+  )}
+</div>

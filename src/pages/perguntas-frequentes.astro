@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQ from '../components/FAQ.astro';
+import CTAComunidade from '../components/CTAComunidade.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Perguntas Frequentes', item: '/perguntas-frequentes' },
+];
+
+const perguntasFrequentes = [
+  {
+    question: 'Quem foi Santo Homobono?',
+    answer: 'Santo Homobono Tucenghi (c. 1117 - 1197) foi um mercador de tecidos e alfaiate de Cremona, no norte da Itália. Ele se destacou pela retidão inabalável nos negócios, justiça nos preços e imensa caridade com os desvalidos, tornando-se o primeiro homem leigo comum a ser formalmente canonizado pelo papado medieval.',
+  },
+  {
+    question: 'Por que ele é chamado de padroeiro dos empresários e comerciantes?',
+    answer: 'Porque ele alcançou a santidade dentro da atividade econômica prática. Ao contrário de monges ou bispos enclausurados, Homobono operava no mercado livre medieval, negociando contratos, lidando com clientes e empregados e administrando lucros sob os preceitos da moral cristã.',
+  },
+  {
+    question: 'Quando é comemorado o dia de Santo Homobono?',
+    answer: 'Sua festa litúrgica acontece no dia 13 de novembro, data em que faleceu pacificamente em 1197 enquanto assistia à Santa Missa na igreja de Sant\'Egidio em Cremona.',
+  },
+  {
+    question: 'O que significa a expressão "Homo bonus et nomine et actu"?',
+    answer: 'Trata-se de uma frase latina presente na bula papal Quia pietas (1199), outorgada pelo Papa Inocêncio III, que significa: "Homem bom tanto de nome quanto de fato", louvando a coerência entre seu nome de batismo (Homobono) e suas obras concretas.',
+  },
+  {
+    question: 'Como rezar a Santo Homobono antes de iniciar o trabalho?',
+    answer: 'Muitos comerciantes rezam a Oração do Empresário ao abrir suas lojas ou escritórios, pedindo prudência nas negociações, proteção contra fraudes e a graça de repartir seus ganhos honestos com os mais necessitados.',
+  },
+  {
+    question: 'Onde repousam os restos mortais de Santo Homobono?',
+    answer: 'O corpo do santo está sepultado em uma cripta especial sob o altar-mor da imponente Catedral de Cremona (Duomo di Cremona), na região da Lombardia, Itália, onde é objeto de peregrinações contínuas desde o século XII.',
+  },
+  {
+    question: 'Existe uma novena oficial dedicada a Santo Homobono?',
+    answer: 'Sim, a Novena de Santo Homobono é rezada tradicionalmente durante nove dias consecutivos, especialmente de 4 a 12 de novembro em preparação para sua festa litúrgica, ou em momentos de grandes decisões e dificuldades econômicas.',
+  },
+  {
+    question: 'Santo Homobono foi casado ou fez votos religiosos?',
+    answer: 'Ele foi um homem casado e viveu no matrimônio por toda a vida adulta. Não foi sacerdote, nem monge, nem fez votos religiosos formais, demonstrando que a vida familiar e a gestão empresarial são vocações santas.',
+  },
+  {
+    question: 'Quais são os principais símbolos e atributos do santo?',
+    answer: 'Na iconografia sacra, ele é representado segurando uma bolsa de esmolas (scarsella), tesoura de alfaiate, peças de tecido ou distribuindo pães a pessoas necessitadas.',
+  },
+  {
+    question: 'Como a Doutrina Social da Igreja enxerga Santo Homobono?',
+    answer: 'A Igreja o reconhece como um precursor vivo da moral econômica cristã, antecipando o princípio do justo preço, a dignidade inegociável do trabalhador e a função social da propriedade privada séculos antes dos tratados modernos.',
+  },
+];
+---
+
+<BaseLayout
+  title="Perguntas Frequentes sobre Santo Homobono (FAQ)"
+  description="Respostas completas para as dúvidas mais comuns sobre Santo Homobono: história, canonização, orações, data da festa litúrgica e como pedir sua intercessão nos negócios."
+  breadcrumbs={breadcrumbs}
+  faqs={perguntasFrequentes}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <header class="text-center my-8">
+      <span class="text-xs uppercase tracking-widest font-['Cinzel'] text-[var(--ouro)] font-bold">
+        Central de Dúvidas
+      </span>
+      <h1 class="font-['Cormorant_Garamond'] text-3xl sm:text-5xl font-bold text-[var(--cardinal)] mt-2">
+        Perguntas Frequentes sobre Santo Homobono
+      </h1>
+      <p class="text-base text-[var(--pedra)] font-['Source_Serif_4'] mt-3 max-w-2xl mx-auto">
+        Tudo o que você precisa saber sobre a vida, a canonização pontifícia e a devoção ao patrono dos homens e mulheres de negócios.
+      </p>
+    </header>
+
+    <FAQ
+      itens={perguntasFrequentes}
+      titulo=""
+      subtitulo=""
+    />
+
+    <div class="mt-14">
+      <CTAComunidade variante="completa" />
+    </div>
+  </div>
+</BaseLayout>

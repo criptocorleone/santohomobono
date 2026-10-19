@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTAComunidade from '../../components/CTAComunidade.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Blog', item: '/blog' },
+];
+
+const posts = await getCollection('blog');
+const postsOrdenados = posts.sort(
+  (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+);
+---
+
+<BaseLayout
+  title="Blog Santo Homobono — Fé, Negócios, Ética e Doutrina Social"
+  description="Artigos formativos sobre o empresário cristão, ética nos negócios, o justo preço e aplicação prática dos ensinamentos de Santo Homobono no mundo corporativo."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <header class="text-center my-8">
+      <span class="text-xs uppercase tracking-widest font-['Cinzel'] text-[var(--ouro)] font-bold">
+        Artigos & Formação
+      </span>
+      <h1 class="font-['Cormorant_Garamond'] text-4xl sm:text-6xl font-bold text-[var(--cardinal)] mt-2">
+        Blog Santo Homobono
+      </h1>
+      <p class="text-base sm:text-lg text-[var(--pedra)] font-['Source_Serif_4'] mt-3 max-w-2xl mx-auto leading-relaxed">
+        Reflexões teológicas, históricas e práticas para quem busca liderar empresas com ética cristã e excelência de mercado.
+      </p>
+    </header>
+
+    <div class="space-y-8 my-12">
+      {postsOrdenados.map((post) => {
+        const dataFormatada = new Intl.DateTimeFormat('pt-BR', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+        }).format(new Date(post.data.publishDate));
+
+        return (
+          <article class="p-6 sm:p-8 rounded-2xl bg-[var(--pergaminho-escuro)]/60 hover:bg-[var(--pergaminho-escuro)] border border-[var(--ouro-claro)] hover:border-[var(--ouro)] transition-all shadow-sm hover:shadow-md">
+            <div class="flex flex-wrap items-center gap-3 text-xs font-['Cinzel'] text-[var(--pedra)] mb-2">
+              <span class="text-[var(--ouro)] font-bold uppercase tracking-wider">
+                {post.data.author}
+              </span>
+              <span>·</span>
+              <time datetime={new Date(post.data.publishDate).toISOString()}>{dataFormatada}</time>
+            </div>
+
+            <h2 class="font-['Cormorant_Garamond'] text-2xl sm:text-3xl font-bold text-[var(--cardinal)] hover:text-[var(--ouro)] transition-colors leading-snug">
+              <a href={`/blog/${post.id}`}>
+                {post.data.title}
+              </a>
+            </h2>
+
+            <p class="text-sm sm:text-base text-[var(--pedra)] font-['Source_Serif_4'] mt-3 leading-relaxed">
+              {post.data.description}
+            </p>
+
+            <div class="mt-6 pt-4 border-t border-[var(--ouro-claro)]/40 flex items-center justify-between">
+              <div class="flex flex-wrap gap-2">
+                {post.data.keywords.map((kw: string) => (
+                  <span class="px-2.5 py-1 rounded bg-[var(--pergaminho)] text-[0.7rem] text-[var(--pedra)] font-['Cinzel'] uppercase">
+                    #{kw}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={`/blog/${post.id}`}
+                class="inline-flex items-center gap-1.5 text-xs font-['Cinzel'] font-bold text-[var(--cardinal)] hover:underline"
+              >
+                <span>Ler artigo completo</span>
+                <span>→</span>
+              </a>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <div class="mt-14">
+      <CTAComunidade variante="compacta" />
+    </div>
+  </div>
+</BaseLayout>

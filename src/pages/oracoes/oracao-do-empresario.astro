@@ -1,0 +1,55 @@
+---
+import OracaoLayout from '../../layouts/OracaoLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Orações', item: '/oracoes' },
+  { name: 'Oração do Empresário', item: '/oracoes/oracao-do-empresario' },
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'Oração do Comerciante',
+    href: '/oracoes/oracao-do-comerciante',
+    categoria: 'Devoção',
+    descricao: 'Prece indicada para o atendimento ao público e equilíbrio financeiro no varejo.',
+  },
+  {
+    titulo: 'O Padroeiro dos Empresários: Ética e Fé',
+    href: '/padroeiro-dos-empresarios',
+    categoria: 'Reflexão',
+    descricao: 'Como conciliar metas corporativas de excelência com a Doutrina Social da Igreja.',
+  },
+  {
+    titulo: 'Comunidade de Empresários Católicos',
+    href: '/comunidade',
+    categoria: 'Comunidade',
+    descricao: 'Conecte-se com líderes empresariais para partilha e oração contínua.',
+  },
+];
+---
+
+<OracaoLayout
+  title="Oração do Empresário Católico a Santo Homobono"
+  description="Prece diária do líder empresarial para pedir sabedoria nas decisões estratégicas, retidão moral, prosperidade justa e bom clima organizacional."
+  subtitulo="Para ser rezada antes de reuniões decisivas, ao assinar contratos ou no início do dia de expediente."
+  tipo="oracao"
+  breadcrumbs={breadcrumbs}
+  linksRelacionados={linksRelacionados}
+>
+  <p>
+    Senhor Jesus Cristo, divino Trabalhador de Nazaré, que consagrastes o labor humano e nos ensinastes a servir com amor, coloco hoje diante de Vós a minha empresa, a minha liderança e todos os que dependem do fruto de nossa atividade.
+  </p>
+  <p>
+    Pela intercessão de Santo Homobono, que administrou sua oficina com maestria técnica e piedade cristã, dai-me prudência nos investimentos, sabedoria nas contratações e clareza para discernir as oportunidades verdadeiras das ciladas da ganância.
+  </p>
+  <p>
+    Que os colaboradores que trabalham em nossa organização encontrem nela um ambiente de respeito, crescimento humano e justa remuneração. Fazei com que eu jamais explore a fraqueza de outrem nem utilize da mentira para obter vantagens concorrenciais.
+  </p>
+  <p>
+    Guardai a nossa empresa em períodos de instabilidade econômica e inspirai-me a liderar pelo exemplo, mantendo o coração livre do apego desordenado ao dinheiro e generoso para com as obras de caridade.
+  </p>
+  <p>
+    Santo Homobono, protetor dos empresários, rogai por nós e abençoai o nosso trabalho! Amém.
+  </p>
+</OracaoLayout>

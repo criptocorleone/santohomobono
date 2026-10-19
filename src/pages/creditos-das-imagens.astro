@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CTAComunidade from '../components/CTAComunidade.astro';
+import { Image } from 'astro:assets';
+import imagensData from '../data/imagens.json';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Créditos das Imagens', item: '/creditos-das-imagens' },
+];
+
+// Carregar imagens locais dinamicamente
+const imagensGlob = import.meta.glob<{ default: ImageMetadata }>('../assets/images/*.jpg');
+---
+
+<BaseLayout
+  title="Créditos das Imagens e Licenças de Uso — Santo Homobono"
+  description="Atribuição completa, autorias e licenças Creative Commons e de Domínio Público de todas as imagens utilizadas no portal Santo Homobono."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <header class="text-center my-8">
+      <span class="text-xs uppercase tracking-widest font-['Cinzel'] text-[var(--ouro)] font-bold">
+        Transparência & Direitos Autorais
+      </span>
+      <h1 class="font-['Cormorant_Garamond'] text-4xl sm:text-6xl font-bold text-[var(--cardinal)] mt-2">
+        Créditos das Imagens e Licenças
+      </h1>
+      <p class="text-base sm:text-lg text-[var(--pedra)] font-['Source_Serif_4'] mt-3 max-w-3xl mx-auto leading-relaxed">
+        Todas as imagens utilizadas neste portal são provenientes do acervo colaborativo da Wikimedia Commons e de museus de domínio público, respeitando integralmente as exigências de atribuição de cada autor e licença.
+      </p>
+    </header>
+
+    <!-- Nota Legal Obrigatória -->
+    <div class="my-8 p-6 rounded-2xl bg-[var(--pergaminho-escuro)] border border-[var(--ouro)] text-sm sm:text-base text-[var(--tinta)] leading-relaxed space-y-3">
+      <p class="font-semibold text-[var(--cardinal)]">
+        📜 Nota sobre as Obras e Licenças:
+      </p>
+      <p>
+        “Obras de arte antigas reproduzidas fielmente estão em domínio público. As fotografias são usadas conforme suas licenças Creative Commons.”
+      </p>
+      <p class="text-xs sm:text-sm text-[var(--pedra)] border-t border-[var(--ouro-claro)]/40 pt-2">
+        <strong>Open Graph Derivado:</strong> A imagem de capa social padrão (<code>/og-default.jpg</code>) foi gerada a partir da fotografia da <em>Piazza del Comune de Cremona</em> de autoria de Magagnini Carlo Alberto (licenciada sob <strong>CC BY-SA 4.0</strong>). Em conformidade com a cláusula de compartilhamento pela mesma licença (<em>ShareAlike</em>), a imagem derivada também está licenciada sob <strong>Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional (CC BY-SA 4.0)</strong>.
+      </p>
+    </div>
+
+    <!-- Tabela / Grade de Imagens e Metadados -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+      {imagensData.map(async (item) => {
+        const imageLoader = imagensGlob[`../assets/images/${item.arquivo}`];
+        const imageModule = imageLoader ? await imageLoader() : null;
+
+        return (
+          <div class="rounded-2xl bg-[var(--pergaminho-escuro)]/40 border border-[var(--ouro-claro)] p-6 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-[16/10] w-full rounded-xl overflow-hidden bg-[var(--pergaminho)] mb-4 border border-[var(--ouro-claro)]/60">
+                {imageModule ? (
+                  <Image
+                    src={imageModule.default}
+                    alt={item.alt}
+                    width={600}
+                    height={375}
+                    format="webp"
+                    class="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center text-xs text-[var(--pedra)]">
+                    {item.arquivo}
+                  </div>
+                )}
+              </div>
+
+              <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)] mb-2">
+                {item.titulo}
+              </h3>
+
+              <div class="space-y-1.5 text-xs sm:text-sm text-[var(--tinta)] font-['Source_Serif_4']">
+                <p>
+                  <strong>Autor:</strong> <span>{item.autor}</span>
+                </p>
+                <p>
+                  <strong>Licença:</strong>{' '}
+                  {item.urlLicenca ? (
+                    <a
+                      href={item.urlLicenca}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-[var(--cardinal)] hover:underline font-semibold"
+                    >
+                      {item.licenca}
+                    </a>
+                  ) : (
+                    <span class="text-[var(--ouro)] font-semibold">{item.licenca}</span>
+                  )}
+                </p>
+                <p>
+                  <strong>Origem:</strong>{' '}
+                  <a
+                    href={item.urlOrigem}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-[var(--cardinal)] hover:underline truncate inline-block max-w-[280px] sm:max-w-md align-bottom"
+                  >
+                    Ver na Wikimedia Commons ↗
+                  </a>
+                </p>
+              </div>
+
+              <div class="mt-4 p-3 rounded-lg bg-[var(--pergaminho)] text-xs text-[var(--pedra)] border border-[var(--ouro-claro)]/40">
+                <strong>Texto sugerido para citação:</strong><br />
+                <span class="italic">{item.credito}</span>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-3 border-t border-[var(--ouro-claro)]/30 text-xs text-[var(--pedra)] font-['Cinzel']">
+              <strong>Páginas onde é utilizada:</strong> {item.paginasUso.join(', ')}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- CTA da Comunidade -->
+    <CTAComunidade />
+  </div>
+</BaseLayout>

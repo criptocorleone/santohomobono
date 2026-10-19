@@ -1,0 +1,130 @@
+---
+import ArtigoLayout from '../../layouts/ArtigoLayout.astro';
+import SeloFonte from '../../components/SeloFonte.astro';
+import { Image } from 'astro:assets';
+
+import img1Piazza from '../../assets/images/cremona-piazza-del-comune-duomo-torrazzo.jpg';
+import img6Torrazzo from '../../assets/images/torrazzo-de-cremona.jpg';
+import img13Vista from '../../assets/images/vista-do-torrazzo-praca-do-duomo-cremona.jpg';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'História', item: '/historia' },
+  { name: 'Cremona no Século XII', item: '/historia/cremona-no-seculo-xii' },
+];
+
+const sources = [
+  'U. Gualazzini, Il comune di Cremona nel secolo XII (Milão: Giuffrè).',
+  'D. Webb, Saints and Cities in Medieval Italy (Manchester University Press).',
+  'Monumenta Germaniae Historica (MGH), Scriptores, XXXI.',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'A Conversão aos 50 Anos',
+    href: '/historia/a-conversao',
+    categoria: 'História',
+    descricao: 'Como Homobono transformou seus lucros em serviço aos pobres em meio à opulência de Cremona.',
+  },
+  {
+    titulo: 'A Morte na Missa (1197)',
+    href: '/historia/a-morte-na-missa',
+    categoria: 'História',
+    descricao: 'Os últimos momentos do comerciante na histórica igreja de Sant\'Egidio.',
+  },
+  {
+    titulo: 'A Bula Quia Pietas e a Canonização',
+    href: '/historia/a-canonizacao',
+    categoria: 'História',
+    descricao: 'O processo pontifício que consagrou o primeiro leigo burguês nos altares.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="Cremona no Século XII: Comunas, Guildas e o Florescimento do Comércio Têxtil"
+  description="O contexto histórico, político e econômico da comuna de Cremona no século XII, onde viveu e trabalhou Santo Homobono Tucenghi."
+  subtitulo="A revolução comercial medieval na Lombardia, as corporações de ofício e os desafios éticos enfrentados pelos mercadores."
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  tipoFonte="historico"
+  linksRelacionados={linksRelacionados}
+>
+  <!-- Imagem 1 na Abertura -->
+  <figure class="my-8 rounded-2xl overflow-hidden bg-[var(--pergaminho-escuro)] moldura-sacra">
+    <Image
+      src={img1Piazza}
+      alt="Piazza del Comune de Cremona com a Catedral, o Torrazzo e o Batistério, cidade de Santo Homobono"
+      width={1200}
+      height={700}
+      format="webp"
+      class="w-full h-auto max-h-[500px] object-cover"
+    />
+    <figcaption class="p-4 text-xs text-[var(--pedra)] flex flex-col sm:flex-row items-baseline justify-between gap-1 border-t border-[var(--ouro-claro)]/40">
+      <span><strong>Piazza del Comune</strong> · Centro cívico e mercantil de Cremona</span>
+      <span>Foto: Magagnini Carlo Alberto (<a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener noreferrer" class="text-[var(--cardinal)] hover:underline">CC BY-SA 4.0</a>)</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    Para compreender a estatura espiritual e moral de <strong>Santo Homobono</strong>, é indispensável conhecer o cenário vertiginoso em que ele viveu. A cidade de Cremona, banhada pelo fértil rio Pó na planície lombarda, era na segunda metade do século XII um dos mais vibrantes epicentros da chamada <em>Revolução Comercial da Idade Média</em>. Em poucas décadas, o modelo feudal agrário cedeu espaço a uma dinâmica economia de mercado urbano, impulsionada por mercadores, alfaiates, tecelões e banqueiros embrionários.
+  </p>
+
+  <div class="my-6">
+    <SeloFonte tipo="historico" label="Contexto Sócio-Histórico" detalhe="Historiografia das Cidades-Comuna da Itália Medieval" />
+  </div>
+
+  <h2>A Comuna Autônoma e a Luta pelo Autogoverno</h2>
+  <p>
+    Cremona libertou-se progressivamente da tutela exclusiva dos bispos e dos nobres feudais para constituir uma <strong>comuna livre</strong> governada por cônsules e conselhos civis. A cidade ergueu novas muralhas, pavimentou ruas comerciais e construiu a magnífica Catedral românica, simbolizando a pujança cívica da sua burguesia emergente.
+  </p>
+
+  <!-- Grade com Imagem 6 (Torrazzo) e Imagem 13 (Vista do alto) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+    <figure class="rounded-xl overflow-hidden bg-[var(--pergaminho-escuro)] moldura-sacra flex flex-col justify-between">
+      <Image
+        src={img6Torrazzo}
+        alt="O Torrazzo, campanário medieval da Catedral de Cremona"
+        width={600}
+        height={800}
+        format="webp"
+        class="w-full h-[320px] object-cover"
+      />
+      <figcaption class="p-3 text-xs text-[var(--pedra)] border-t border-[var(--ouro-claro)]/40">
+        <strong>O Torrazzo</strong> · Campanário medieval com relógio astronômico · Foto: Marcolazzari (<a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener noreferrer" class="text-[var(--cardinal)] hover:underline">CC0</a>)
+      </figcaption>
+    </figure>
+
+    <figure class="rounded-xl overflow-hidden bg-[var(--pergaminho-escuro)] moldura-sacra flex flex-col justify-between">
+      <Image
+        src={img13Vista}
+        alt="Vista do alto do Torrazzo sobre a praça do Duomo de Cremona"
+        width={600}
+        height={800}
+        format="webp"
+        class="w-full h-[320px] object-cover"
+      />
+      <figcaption class="p-3 text-xs text-[var(--pedra)] border-t border-[var(--ouro-claro)]/40">
+        <strong>Vista do Alto do Torrazzo</strong> · A praça medieval onde ocorria o mercado têxtil · Foto: Sailko (<a href="https://creativecommons.org/licenses/by/2.5" target="_blank" rel="noopener noreferrer" class="text-[var(--cardinal)] hover:underline">CC BY 2.5</a>)
+      </figcaption>
+    </figure>
+  </div>
+
+  <h2>A Indústria Têxtil: O Motor Econômico de Cremona</h2>
+  <p>
+    O coração econômico da comuna batia no ritmo das fiações de lã e dos teares. A família de Homobono, os <em>Tucenghi</em>, operava com destaque nesse setor:
+  </p>
+  <ul>
+    <li><strong>Importação e refino de lã:</strong> Os mercadores compravam fardos de lã e linho, processavam as fibras e supervisionavam o tingimento com corantes preciosos vindos do Mediterrâneo.</li>
+    <li><strong>A Guilda dos Alfaiates (Sarti):</strong> Homobono pertencia a essa guilda altamente respeitada, que estabelecia regras estritas de produção, inspecionava a qualidade dos tecidos e controlava a admissão de novos artesãos.</li>
+    <li><strong>O Mercado e as Feiras:</strong> Na praça diante da catedral, realizavam-se transações diárias em moedas imperiais, exigindo dos comerciantes habilidade no câmbio e integridade na pesagem.</li>
+  </ul>
+
+  <h2>O Dilema Moral do Mercador Medieval</h2>
+  <p>
+    Durante séculos, a teologia cristã medieval olhou com reservas para o ofício do comércio. Citava-se com frequência o aforismo atribuído a São Jerônimo: <em>“O comerciante dificilmente agrada a Deus”</em>, temendo-se que o afã pelo lucro corrompesse a alma pela avareza ou pela usura.
+  </p>
+  <p>
+    Foi nesse contexto de tensão teológica que o testemunho de Homobono explodiu com força luminosa. Ele não abandonou o comércio nem se retirou para um mosteiro beneditino: <strong>ele santificou a oficina têxtil por dentro</strong>. Ao pagar preços justos, cumprir prazos sem mentiras e aplicar seus rendimentos em socorro aos órfãos da comuna, Homobono demonstrou à Cristandade que o mercado pode ser um instrumento nobre do plano de Deus para a sociedade.
+  </p>
+</ArtigoLayout>

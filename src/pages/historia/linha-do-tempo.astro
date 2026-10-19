@@ -1,0 +1,132 @@
+---
+import ArtigoLayout from '../../layouts/ArtigoLayout.astro';
+import Timeline, { type TimelineEvent } from '../../components/Timeline.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'História', item: '/historia' },
+  { name: 'Linha do Tempo', item: '/historia/linha-do-tempo' },
+];
+
+const eventosCompletos: TimelineEvent[] = [
+  {
+    ano: 'c. 1117',
+    titulo: 'Nascimento de Homobono Tucenghi em Cremona',
+    descricao: 'Nasce em Cremona, Itália, em uma conceituada família da nascente burguesia mercantil têxtil. Recebe o nome de batismo Homobono ("homem bom").',
+    icone: '👶',
+  },
+  {
+    ano: 'c. 1140',
+    titulo: 'Aprendizado do Ofício e Ingresso na Guilda',
+    descricao: 'Aprende a arte do corte de tecidos, da fiação da lã e da alfaiataria. É admitido como mestre na respeitada Corporação dos Alfaiates de Cremona.',
+    icone: '🧵',
+  },
+  {
+    ano: 'c. 1150',
+    titulo: 'Casamento e Consolidação dos Negócios',
+    descricao: 'Casa-se com uma virtuosa cidadã cremonesa e assume a direção dos negócios da família, destacando-se pela justiça contratual e pontualidade.',
+    icone: '💍',
+  },
+  {
+    ano: 'c. 1167',
+    titulo: 'A Profunda Conversão Interior aos 50 Anos',
+    descricao: 'Num ponto alto de maturidade e riqueza, decide transformar sua residência em albergue de acolhimento e destina os lucros da oficina aos desamparados.',
+    icone: '🥖',
+    destaque: true,
+  },
+  {
+    ano: '1170–1195',
+    titulo: 'Pacificador das Facções de Cremona',
+    descricao: 'Atua como árbitro independente e respeitado nas sangrentas disputas cívicas e territoriais da comuna de Cremona, evitando guerras e vinganças.',
+    icone: '🕊️',
+  },
+  {
+    ano: '13 Nov 1197',
+    titulo: 'Passagem Santa Durante o Canto do Gloria',
+    descricao: 'Durante a celebração da Santa Missa na igreja de Sant\'Egidio, prostra-se com os braços em cruz diante do crucifixo e entrega sua alma a Deus.',
+    icone: '✝️',
+    destaque: true,
+  },
+  {
+    ano: '1198',
+    titulo: 'Instrução do Processo pelo Bispo Sicardo',
+    descricao: 'O Bispo Sicardo de Cremona coleta depoimentos juramentados de médicos e cidadãos, catalogando milagres incontestáveis para apresentar a Roma.',
+    icone: '🏛️',
+  },
+  {
+    ano: '12 Jan 1199',
+    titulo: 'Promulgação da Bula Quia Pietas pelo Papa Inocêncio III',
+    descricao: 'Apenas 14 meses após a morte, Inocêncio III canoniza Santo Homobono, primeiro leigo não-nobre canonizado por bula papal na história da Igreja.',
+    icone: '📜',
+    destaque: true,
+  },
+  {
+    ano: '1202',
+    titulo: 'Trasladação das Relíquias para a Cripta da Catedral',
+    descricao: 'O corpo do santo é solenemente trasladado para a cripta subterrânea da Catedral de Cremona, tornando-se o coração da espiritualidade local.',
+    icone: '⛪',
+  },
+  {
+    ano: '1592–1643',
+    titulo: 'Consagração como Padroeiro Principal de Cremona',
+    descricao: 'O conselho comunal e o episcopado elegem oficialmente Santo Homobono como padroeiro principal e protetor perpétuo da cidade de Cremona.',
+    icone: '🛡️',
+  },
+  {
+    ano: '1997',
+    titulo: 'VIII Centenário e Mensagem de São João Paulo II',
+    descricao: 'O Papa João Paulo II emite mensagem solene conclamando os empresários e trabalhadores do mundo a olharem para Homobono como modelo para o mercado moderno.',
+    icone: '🌟',
+  },
+  {
+    ano: 'Hoje',
+    titulo: 'Patrono Global dos Empresários e Comerciantes',
+    descricao: 'Invocado em todos os continentes por empreendedores, líderes corporativos, artesãos e lojistas que buscam conciliar integridade econômica e fé viva.',
+    icone: '🌍',
+  },
+];
+
+const sources = [
+  'Chronicon Sicardi Episcopi Cremonensis (MGH).',
+  'Archivio Capitolare della Cattedrale di Cremona.',
+  'Bula Quia pietas (Archivio Apostolico Vaticano).',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'Quem Foi Santo Homobono?',
+    href: '/quem-foi-santo-homobono',
+    categoria: 'Biografia',
+    descricao: 'A biografia detalhada e narrativa do padroeiro dos empresários.',
+  },
+  {
+    titulo: 'A Canonização Recorde',
+    href: '/historia/a-canonizacao',
+    categoria: 'História',
+    descricao: 'Como Inocêncio III estabeleceu as regras canônicas medievais.',
+  },
+  {
+    titulo: 'Festa Litúrgica de 13 de Novembro',
+    href: '/festa-13-de-novembro',
+    categoria: 'Liturgia',
+    descricao: 'Como se organiza anualmente a memória do santo em Cremona.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="Linha do Tempo de Santo Homobono: De 1117 aos Nossos Dias"
+  description="Cronologia completa e comentada da vida, morte, canonização pontifícia e da evolução da devoção a Santo Homobono ao longo de mais de 800 anos de história."
+  subtitulo="Os marcos fundamentais de mais de oito séculos de história: desde o nascimento na comuna medieval até a atual devoção no mundo empresarial."
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  tipoFonte="documental"
+  linksRelacionados={linksRelacionados}
+>
+  <p>
+    Acompanhe abaixo os marcos decisivos da trajetória de <strong>Santo Homobono</strong> organizados cronologicamente, desde seu nascimento no florescer do comércio têxtil lombardo no século XII até a consagração global de sua mensagem ética para os líderes e empresários do terceiro milênio.
+  </p>
+
+  <!-- Timeline Completa Vertical -->
+  <Timeline eventos={eventosCompletos} modoCompacto={false} />
+</ArtigoLayout>

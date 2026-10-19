@@ -1,0 +1,55 @@
+---
+import OracaoLayout from '../../layouts/OracaoLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Orações', item: '/oracoes' },
+  { name: 'Oração a Santo Homobono', item: '/oracoes/oracao-a-santo-homobono' },
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'Oração do Empresário e do Comerciante',
+    href: '/oracoes/oracao-do-empresario',
+    categoria: 'Devoção',
+    descricao: 'Prece focada na proteção financeira, ética de mercado e relações com colaboradores.',
+  },
+  {
+    titulo: 'Novena de Santo Homobono (9 Dias)',
+    href: '/oracoes/novena-de-santo-homobono',
+    categoria: 'Novena',
+    descricao: 'Nove dias de meditação e prece para alcançar graças nos negócios e no trabalho.',
+  },
+  {
+    titulo: 'Ladainha de Santo Homobono',
+    href: '/oracoes/ladainha',
+    categoria: 'Liturgia',
+    descricao: 'Invocação tradicional das virtudes e méritos do mercador de Cremona.',
+  },
+];
+---
+
+<OracaoLayout
+  title="Oração Tradicional a Santo Homobono: Bênção no Trabalho e nos Negócios"
+  description="Poderosa oração a Santo Homobono para pedir proteção nas transações comerciais, honestidade nos negócios e providência no sustento diário."
+  subtitulo="A fórmula tradicional de súplica ao padroeiro de Cremona e protetor dos empresários e comerciantes católicos."
+  tipo="oracao"
+  breadcrumbs={breadcrumbs}
+  linksRelacionados={linksRelacionados}
+>
+  <p>
+    Ó Deus Onipotente e Misericordioso, que chamastes Santo Homobono para ser modelo de virtude e santidade no meio do mundo e no exercício do comércio, concedei-nos que, seguindo seus passos e apoiados por sua poderosa intercessão, possamos transformar nossas atividades materiais em vias de salvação.
+  </p>
+  <p>
+    Glorioso Santo Homobono, que com trabalho honesto e mãos incansáveis provastes que a prosperidade legítima é fruto da retidão e da justiça, olhai para as nossas empresas, para os nossos negócios e para as nossas famílias.
+  </p>
+  <p>
+    Afastai de nós as artimanhas da cobiça e as tentações do engano. Fazei com que sejamos sempre transparentes com nossos clientes, justos e pontuais com nossos colaboradores, e fraternos para com os nossos concorrentes.
+  </p>
+  <p>
+    E assim como nunca deixastes um faminto sem amparo à vossa porta, dai-nos a graça de manter o coração sempre aberto para partilhar com os necessitados o fruto abençoado do nosso esforço.
+  </p>
+  <p>
+    Por Nosso Senhor Jesus Cristo, vosso Filho, que convosco vive e reina na unidade do Espírito Santo. Amém.
+  </p>
+</OracaoLayout>

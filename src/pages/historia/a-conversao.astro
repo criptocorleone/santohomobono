@@ -1,0 +1,96 @@
+---
+import ArtigoLayout from '../../layouts/ArtigoLayout.astro';
+import CitacaoLatina from '../../components/CitacaoLatina.astro';
+import SeloFonte from '../../components/SeloFonte.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'História', item: '/historia' },
+  { name: 'A Conversão aos 50 Anos', item: '/historia/a-conversao' },
+];
+
+const sources = [
+  'Vita Antiquior Sancti Homoboni (século XIII).',
+  'André Vauchez, La sainteté en Occident: la conversion des laïcs.',
+  'Franco Piazzi, Sant\'Omobono nella storia e nel culto (Cremona).',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'A Morte Santa na Missa (1197)',
+    href: '/historia/a-morte-na-missa',
+    categoria: 'História',
+    descricao: 'A culminância de uma vida de oração e caridade diante do crucifixo de Sant\'Egidio.',
+  },
+  {
+    titulo: 'Cremona no Século XII',
+    href: '/historia/cremona-no-seculo-xii',
+    categoria: 'História',
+    descricao: 'Entenda a cidade e as guildas onde Homobono gerenciava seu negócio têxtil.',
+  },
+  {
+    titulo: 'Oração do Empresário',
+    href: '/oracoes/oracao-do-empresario',
+    categoria: 'Devoção',
+    descricao: 'Peça a mesma graça de conversão interior e sabedoria para gerir suas empresas.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="A Conversão de Santo Homobono aos 50 Anos: A Virada Radical nos Negócios"
+  description="Como a maturidade do mercador de Cremona despertou uma vocação extraordinária de caridade e pacificação, transformando sua residência em albergue de Cristo."
+  subtitulo="A maturidade espiritual de quem já havia conquistado estabilidade financeira e decidiu consagrar seus ganhos inteiramente aos mais necessitados."
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  tipoFonte="historico"
+  linksRelacionados={linksRelacionados}
+>
+  <p>
+    Ao alcançar aproximadamente cinquenta anos de idade — marco de respeitabilidade e maturidade consolidada na sociedade medieval —, <strong>Homobono Tucenghi</strong> já era um homem financeiramente estabelecido. Gozava de sólido prestígio social entre os mercadores de Cremona, possuía uma clientela fiel e uma casa confortável. Foi precisamente nesse ponto alto da vida terrena que a graça divina operou nele uma <strong>segunda e definitiva conversão interior</strong>.
+  </p>
+
+  <div class="my-6">
+    <SeloFonte tipo="historico" label="Fato Documentado" detalhe="Testemunho da Vita Antiquior e Bula Quia Pietas" />
+  </div>
+
+  <h2>Uma Decisão Rara: Ficar no Mundo para Transformá-lo</h2>
+  <p>
+    No século XII, homens ricos tocados por inquietações espirituais costumavam seguir um de dois caminhos tradicionais: ou ingressavam em uma ordem monástica renunciando a todos os seus bens, ou partiam em cruzada armada para a Terra Santa. Homobono recusou ambas as opções.
+  </p>
+  <p>
+    Ele compreendeu que seu chamado não era fugir do comércio, mas <strong>converter a própria atividade econômica em ministério evangélico</strong>. Ele continuou abrindo sua oficina, cortando tecidos e recebendo clientes, mas mudou radicalmente a destinação de cada moeda de lucro obtida em suas transações.
+  </p>
+
+  <CitacaoLatina
+    latim="Non subtraxit se saeculo, sed saeculum a se removit; negotiator fidelis, pauperum pater et consolator afflictorum."
+    traducao="Não se retirou do mundo, mas afastou o mundo de si; negociante fiel, pai dos pobres e consolador dos aflitos."
+    autorOuFonte="Crônica Diocesana de Cremona, séc. XIII"
+  />
+
+  <h2>A Casa Transformada em Hospício e Albergue</h2>
+  <p>
+    A residência dos Tucenghi em Cremona tornou-se um refúgio permanente para os deserdados da comuna. Os cronistas relatam que:
+  </p>
+  <ul>
+    <li>Enfermos e leprosos que não encontravam leito nos hospitais medievais eram acolhidos, limpos e alimentados pelo próprio Homobono.</li>
+    <li>Mendigos recebiam pão fresco todas as manhãs na porta da oficina.</li>
+    <li>Viúvas desamparadas e órfãos de artesãos falecidos recebiam tecidos cortados para confeccionar suas roupas, poupando-os da humilhação da mendicância.</li>
+  </ul>
+
+  <h2>O Desafio Conjugal e o Amadurecimento do Lar</h2>
+  <p>
+    Documentos antigos registram que essa generosidade fulminante provocou inicialmente atritos com sua esposa. Preocupada com o futuro financeiro do casal e julgando imprudente a quantidade de mantimentos e peças de pano doadas diariamente, ela protestou contra a liberalidade do marido.
+  </p>
+  <p>
+    Homobono, com admirável mansidão e sem qualquer autoritarismo, consolava-a dizendo: <em>“Não temas, mulher de pouca fé; quem dá aos pobres empresta ao próprio Deus, e o Senhor nunca deixa de pagar seus juros em abundância celestial”</em>. Com o passar do tempo, a integridade serena do santo e a constatação de que a casa nunca caía em penúria converteram também o coração de sua esposa, que se tornou cúmplice de suas obras de misericórdia.
+  </p>
+
+  <h2>O Pacificador de Conflitos na Cidade</h2>
+  <p>
+    Além da caridade material, a conversão de Homobono fez florescer um raro dom diplomático. As comunas italianas eram conflagradas por vendetas familiares e rivalidades corporativas que frequentemente terminavam em duelos de espada nas praças.
+  </p>
+  <p>
+    Graças à sua reputação de homem absolutamente desinteressado e justo, nobres e plebeus convocavam Homobono para atuar como árbitro de paz. Ele ouvia as partes com paciência inesgotável, propunha acordos baseados no direito evangélico e restabelecia a concórdia civil antes que o ódio destruísse famílias inteiras.
+  </p>
+</ArtigoLayout>

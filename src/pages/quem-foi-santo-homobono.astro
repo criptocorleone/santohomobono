@@ -1,0 +1,154 @@
+---
+import ArtigoLayout from '../layouts/ArtigoLayout.astro';
+import CitacaoLatina from '../components/CitacaoLatina.astro';
+import SeloFonte from '../components/SeloFonte.astro';
+import { Image } from 'astro:assets';
+
+import img4Lianori from '../assets/images/santo-homobono-pietro-lianori-bolonha.jpg';
+import img12Tacuinum from '../assets/images/tacuinum-sanitatis-tecidos-de-la-iluminura.jpg';
+import img9IgrejaFachada from '../assets/images/igreja-sant-omobono-cremona-fachada.jpg';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Quem Foi Santo Homobono', item: '/quem-foi-santo-homobono' },
+];
+
+const sources = [
+  'Papa Inocêncio III, Bula Pontifícia Quia pietas (12 de janeiro de 1199), Archivio Segreto Vaticano.',
+  'André Vauchez, La sainteté en Occident aux derniers siècles du Moyen Âge (Roma: École Française de Rome, 1981).',
+  'Dizionario Biografico degli Italiani, verbete "Omobono Tucenghi", Istituto della Enciclopedia Italiana (Treccani).',
+  'Vita Sancti Homoboni (século XIII), texto crítico de F. Piazzi, Bollettino Storico Cremonese.',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'A Canonização Recorde em 14 Meses',
+    href: '/historia/a-canonizacao',
+    categoria: 'História',
+    descricao: 'Como a comoção popular e a rápida comprovação documental levaram o Papa Inocêncio III à bula papal.',
+  },
+  {
+    titulo: 'O Padroeiro dos Empresários: Ética e Trabalho',
+    href: '/padroeiro-dos-empresarios',
+    categoria: 'Ética & Gestão',
+    descricao: 'Como aplicar a honestidade mercantil e a caridade corporativa no mercado moderno.',
+  },
+  {
+    titulo: 'Oração a Santo Homobono',
+    href: '/oracoes/oracao-a-santo-homobono',
+    categoria: 'Devoção',
+    descricao: 'A prece tradicional pedindo fidelidade aos compromissos e bênçãos nas decisões comerciais.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="Quem Foi Santo Homobono: O Mercador de Cremona e Padroeiro dos Empresários"
+  description="Biografia detalhada de Santo Homobono Tucenghi (1117-1197), o comerciante de tecidos que se tornou o primeiro leigo comum canonizado na história da Igreja Católica."
+  subtitulo="A trajetória completa do homem de negócios que uniu prosperidade mercantil, retidão inabalável e amor aos pobres."
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  tipoFonte="documental"
+  linksRelacionados={linksRelacionados}
+>
+  <!-- Imagem 4 na Abertura -->
+  <figure class="my-8 rounded-2xl overflow-hidden bg-[var(--pergaminho-escuro)] moldura-sacra">
+    <Image
+      src={img4Lianori}
+      alt="Pintura de Pietro Lianori, c. 1450, com Santo Homobono como mercador ao lado de São Cristóvão"
+      width={1200}
+      height={800}
+      format="webp"
+      class="w-full h-auto max-h-[550px] object-cover object-top"
+    />
+    <figcaption class="p-4 text-xs text-[var(--pedra)] flex flex-col sm:flex-row items-baseline justify-between gap-1 border-t border-[var(--ouro-claro)]/40">
+      <span><strong>Santos Homobono e Cristóvão</strong> · Pietro Lianori (c. 1450), Pinacoteca Nazionale di Bologna</span>
+      <span>Foto: Sailko (<a href="https://creativecommons.org/licenses/by/3.0" target="_blank" rel="noopener noreferrer" class="text-[var(--cardinal)] hover:underline">CC BY 3.0</a>)</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    Nascido por volta de 1117 na próspera cidade de Cremona, no coração da Lombardia, <strong>Homobono Tucenghi</strong> (conhecido na Itália como <em>Sant'Omobono</em>) veio ao mundo em uma família da burguesia mercantil dedicada ao comércio de panos finos e lã. Seu próprio nome de batismo, <em>Omobono</em> — derivado do latim <em>Homo bonus</em> ("Homem bom") —, parecia prenunciar o testemunho de vida que o tornaria imortal: uma existência dedicada à bondade moral concreta, sem fugir das complexidades do mercado ou das relações contratuais.
+  </p>
+
+  <h2>Origem burguesa e o ofício de mercador têxtil</h2>
+  <p>
+    Durante o século XII, Cremona era um vibrante centro comercial atravessado pelo rio Pó, onde as feiras de tecidos movimentavam fortunas e as corporações de ofício começavam a moldar a política das comunas autônomas. Homobono aprendeu a arte de avaliar tecidos, calcular preços, gerir estoques e costurar peças finas como alfaiate.
+  </p>
+
+  <!-- Imagem 12 como vinheta na parte do mercador de tecidos -->
+  <figure class="my-8 max-w-xl mx-auto rounded-2xl overflow-hidden bg-[var(--pergaminho-escuro)] moldura-sacra">
+    <Image
+      src={img12Tacuinum}
+      alt="Iluminura lombarda do Tacuinum Sanitatis mostrando roupas e tecidos de lã"
+      width={800}
+      height={550}
+      format="webp"
+      class="w-full h-auto object-cover"
+    />
+    <figcaption class="p-3 text-xs text-[var(--pedra)] text-center border-t border-[var(--ouro-claro)]/40">
+      <span>Iluminura medieval de tecidos de lã · <em>Tacuinum Sanitatis</em> (séc. XIV) · Domínio Público</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    Ao herdar o patrimônio e os negócios do pai, ele não apenas manteve a clientela como ampliou a reputação da sua oficina. Mas havia uma distinção notável: enquanto muitos negociantes recorriam a medidas fraudulentas ou à usura oculta para inflacionar lucros, Homobono aplicava com rigor os princípios bíblicos da justa medida e da transparência absoluta nas transações.
+  </p>
+
+  <div class="my-6">
+    <SeloFonte tipo="historico" label="Fato Documentado" detalhe="Guildas de Cremona e registros notariais do séc. XII" />
+  </div>
+
+  <h2>Casamento, vida familiar e os negócios</h2>
+  <p>
+    Homobono contraiu matrimônio com uma mulher de família respeitada de Cremona. Embora documentos antigos registrem que sua esposa inicialmente se preocupava com a prodigalidade com que o marido partilhava seus bens com os necessitados, o relacionamento conjugal amadureceu em respeito mútuo. Homobono provou que a santidade laical se constrói na fidelidade ao lar, no diálogo familiar e na responsabilidade com o sustento da própria casa, sem abrir mão da compaixão evangélica.
+  </p>
+
+  <h2>A virada interior aos cinquenta anos</h2>
+  <p>
+    Por volta dos cinquenta anos — marco de maturidade numa época em que a expectativa de vida era significativamente menor —, Homobono sentiu um chamado interior para viver de maneira ainda mais radical a caridade cristã. Em vez de liquidar suas oficinas e se isolar em um mosteiro beneditino ou cisterciense, ele decidiu manter sua atividade comercial, mas reorientou integralmente o destino de seus ganhos:
+  </p>
+  <ul>
+    <li><strong>Albergue aos desamparados:</strong> Abriu as portas de sua residência particular para abrigar enfermos, mendigos e forasteiros sem pouso.</li>
+    <li><strong>Distribuição diária de pão e tecido:</strong> Repartia alimentos e vestimentas confeccionadas em seu próprio ateliê para famílias que passavam por privações.</li>
+    <li><strong>Pacificador civil:</strong> Numa cidade dilacerada pelas guerras de facções políticas entre guelfos e gibelinos, Homobono atuava como mediador respeitado, reconciliando famílias rivais antes que os conflitos chegassem aos tribunais ou ao derramamento de sangue.</li>
+  </ul>
+
+  <CitacaoLatina
+    latim="Nemo enim potest duobus dominis servire; ille vero sic saecularibus negotiis praeerat, ut Christo soli fideliter deserviret."
+    traducao="Ninguém pode servir a dois senhores; ele, porém, de tal modo administrava os negócios terrenos que servia com fidelidade exclusivamente a Cristo."
+    autorOuFonte="Vida Antiga de Santo Homobono (Vita antiquior), séc. XIII"
+  />
+
+  <h2>A morte santa durante a Missa (1197)</h2>
+  <p>
+    Na manhã de <strong>13 de novembro de 1197</strong>, já com cerca de oitenta anos, Homobono compareceu pontualmente à sua igreja paroquial de Sant'Egidio em Cremona para participar da oração das Matinas e da Santa Missa. Durante a liturgia, no momento solene em que o coro entoava o hino <em>Gloria in excelsis Deo</em>, prostrou-se de joelhos com os braços estendidos em forma de cruz diante do crucifixo.
+  </p>
+  <p>
+    Ao término do ofício, quando os demais fiéis se levantaram para o Evangelho, Homobono permaneceu imóvel. Ao se aproximarem para ajudá-lo a se erguer, os paroquianos e o celebrante perceberam que ele havia entregado pacificamente sua alma a Deus no instante mais sublime do louvor eucarístico.
+  </p>
+
+  <!-- Imagem 9 na parte da morte em 1197 -->
+  <figure class="my-8 rounded-2xl overflow-hidden bg-[var(--pergaminho-escuro)] moldura-sacra">
+    <Image
+      src={img9IgrejaFachada}
+      alt="Fachada da igreja dos Santos Homobono e Egídio em Cremona, onde o santo morreu em 13 de novembro de 1197"
+      width={1200}
+      height={800}
+      format="webp"
+      class="w-full h-auto max-h-[500px] object-cover"
+    />
+    <figcaption class="p-4 text-xs text-[var(--pedra)] flex flex-col sm:flex-row items-baseline justify-between gap-1 border-t border-[var(--ouro-claro)]/40">
+      <span><strong>Igreja de Sant'Omobono</strong> (antiga Sant'Egidio) · Local da morte do santo em Cremona</span>
+      <span>Foto: Rapax2205 (<a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener noreferrer" class="text-[var(--cardinal)] hover:underline">CC BY-SA 4.0</a>)</span>
+    </figcaption>
+  </figure>
+
+  <h2>A canonização recorde e o reconhecimento universal</h2>
+  <p>
+    A comoção na cidade de Cremona foi imediata e avassaladora. O Bispo Sicardo de Cremona, jurista e cronista de renome, reuniu testemunhos sob juramento de clérigos e leigos sobre as virtudes e os milagres ocorridos junto ao túmulo do comerciante. Em menos de um ano, o próprio bispo viajou a Roma para apresentar o dossiê ao Papa Inocêncio III.
+  </p>
+  <p>
+    Em <strong>12 de janeiro de 1199</strong> — apenas quatorze meses após o falecimento —, Inocêncio III promulgou a célebre bula <em>Quia pietas</em>, tornando Santo Homobono o primeiro homem leigo sem sangue real ou títulos de nobreza a ser formalmente canonizado pelo papado em toda a Idade Média.
+  </p>
+</ArtigoLayout>

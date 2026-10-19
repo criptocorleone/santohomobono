@@ -1,0 +1,100 @@
+---
+import { Image } from 'astro:assets';
+import ArtigoLayout from '../../layouts/ArtigoLayout.astro';
+import SeloFonte from '../../components/SeloFonte.astro';
+import PlaceholderArte from '../../components/PlaceholderArte.astro';
+import imagensData from '../../data/imagens.json';
+import imgIgrejaFachada from '../../assets/images/igreja-sant-omobono-cremona-fachada.jpg';
+
+const metaImgIgreja = imagensData.find(i => i.arquivo === 'igreja-sant-omobono-cremona-fachada.jpg')!;
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Cremona', item: '/cremona' },
+  { name: 'Igreja de Sant\'Omobono', item: '/cremona/igreja-de-santomobono' },
+];
+
+const sources = [
+  'Guida delle Chiese di Cremona, Archivio Diocesano.',
+  'G. B. Trotti (Il Malosso), ciclo di affreschi in Sant\'Omobono (1599).',
+  'Soprintendenza Archeologia e Belle Arti della Lombardia.',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'Catedral e Cripta de Cremona',
+    href: '/cremona/catedral-e-cripta',
+    categoria: 'Lugares',
+    descricao: 'Conheça o Duomo onde repousam as relíquias definitivas do padroeiro.',
+  },
+  {
+    titulo: 'A Morte Santa na Missa (1197)',
+    href: '/historia/a-morte-na-missa',
+    categoria: 'História',
+    descricao: 'Os detalhes exatos do falecimento do santo que motivou a construção do templo.',
+  },
+  {
+    titulo: 'Roteiro de Peregrinação',
+    href: '/cremona/roteiro-de-peregrinacao',
+    categoria: 'Lugares',
+    descricao: 'O caminho histórico entre o ateliê, a igreja paroquial e a catedral.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="A Igreja de Sant'Omobono em Cremona: O Lugar Sagrado da Sua Morte"
+  description="História, arte e afrescos da igreja barroca construída sobre o antigo templo medieval de Sant'Egidio, local onde Santo Homobono faleceu em 1197."
+  subtitulo="O santuário erigido no ponto geográfico exato onde o santo mercador expirou em adoração aos pés do crucifixo."
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  tipoFonte="documental"
+  linksRelacionados={linksRelacionados}
+>
+  <p>
+    No tecido urbano histórico de Cremona, na atual Piazza Sant'Omobono, ergue-se a <strong>Igreja de Sant'Omobono</strong>. Trata-se de um dos locais de maior densidade emocional e espiritual para a história da cidade, pois o templo foi construído sobre as fundações da antiga igreja medieval de <strong>Sant'Egidio</strong> — a paróquia que Santo Homobono frequentava diariamente e na qual expirou na manhã de 13 de novembro de 1197.
+  </p>
+
+  <div class="my-6">
+    <SeloFonte tipo="historico" label="Monumento Histórico Consagrado" detalhe="Local Exato da Passagem do Santo Mercador em 1197" />
+  </div>
+
+  <h2>Das Ruínas Medievais ao Esplendor Barroco</h2>
+  <figure class="my-8 rounded-2xl overflow-hidden border border-[var(--ouro)]/40 shadow-xl bg-[var(--pergaminho-escuro)]">
+    <Image
+      src={imgIgrejaFachada}
+      alt={metaImgIgreja.alt}
+      width={1200}
+      height={800}
+      format="avif"
+      class="w-full h-auto max-h-[500px] object-cover"
+    />
+    <figcaption class="p-4 text-xs font-['Source_Serif_4'] text-[var(--terra-cota)] border-t border-[var(--ouro)]/20 bg-[var(--pergaminho)]/70">
+      {metaImgIgreja.titulo}. Foto por {metaImgIgreja.autor} (<a href={metaImgIgreja.urlLicenca} target="_blank" rel="noopener noreferrer" class="underline hover:text-[var(--cardinal)]">{metaImgIgreja.licenca}</a> via <a href={metaImgIgreja.urlOrigem} target="_blank" rel="noopener noreferrer" class="underline hover:text-[var(--cardinal)]">Wikimedia Commons</a>).
+    </figcaption>
+  </figure>
+  <p>
+    No final do século XVI, para celebrar o quarto centenário da morte de seu amado cidadão, a corporação dos alfaiates de Cremona e os cônsules municipais decidiram reconstruir o antigo edifício românico. O novo templo foi projetado com uma cúpula graciosa e uma planta centrada que favorece o recolhimento e a oração individual.
+  </p>
+
+  <h2>O Ciclo Pictórico de Il Malosso (1599)</h2>
+  <PlaceholderArte
+    titulo="Ciclo de Afrescos da Vida de Santo Homobono — Giovanni Battista Trotti (1599)"
+    subtitulo="Abóbada e paredes da nave da Igreja de Sant'Omobono, Cremona"
+    class="my-8"
+  />
+  <p>
+    O grande destaque artístico do santuário é o extraordinário ciclo de afrescos executado pelo mestre cremoneso <strong>Giovanni Battista Trotti</strong> (conhecido como <em>Il Malosso</em>). Nas abóbadas e paredes laterais, o artista registrou com vivacidade os episódios mais marcantes da biografia do santo:
+  </p>
+  <ul>
+    <li>O acolhimento de enfermos e peregrinos no interior da sua oficina têxtil.</li>
+    <li>A distribuição de pães aos famintos nas escadarias de Cremona.</li>
+    <li>A mediação de acordos de paz entre os cônsules e cavaleiros desavindos.</li>
+    <li>A comovente cena da morte perante o crucifixo enquanto o celebrante lê as orações do Gloria.</li>
+  </ul>
+
+  <h2>Um Espaço de Peregrinação para Profissionais</h2>
+  <p>
+    Hoje, a igreja é ponto obrigatório de parada para viajantes, historiadores e devotos. Diariamente, profissionais liberais e comerciantes locais entram no templo para momentos breves de silêncio antes de abrirem suas atividades no comércio de Cremona.
+  </p>
+</ArtigoLayout>

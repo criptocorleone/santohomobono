@@ -1,0 +1,117 @@
+---
+export interface TimelineEvent {
+  ano: string;
+  titulo: string;
+  descricao: string;
+  icone?: string;
+  destaque?: boolean;
+}
+
+export interface Props {
+  eventos?: TimelineEvent[];
+  modoCompacto?: boolean;
+}
+
+const marcosPadrao: TimelineEvent[] = [
+  {
+    ano: 'c. 1117',
+    titulo: 'Nascimento em Cremona',
+    descricao: 'Nasce em Cremona, Itália, em família próspera de comerciantes de tecidos e lã. Recebe o nome Homobono ("homem bom").',
+    icone: '👶',
+  },
+  {
+    ano: 'c. 1150',
+    titulo: 'Ofício e Casamento',
+    descricao: 'Assume o ofício de mercador de tecidos e alfaiate. Casa-se e gere seus negócios com rigorosa integridade e honestidade.',
+    icone: '🧵',
+  },
+  {
+    ano: 'c. 1167',
+    titulo: 'A Conversão aos 50 anos',
+    descricao: 'Decide doar a maior parte dos seus lucros aos desvalidos, transforma seu lar em albergue e torna-se pacificador na cidade.',
+    icone: '🥖',
+    destaque: true,
+  },
+  {
+    ano: '13 Nov 1197',
+    titulo: 'Morte Santa na Missa',
+    descricao: 'Durante o canto do Gloria na igreja de Sant\'Egidio, prostra-se com os braços em cruz perante o crucifixo e entrega sua alma a Deus.',
+    icone: '✝️',
+    destaque: true,
+  },
+  {
+    ano: '12 Jan 1199',
+    titulo: 'Canonização Recorde',
+    descricao: 'O Papa Inocêncio III emite a bula Quia pietas apenas 14 meses após sua morte: primeiro leigo comum não-nobre canonizado na Idade Média.',
+    icone: '📜',
+    destaque: true,
+  },
+  {
+    ano: '1643 → Hoje',
+    titulo: 'Padroeiro dos Negócios',
+    descricao: 'Proclamado padroeiro de Cremona e consagrado pela Igreja e devotos globais como o padroeiro dos empresários, comerciantes e trabalhadores.',
+    icone: '🏛️',
+  },
+];
+
+const { eventos = marcosPadrao, modoCompacto = false } = Astro.props;
+---
+
+{modoCompacto ? (
+  <div class="relative w-full">
+    <!-- Linha do Tempo Horizontal com scroll para mobile/home -->
+    <div class="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 px-1 snap-x scrollbar-thin scrollbar-thumb-[var(--ouro)]">
+      {eventos.map((ev, index) => (
+        <div class="snap-center shrink-0 w-[260px] sm:w-[290px] rounded-xl bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] border border-[var(--ouro-claro)]/60 p-5 shadow-sm hover:border-[var(--ouro)] transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="inline-block px-2.5 py-1 rounded bg-[var(--pergaminho-escuro)] text-xs font-['Cinzel'] font-bold text-[var(--cardinal)] border border-[var(--ouro)]/40">
+                {ev.ano}
+              </span>
+              <span class="text-xl select-none" aria-hidden="true">{ev.icone || '⚜'}</span>
+            </div>
+            <h4 class="font-['Cormorant_Garamond'] text-lg font-bold text-[var(--cardinal)] mb-2">
+              {ev.titulo}
+            </h4>
+            <p class="text-xs sm:text-sm text-[var(--pedra)] leading-relaxed">
+              {ev.descricao}
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-[var(--ouro-claro)]/30 flex items-center justify-between text-[0.7rem] text-[var(--ouro)] font-['Cinzel']">
+            <span>Marco {index + 1} de {eventos.length}</span>
+            <span>⚜</span>
+          </div>
+        </div>
+      ))}
+    </div>
+    <p class="text-xs text-center text-[var(--pedra)] mt-2 italic sm:hidden">
+      ← Deslize horizontalmente para navegar pelos marcos →
+    </p>
+  </div>
+) : (
+  <div class="relative border-l-2 border-[var(--ouro)] ml-4 sm:ml-8 my-8 space-y-10 pl-6 sm:pl-8">
+    {eventos.map((ev) => (
+      <div class="relative group">
+        <!-- Ponto / Marcador na Linha -->
+        <div class="absolute -left-[31px] sm:-left-[39px] top-1 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[var(--pergaminho)] border-2 border-[var(--ouro)] flex items-center justify-center text-xs shadow">
+          <span>{ev.icone || '⚜'}</span>
+        </div>
+
+        <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/50 border border-[var(--ouro-claro)]/50 group-hover:border-[var(--ouro)] transition-colors shadow-sm">
+          <div class="flex flex-wrap items-baseline gap-2 mb-2">
+            <span class="font-['Cinzel'] font-bold text-sm text-[var(--ouro)] uppercase tracking-wider">
+              {ev.ano}
+            </span>
+            <span class="text-[var(--pedra)] text-xs">·</span>
+            <h3 class="font-['Cormorant_Garamond'] text-xl sm:text-2xl font-bold text-[var(--cardinal)]">
+              {ev.titulo}
+            </h3>
+          </div>
+          <p class="text-sm sm:text-base text-[var(--tinta)]/90 leading-relaxed font-['Source_Serif_4']">
+            {ev.descricao}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+)}

@@ -1,0 +1,231 @@
+---
+export interface BreadcrumbItem {
+  name: string;
+  item: string;
+}
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export interface EventData {
+  name: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+  locationName?: string;
+}
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  canonicalURL?: string | URL;
+  type?: 'website' | 'article';
+  publishDate?: Date | string;
+  updatedDate?: Date | string;
+  breadcrumbs?: BreadcrumbItem[];
+  faqs?: FAQItem[];
+  event?: EventData;
+  includePerson?: boolean;
+  includeWebsite?: boolean;
+  includeEvent?: boolean;
+}
+
+const siteUrl = 'https://santohomobono.com.br';
+const {
+  title,
+  description,
+  image = '/og-default.jpg',
+  imageAlt = 'Santo Homobono de Cremona - O Padroeiro dos Empresários',
+  canonicalURL = new URL(Astro.url.pathname, Astro.site || siteUrl).href,
+  type = 'website',
+  publishDate,
+  updatedDate,
+  breadcrumbs = [],
+  faqs = [],
+  event,
+  includePerson = true,
+  includeWebsite = Astro.url.pathname === '/',
+  includeEvent = false,
+} = Astro.props;
+
+const siteName = 'Santo Homobono — O Padroeiro dos Empresários';
+const fullTitle = title.includes('Santo Homobono') ? title : `${title} | Santo Homobono`;
+const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image.startsWith('/') ? '' : '/'}${image}`;
+
+// Schemas JSON-LD
+const schemas: object[] = [];
+
+// 1. WebSite + SearchAction
+if (includeWebsite) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: siteName,
+    url: siteUrl,
+    description: 'A referência em português sobre Santo Homobono de Cremona, o mercador do séc. XII que é o padroeiro dos empresários e comerciantes.',
+    inLanguage: 'pt-BR',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${siteUrl}/busca?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  });
+}
+
+// 2. Person (Santo Homobono)
+if (includePerson) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Santo Homobono Tucenghi',
+    alternateName: ['Sant\'Omobono', 'Saint Homobonus', 'São Homobono', 'Homobono de Cremona'],
+    description: 'Mercador e alfaiate de Cremona (c. 1117 - 1197), padroeiro dos empresários, alfaiates e comerciantes. Primeiro santo leigo não-nobre canonizado na Idade Média.',
+    birthDate: '1117',
+    deathDate: '1197-11-13',
+    birthPlace: {
+      '@type': 'Place',
+      name: 'Cremona, Lombardia, Itália',
+    },
+    deathPlace: {
+      '@type': 'Place',
+      name: 'Igreja de Sant\'Egidio, Cremona, Itália',
+    },
+    sameAs: [
+      'https://pt.wikipedia.org/wiki/Santo_Homobono',
+      'https://en.wikipedia.org/wiki/Saint_Homobonus',
+      'https://www.wikidata.org/wiki/Q1340578',
+      'https://it.wikipedia.org/wiki/Sant%27Omobono_Tucenghi',
+    ],
+  });
+}
+
+// 3. Article
+if (type === 'article') {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image: imageUrl,
+    url: canonicalURL,
+    datePublished: publishDate ? new Date(publishDate).toISOString() : undefined,
+    dateModified: updatedDate ? new Date(updatedDate).toISOString() : (publishDate ? new Date(publishDate).toISOString() : undefined),
+    author: {
+      '@type': 'Organization',
+      name: 'Projeto Santo Homobono',
+      url: siteUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Santo Homobono',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': canonicalURL,
+    },
+    inLanguage: 'pt-BR',
+  });
+}
+
+// 4. BreadcrumbList
+if (breadcrumbs && breadcrumbs.length > 0) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.name,
+      item: crumb.item.startsWith('http') ? crumb.item : `${siteUrl}${crumb.item}`,
+    })),
+  });
+}
+
+// 5. FAQPage
+if (faqs && faqs.length > 0) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  });
+}
+
+// 6. Event (Festa de 13 de Novembro)
+if (includeEvent || event) {
+  const currentYear = new Date().getFullYear();
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: event?.name || `Festa Litúrgica de Santo Homobono ${currentYear}`,
+    description: event?.description || 'Celebração anual da memória e festa litúrgica de Santo Homobono, padroeiro de Cremona, dos empresários e comerciantes.',
+    startDate: event?.startDate || `${currentYear}-11-13T08:00:00-03:00`,
+    endDate: event?.endDate || `${currentYear}-11-13T20:00:00-03:00`,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: {
+      '@type': 'Place',
+      name: event?.locationName || 'Catedral de Cremona / Paróquias e Comunidades Católicas',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Cremona / Global',
+        addressCountry: 'IT / BR',
+      },
+    },
+    organizer: {
+      '@type': 'Organization',
+      name: 'Igreja Católica / Devoção Popular a Santo Homobono',
+      url: siteUrl,
+    },
+  });
+}
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:alt" content={imageAlt} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content="pt_BR" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={fullTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={imageUrl} />
+<meta property="twitter:image:alt" content={imageAlt} />
+
+<!-- Structured Data (JSON-LD) -->
+{schemas.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

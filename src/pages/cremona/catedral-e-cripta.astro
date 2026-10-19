@@ -1,0 +1,114 @@
+---
+import ArtigoLayout from '../../layouts/ArtigoLayout.astro';
+import SeloFonte from '../../components/SeloFonte.astro';
+import PlaceholderArte from '../../components/PlaceholderArte.astro';
+import { Image } from 'astro:assets';
+
+import img7Duomo from '../../assets/images/catedral-de-cremona-duomo-batisterio.jpg';
+import img8Cripta from '../../assets/images/cripta-catedral-cremona-reliquias-santo-homobono.jpg';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Cremona', item: '/cremona' },
+  { name: 'Catedral e Cripta', item: '/cremona/catedral-e-cripta' },
+];
+
+const sources = [
+  'Cattedrale di Cremona, Guida Storico-Artistica Ufficiale della Diocesi.',
+  'F. Piazzi, La Cripta di Sant\'Omobono nella Cattedrale di Cremona.',
+  'Ministero della Cultura, Soprintendenza Archeologia, Belle Arti e Paesaggio per le province di Cremona, Lodi e Mantova.',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'Igreja de Sant\'Omobono',
+    href: '/cremona/igreja-de-santomobono',
+    categoria: 'Lugares',
+    descricao: 'A igreja construída sobre o antigo templo de Sant\'Egidio onde o santo faleceu.',
+  },
+  {
+    titulo: 'Roteiro de Peregrinação em Cremona',
+    href: '/cremona/roteiro-de-peregrinacao',
+    categoria: 'Lugares',
+    descricao: 'O itinerário passo a passo para quem visita a cidade lombarda.',
+  },
+  {
+    titulo: 'Festa de 13 de Novembro',
+    href: '/festa-13-de-novembro',
+    categoria: 'Liturgia',
+    descricao: 'A solenidade cívico-religiosa que reúne a cidade ao redor da cripta.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="A Catedral de Cremona e a Cripta de Santo Homobono"
+  description="Conheça a majestosa Catedral de Cremona (Duomo) e a cripta subterrânea onde repousam as relíquias de Santo Homobono em uma urna monumental de bronze."
+  subtitulo="O coração espiritual da diocese de Cremona: arte românica e renascentista abrigando o sepulcro do padroeiro dos empresários."
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  tipoFonte="documental"
+  linksRelacionados={linksRelacionados}
+>
+  <!-- Imagem 7 da Catedral -->
+  <figure class="my-8 rounded-2xl overflow-hidden bg-[var(--pergaminho-escuro)] moldura-sacra">
+    <Image
+      src={img7Duomo}
+      alt="Fachada da Catedral de Cremona, onde repousam as relíquias de Santo Homobono"
+      width={1200}
+      height={750}
+      format="webp"
+      class="w-full h-auto max-h-[500px] object-cover"
+    />
+    <figcaption class="p-4 text-xs text-[var(--pedra)] flex flex-col sm:flex-row items-baseline justify-between gap-1 border-t border-[var(--ouro-claro)]/40">
+      <span><strong>Duomo di Cremona</strong> · Fachada românica da Catedral de Santa Maria Assunta</span>
+      <span>Foto: MenkinAlRire · Domínio Público</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    Elevando-se com imponente fachada românico-gótica na Piazza del Comune, a <strong>Catedral de Santa Maria Assunta</strong> — o célebre <em>Duomo di Cremona</em> — é um dos mais espetaculares complexos arquitetônicos e pictóricos de toda a Itália setentrional. Conhecida como a <em>“Capela Sistina da planície padana”</em> graças aos monumentais afrescos renascentistas da nave central, a catedral guarda sob seu altar-mor o seu maior tesouro devocional: a <strong>Cripta de Santo Homobono</strong>.
+  </p>
+
+  <div class="my-6">
+    <SeloFonte tipo="historico" label="Patrimônio Histórico e Religioso" detalhe="Monumento Nacional Italiano e Sede da Cátedra Diocesana" />
+  </div>
+
+  <h2>A Trasladação de 1202 para a Cripta</h2>
+  <p>
+    Após o falecimento de Homobono em 1197 e sua canonização fulgurante em 1199, a quantidade de peregrinos e doentes que afluíam ao seu túmulo original tornou imperativa a criação de um espaço de veneração monumental. Em 1202, sob os auspícios do Bispo Sicardo, os restos mortais do santo foram solenemente trasladados da igreja de Sant'Egidio para a cripta da catedral, consagrando-o como padroeiro cívico e espiritual da cidade.
+  </p>
+
+  <!-- Imagem 8 da Cripta -->
+  <figure class="my-8 rounded-2xl overflow-hidden bg-[var(--pergaminho-escuro)] moldura-sacra">
+    <Image
+      src={img8Cripta}
+      alt="Cripta da Catedral de Cremona, onde está o corpo de Santo Homobono"
+      width={1200}
+      height={800}
+      format="webp"
+      class="w-full h-auto max-h-[500px] object-cover"
+    />
+    <figcaption class="p-4 text-xs text-[var(--pedra)] flex flex-col sm:flex-row items-baseline justify-between gap-1 border-t border-[var(--ouro-claro)]/40">
+      <span><strong>Cripta do Duomo de Cremona</strong> · Colunata românica e local das relíquias</span>
+      <span>Foto: Sailko (<a href="https://creativecommons.org/licenses/by/2.5" target="_blank" rel="noopener noreferrer" class="text-[var(--cardinal)] hover:underline">CC BY 2.5</a>)</span>
+    </figcaption>
+  </figure>
+
+  <h2>A Urna Monumental de Bronze e Prata</h2>
+  <p>
+    No centro da penumbra solene da cripta subterrânea, sustentada por elegantes colunas de mármore medieval, encontra-se a <strong>arca funerária de Santo Homobono</strong>. Executada em bronze cinzelado e prata com requintados relevos que retratam cenas de sua caridade aos pobres e sua morte em oração perante o crucifixo, a urna abriga as relíquias do padroeiro com honras reservadas aos maiores heróis da fé.
+  </p>
+
+  <!-- Placeholder da Urna de Prata -->
+  <PlaceholderArte
+    titulo="Urna de Prata e Bronze Cinzelado"
+    subtitulo="Detalhes da Arca Funerária dos Séculos XVI–XVII"
+    descricao="Fotografia com iluminação especial dos relevos que mostram a morte em cruz e os milagres no túmulo."
+  />
+
+  <h2>A Tradição do 13 de Novembro na Cripta</h2>
+  <p>
+    Anualmente, no dia 13 de novembro, a cripta permanece aberta ininterruptamente das primeiras horas da manhã até o anoitecer. Milhares de fiéis, delegações de sindicatos, alfaiates, pequenos comerciantes e presidentes de indústrias descem as escadarias de pedra para tocar a grade de proteção da urna, acender velas votivas e depositar pedidos de auxílio financeiro e sabedoria em seus empreendimentos.
+  </p>
+</ArtigoLayout>

@@ -1,0 +1,175 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+
+const navLinks = [
+  { href: '/quem-foi-santo-homobono', label: 'Biografia' },
+  { href: '/oracoes/oracao-a-santo-homobono', label: 'Orações' },
+  { href: '/padroeiro-dos-empresarios', label: 'Ética nos Negócios' },
+  { href: '/historia/linha-do-tempo', label: 'Linha do Tempo' },
+  { href: '/festa-13-de-novembro', label: '13 de Novembro' },
+  { href: '/comunidade', label: 'Comunidade' },
+];
+---
+
+<header class="sticky top-0 z-40 w-full backdrop-blur-md bg-[var(--pergaminho)]/90 dark:bg-[var(--pergaminho)]/90 border-b border-[var(--ouro-claro)]/40 transition-colors">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      
+      <!-- Logo & Marca -->
+      <a href="/" class="flex items-center gap-3.5 group focus:outline-none focus:ring-2 focus:ring-[var(--ouro)] rounded-lg p-1">
+        <div class="w-11 h-11 rounded-full bg-[var(--pergaminho-escuro)] border border-[var(--ouro)]/60 flex items-center justify-center p-1.5 shadow-sm group-hover:scale-105 transition-transform">
+          <svg class="w-full h-full" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M22 16C22 13.7909 23.7909 12 26 12H38C40.2091 12 42 13.7909 42 16V20H22V16Z" fill="var(--ouro)" />
+            <path d="M14 24C14 21.7909 15.7909 20 18 20H46C48.2091 20 50 21.7909 50 24L53 50C53 55.5228 48.5228 60 43 60H21C15.4772 60 11 55.5228 11 50L14 24Z" fill="var(--cardinal)" stroke="var(--ouro)" stroke-width="2" />
+            <path d="M20 22C20 22 24 28 32 28C40 28 44 22 44 22" stroke="var(--ouro-claro)" stroke-width="3" stroke-linecap="round" />
+            <path d="M32 34V46M26 38H38" stroke="var(--ouro-claro)" stroke-width="2.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-['Cinzel'] tracking-wider text-lg sm:text-xl font-bold text-[var(--cardinal)] group-hover:text-[var(--ouro)] transition-colors">
+            SANTO HOMOBONO
+          </span>
+          <span class="text-xs uppercase tracking-widest text-[var(--pedra)] font-['Cinzel']">
+            Padroeiro dos Empresários
+          </span>
+        </div>
+      </a>
+
+      <!-- Navegação Desktop -->
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Navegação Principal">
+        {navLinks.map((link) => {
+          const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+          return (
+            <a
+              href={link.href}
+              class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                isActive
+                  ? 'text-[var(--cardinal)] font-bold bg-[var(--pergaminho-escuro)]/70 border-b-2 border-[var(--ouro)]'
+                  : 'text-[var(--tinta)] hover:text-[var(--cardinal)] hover:bg-[var(--pergaminho-escuro)]/50'
+              }`}
+            >
+              {link.label}
+            </a>
+          );
+        })}
+      </nav>
+
+      <!-- Ações: Alternar Tema & Menu Mobile -->
+      <div class="flex items-center gap-3">
+        <!-- Botão Dark Mode -->
+        <button
+          id="theme-toggle"
+          type="button"
+          aria-label="Alternar modo claro e escuro"
+          class="p-2.5 rounded-lg border border-[var(--ouro-claro)]/40 bg-[var(--pergaminho-escuro)]/40 hover:bg-[var(--pergaminho-escuro)] text-[var(--tinta)] transition-all focus:outline-none focus:ring-2 focus:ring-[var(--ouro)]"
+        >
+          <!-- Ícone Sol (aparece no escuro) -->
+          <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+          </svg>
+          <!-- Ícone Lua (aparece no claro) -->
+          <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+        </button>
+
+        <!-- Botão Menu Mobile Hamburger -->
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Abrir menu de navegação"
+          class="lg:hidden p-2.5 rounded-lg border border-[var(--ouro-claro)]/40 bg-[var(--pergaminho-escuro)]/40 text-[var(--tinta)] focus:outline-none focus:ring-2 focus:ring-[var(--ouro)]"
+        >
+          <svg id="menu-open-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menu-close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Menu Mobile Desdobrável -->
+  <div id="mobile-menu" class="hidden lg:hidden border-b border-[var(--ouro-claro)]/40 bg-[var(--pergaminho)] dark:bg-[var(--pergaminho)] px-4 pt-2 pb-6 space-y-2">
+    {navLinks.map((link) => {
+      const isActive = currentPath === link.href;
+      return (
+        <a
+          href={link.href}
+          class={`block px-4 py-2.5 rounded-lg text-base font-medium transition-colors ${
+            isActive
+              ? 'bg-[var(--cardinal)] text-white font-semibold'
+              : 'text-[var(--tinta)] hover:bg-[var(--pergaminho-escuro)]'
+          }`}
+        >
+          {link.label}
+        </a>
+      );
+    })}
+    <div class="pt-2 border-t border-[var(--ouro-claro)]/30 mt-3">
+      <a
+        href="/oracoes/oracao-do-empresario"
+        class="block w-full text-center px-4 py-3 rounded-lg bg-[var(--cardinal)] text-white font-semibold tracking-wide shadow-sm hover:opacity-90"
+      >
+        Rezar a Oração do Empresário
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Controle de Dark Mode com LocalStorage e Media Query
+  const themeToggle = document.getElementById('theme-toggle');
+  const lightIcon = document.getElementById('theme-toggle-light-icon');
+  const darkIcon = document.getElementById('theme-toggle-dark-icon');
+
+  function updateIcons(isDark: boolean) {
+    if (isDark) {
+      lightIcon?.classList.remove('hidden');
+      darkIcon?.classList.add('hidden');
+    } else {
+      lightIcon?.classList.add('hidden');
+      darkIcon?.classList.remove('hidden');
+    }
+  }
+
+  const isDarkMode = document.documentElement.classList.contains('dark') || 
+    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+  if (isDarkMode) {
+    document.documentElement.classList.add('dark');
+    updateIcons(true);
+  } else {
+    document.documentElement.classList.remove('dark');
+    updateIcons(false);
+  }
+
+  themeToggle?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateIcons(isDark);
+  });
+
+  // Controle de Menu Mobile
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuOpenIcon = document.getElementById('menu-open-icon');
+  const menuCloseIcon = document.getElementById('menu-close-icon');
+
+  mobileMenuBtn?.addEventListener('click', () => {
+    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+    mobileMenuBtn.setAttribute('aria-expanded', String(!isExpanded));
+    mobileMenu?.classList.toggle('hidden');
+    menuOpenIcon?.classList.toggle('hidden');
+    menuCloseIcon?.classList.toggle('hidden');
+  });
+</script>

@@ -1,0 +1,120 @@
+---
+export interface Props {
+  titulo?: string;
+  subtitulo?: string;
+}
+
+const {
+  titulo = 'Festa Litúrgica de Santo Homobono',
+  subtitulo = 'Celebrada solenemente em 13 de Novembro em Cremona e no mundo inteiro',
+} = Astro.props;
+---
+
+<div class="my-10 rounded-2xl bg-gradient-to-br from-[var(--pergaminho-escuro)] to-[var(--pergaminho)] dark:from-[var(--pergaminho-escuro)] dark:to-[var(--pergaminho)] border-2 border-[var(--ouro)] p-6 sm:p-10 shadow-lg relative overflow-hidden transition-colors">
+  <!-- Fundo sutil com cruz e adorno -->
+  <div class="absolute right-0 top-0 translate-x-12 -translate-y-12 w-64 h-64 rounded-full bg-[var(--ouro)]/5 pointer-events-none select-none blur-2xl"></div>
+
+  <div class="relative z-10 text-center max-w-3xl mx-auto">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--cardinal)]/10 text-[var(--cardinal)] text-xs font-['Cinzel'] font-bold tracking-widest uppercase mb-4">
+      <span>⚜</span> 13 de Novembro · Solenidade <span>⚜</span>
+    </div>
+
+    <h3 class="font-['Cormorant_Garamond'] text-3xl sm:text-4xl font-bold text-[var(--cardinal)] mb-3">
+      {titulo}
+    </h3>
+    <p class="text-sm sm:text-base text-[var(--pedra)] font-['Source_Serif_4'] mb-8">
+      {subtitulo}
+    </p>
+
+    <!-- Display de Contagem Regressiva -->
+    <div class="grid grid-cols-4 gap-2 sm:gap-4 max-w-lg mx-auto mb-8" id="contador-regressivo" role="timer" aria-live="polite">
+      <div class="p-3 sm:p-4 rounded-xl bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] border border-[var(--ouro-claro)] shadow-sm">
+        <span id="dias-restantes" class="block font-['Cinzel'] text-2xl sm:text-4xl font-bold text-[var(--cardinal)]">--</span>
+        <span class="text-[0.65rem] sm:text-xs uppercase tracking-wider text-[var(--pedra)] font-semibold">Dias</span>
+      </div>
+      <div class="p-3 sm:p-4 rounded-xl bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] border border-[var(--ouro-claro)] shadow-sm">
+        <span id="horas-restantes" class="block font-['Cinzel'] text-2xl sm:text-4xl font-bold text-[var(--cardinal)]">--</span>
+        <span class="text-[0.65rem] sm:text-xs uppercase tracking-wider text-[var(--pedra)] font-semibold">Horas</span>
+      </div>
+      <div class="p-3 sm:p-4 rounded-xl bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] border border-[var(--ouro-claro)] shadow-sm">
+        <span id="minutos-restantes" class="block font-['Cinzel'] text-2xl sm:text-4xl font-bold text-[var(--cardinal)]">--</span>
+        <span class="text-[0.65rem] sm:text-xs uppercase tracking-wider text-[var(--pedra)] font-semibold">Minutos</span>
+      </div>
+      <div class="p-3 sm:p-4 rounded-xl bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] border border-[var(--ouro-claro)] shadow-sm">
+        <span id="segundos-restantes" class="block font-['Cinzel'] text-2xl sm:text-4xl font-bold text-[var(--ouro)]">--</span>
+        <span class="text-[0.65rem] sm:text-xs uppercase tracking-wider text-[var(--pedra)] font-semibold">Segundos</span>
+      </div>
+    </div>
+
+    <!-- Guia Rápido: Como Celebrar -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left pt-6 border-t border-[var(--ouro-claro)]/40 text-xs sm:text-sm">
+      <div class="p-4 rounded-lg bg-[var(--pergaminho)]/80 dark:bg-[var(--pergaminho-escuro)]/80 border border-[var(--ouro-claro)]/50">
+        <strong class="font-['Cinzel'] text-[var(--cardinal)] block mb-1">1. Santa Missa</strong>
+        Participe da Eucaristia e dedique as intenções do dia aos seus clientes, colaboradores e concorrentes.
+      </div>
+      <div class="p-4 rounded-lg bg-[var(--pergaminho)]/80 dark:bg-[var(--pergaminho-escuro)]/80 border border-[var(--ouro-claro)]/50">
+        <strong class="font-['Cinzel'] text-[var(--cardinal)] block mb-1">2. Oração na Empresa</strong>
+        Reúna os sócios ou a equipe para ler a Oração do Empresário e abençoar as atividades.
+      </div>
+      <div class="p-4 rounded-lg bg-[var(--pergaminho)]/80 dark:bg-[var(--pergaminho-escuro)]/80 border border-[var(--ouro-claro)]/50">
+        <strong class="font-['Cinzel'] text-[var(--cardinal)] block mb-1">3. Esmola Concreta</strong>
+        Em honra à bolsa de Santo Homobono, destine uma parcela do faturamento para os pobres locais.
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <a
+        href="/festa-13-de-novembro"
+        class="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-[var(--cardinal)] text-white hover:opacity-90 font-['Cinzel'] text-xs uppercase tracking-wider font-semibold transition-all shadow-md"
+      >
+        <span>Ver Guia Litúrgico Completo para a Festa</span>
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function iniciarContador() {
+    const elDias = document.getElementById('dias-restantes');
+    const elHoras = document.getElementById('horas-restantes');
+    const elMinutos = document.getElementById('minutos-restantes');
+    const elSegundos = document.getElementById('segundos-restantes');
+
+    function atualizar() {
+      const agora = new Date();
+      let anoFesta = agora.getFullYear();
+      let dataFesta = new Date(anoFesta, 10, 13, 0, 0, 0); // Mês 10 = Novembro (0-indexed)
+
+      if (agora.getTime() > dataFesta.getTime() + 24 * 60 * 60 * 1000) {
+        anoFesta += 1;
+        dataFesta = new Date(anoFesta, 10, 13, 0, 0, 0);
+      }
+
+      const diff = dataFesta.getTime() - agora.getTime();
+
+      if (diff <= 0) {
+        if (elDias) elDias.textContent = '00';
+        if (elHoras) elHoras.textContent = '00';
+        if (elMinutos) elMinutos.textContent = '00';
+        if (elSegundos) elSegundos.textContent = '00';
+        return;
+      }
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
+
+      if (elDias) elDias.textContent = String(dias).padStart(2, '0');
+      if (elHoras) elHoras.textContent = String(horas).padStart(2, '0');
+      if (elMinutos) elMinutos.textContent = String(minutos).padStart(2, '0');
+      if (elSegundos) elSegundos.textContent = String(segundos).padStart(2, '0');
+    }
+
+    atualizar();
+    setInterval(atualizar, 1000);
+  }
+
+  iniciarContador();
+</script>

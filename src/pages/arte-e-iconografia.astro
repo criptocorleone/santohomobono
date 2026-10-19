@@ -1,0 +1,161 @@
+---
+import ArtigoLayout from '../layouts/ArtigoLayout.astro';
+import GaleriaArte from '../components/GaleriaArte.astro';
+import SeloFonte from '../components/SeloFonte.astro';
+import PlaceholderArte from '../components/PlaceholderArte.astro';
+import { Image } from 'astro:assets';
+
+import img10Roma from '../assets/images/igreja-sant-omobono-roma.jpg';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Arte & Iconografia', item: '/arte-e-iconografia' },
+];
+
+const sources = [
+  'G. Kaftal, Iconography of the Saints in the Central and Northern Italian Schools of Painting (Florença: Sansoni).',
+  'Catalogo Generale dei Beni Culturali, Ministero della Cultura, Italia.',
+  'Museo Civico Ala Ponzone, Cremona, Sezione Pinacoteca.',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'Cremona: Catedral e Cripta',
+    href: '/cremona/catedral-e-cripta',
+    categoria: 'Lugares',
+    descricao: 'Conheça o local onde repousam os restos mortais de Santo Homobono.',
+  },
+  {
+    titulo: 'Quem Foi Santo Homobono?',
+    href: '/quem-foi-santo-homobono',
+    categoria: 'Biografia',
+    descricao: 'A vida real do homem que inspirou grandes mestres do Renascimento italiano.',
+  },
+  {
+    titulo: 'Linha do Tempo 1117 → Hoje',
+    href: '/historia/linha-do-tempo',
+    categoria: 'História',
+    descricao: 'A evolução da devoção e da representação artística pelos séculos.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="Arte e Iconografia de Santo Homobono: Símbolos e Representações"
+  description="Explore as pinturas sacras, afrescos e os atributos iconográficos de Santo Homobono: a bolsa de esmolas, a tesoura de alfaiate e as vestes burguesas."
+  subtitulo="Como a arte sacra da Renascença e do Barroco italiano eternizou a figura do mercador de Cremona nos altares e museus."
+  image="/og-arte.jpg"
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  tipoFonte="documental"
+  linksRelacionados={linksRelacionados}
+>
+  <p>
+    Na história da arte sacra ocidental, a figura de <strong>Santo Homobono</strong> ocupa um lugar singular. Enquanto a vasta maioria dos santos medievais é retratada com vestes episcopais, hábitos monásticos de tons escuros ou armaduras militares de cavaleiro, Homobono surge quase invariavelmente envergando os trajes dignos e sóbrios da <strong>alta burguesia comercial italiana</strong>: manto com gola de pele, túnica de mercador e capuz florentino ou lombardo.
+  </p>
+
+  <div class="my-6">
+    <SeloFonte tipo="historico" label="Iconografia Hagiográfica" detalhe="O primeiro modelo artístico de santidade no laicato urbano" />
+  </div>
+
+  <h2>Os Quatro Atributos Tradicionais de Santo Homobono</h2>
+  <p>
+    Para identificar Santo Homobono nos retábulos e afrescos da Itália e da Europa, os pintores renascentistas utilizavam atributos simbólicos codificados que contam sua vocação:
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+    <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border border-[var(--ouro-claro)]">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">💰</span>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
+          1. A Bolsa de Moedas (Scarsella)
+        </h3>
+      </div>
+      <p class="text-sm text-[var(--tinta)] font-['Source_Serif_4'] leading-relaxed">
+        Presa ao cinto de couro ou empunhada na mão aberta, a bolsa medieval simboliza simultaneamente o comércio legítimo e a generosidade da esmola. Não representa a avareza do usurário com a bolsa fechada, mas a mão que distribui moedas a órfãos e mendigos prostrados.
+      </p>
+    </div>
+
+    <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border border-[var(--ouro-claro)]">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">✂</span>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
+          2. A Tesoura de Alfaiate e o Metro
+        </h3>
+      </div>
+      <p class="text-sm text-[var(--tinta)] font-['Source_Serif_4'] leading-relaxed">
+        A grande tesoura de ferro e a vara de medição de tecidos recordam o trabalho manual da guilda dos alfaiates (<em>sarti</em>). Mostram que o ofício prático e a destreza artesanal são dignos aos olhos de Deus e geram frutos de santidade.
+      </p>
+    </div>
+
+    <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border border-[var(--ouro-claro)]">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">🥖</span>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
+          3. O Pão Distribuído aos Pobres
+        </h3>
+      </div>
+      <p class="text-sm text-[var(--tinta)] font-['Source_Serif_4'] leading-relaxed">
+        Em obras como o afresco de Il Malosso na igreja de Cremona, o santo aparece distribuindo broas e pães aos necessitados, vinculando o sustento corporal à caridade fraterna exercida a partir dos lucros honestos de sua atividade.
+      </p>
+    </div>
+
+    <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border border-[var(--ouro-claro)]">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">⚖</span>
+        <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
+          4. A Balança e o Livro Mercantil
+        </h3>
+      </div>
+      <p class="text-sm text-[var(--tinta)] font-['Source_Serif_4'] leading-relaxed">
+        Presente em capelas corporativas de mercadores no Vêneto e na Toscana, a balança equilibra pesos justos, reafirmando o compromisso de nunca ludibriar o comprador no cálculo de mercadorias a granel.
+      </p>
+    </div>
+  </div>
+
+  <h2>Galeria Completa de Obras Históricas (com Lightbox)</h2>
+  <p class="text-sm text-[var(--pedra)] mb-6">
+    Clique em qualquer obra abaixo para visualizar o acervo em alta resolução com a documentação de custódia e licença:
+  </p>
+
+  <!-- Galeria com todas as obras 2, 3, 4, 11 -->
+  <GaleriaArte mostrarLinkTodas={false} />
+
+  <!-- Seção Especial: Roma e a Corporação dos Alfaiates (com imagem 10) -->
+  <section class="my-12 pt-8 border-t border-[var(--ouro-claro)]/40">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="text-xs font-['Cinzel'] uppercase tracking-widest text-[var(--ouro)] font-bold">
+        A Devoção além da Lombardia
+      </span>
+    </div>
+    <h2 class="font-['Cormorant_Garamond'] text-3xl font-bold text-[var(--cardinal)] mb-4">
+      Roma e a Corporação dos Alfaiates: A Igreja de Sant'Omobono
+    </h2>
+    <p class="text-base text-[var(--tinta)] font-['Source_Serif_4'] leading-relaxed mb-6">
+      No coração da Roma papal, na base da colina do Capitólio (Monte Capitolino), a influente <strong>Universidade dos Alfaiates de Roma</strong> (<em>Università dei Sartori</em>) consagrou em 1575 a antiga igreja de San Salvatore em honra ao seu patrono de Cremona. A igreja tornou-se a sede espiritual dos artesãos de vestuário e mercadores de panos da capital pontifícia.
+    </p>
+
+    <!-- Imagem 10 de Sant'Omobono em Roma -->
+    <figure class="my-6 rounded-2xl overflow-hidden bg-[var(--pergaminho-escuro)] moldura-sacra max-w-2xl mx-auto">
+      <Image
+        src={img10Roma}
+        alt="Igreja de Sant'Omobono em Roma, junto ao Capitólio, ligada à antiga corporação dos alfaiates"
+        width={1000}
+        height={700}
+        format="webp"
+        class="w-full h-auto max-h-[480px] object-cover"
+      />
+      <figcaption class="p-4 text-xs text-[var(--pedra)] flex flex-col sm:flex-row items-baseline justify-between gap-1 border-t border-[var(--ouro-claro)]/40">
+        <span><strong>Chiesa di Sant'Omobono</strong> · Roma (Rione Ripa, aos pés do Campidoglio)</span>
+        <span>Foto: IlMarcheseDelGrillo (<a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener noreferrer" class="text-[var(--cardinal)] hover:underline">CC BY 4.0</a>)</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- Placeholder para as estátuas da fachada -->
+  <PlaceholderArte
+    titulo="Estátuas Históricas da Fachada de Sant'Omobono em Cremona"
+    subtitulo="Esculturas em Mármore de Carrara do Século XVII"
+    descricao="Representações dos santos mártires e patronos esculpidas sobre os portais de entrada da igreja."
+  />
+</ArtigoLayout>

@@ -1,0 +1,31 @@
+---
+export interface Props {
+  latim: string;
+  traducao: string;
+  autorOuFonte?: string;
+}
+
+const { latim, traducao, autorOuFonte } = Astro.props;
+---
+
+<figure class="my-8 p-6 sm:p-8 rounded-xl bg-[var(--pergaminho-escuro)]/70 border-l-4 border-[var(--ouro)] shadow-sm relative overflow-hidden transition-colors">
+  <div class="absolute -right-4 -bottom-4 text-[var(--ouro)]/10 font-['Cinzel'] text-8xl pointer-events-none select-none" aria-hidden="true">
+    ⚜
+  </div>
+
+  <blockquote class="relative z-10">
+    <p class="font-['Cormorant_Garamond'] text-xl sm:text-2xl lg:text-3xl font-semibold italic text-[var(--cardinal)] leading-snug tracking-wide">
+      “{latim}”
+    </p>
+    <p class="mt-3 text-sm sm:text-base text-[var(--tinta)]/90 font-['Source_Serif_4'] leading-relaxed">
+      {traducao}
+    </p>
+  </blockquote>
+
+  {autorOuFonte && (
+    <figcaption class="mt-4 pt-3 border-t border-[var(--ouro-claro)]/40 flex items-center justify-between text-xs text-[var(--pedra)] font-['Cinzel'] uppercase tracking-wider">
+      <span>{autorOuFonte}</span>
+      <span class="text-[var(--ouro)]">Latim Eclesiástico</span>
+    </figcaption>
+  )}
+</figure>

@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTAComunidade from '../../components/CTAComunidade.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Orações', item: '/oracoes' },
+];
+
+const colecaoOracoes = [
+  {
+    titulo: 'Oração Tradicional a Santo Homobono',
+    subtitulo: 'Pilar Devocional Principal',
+    href: '/oracoes/oracao-a-santo-homobono',
+    descricao: 'A clássica prece católica pedindo intercessão para as decisões empresariais e a integridade de vida.',
+    icone: '✝️',
+  },
+  {
+    titulo: 'Oração do Empresário',
+    subtitulo: 'Para Líderes e Gestores',
+    href: '/oracoes/oracao-do-empresario',
+    descricao: 'Consagração da empresa, das reuniões de estratégia e do compromisso de gerar trabalho digno.',
+    icone: '💼',
+  },
+  {
+    titulo: 'Oração do Comerciante',
+    subtitulo: 'Para o Balcão e as Vendas',
+    href: '/oracoes/oracao-do-comerciante',
+    descricao: 'Súplica para abençoar as vendas diárias, a honestidade nos preços e a cordialidade com clientes.',
+    icone: '🏪',
+  },
+  {
+    titulo: 'Novena de Santo Homobono (9 Dias)',
+    subtitulo: 'Navegação Completa Dia a Dia',
+    href: '/oracoes/novena-de-santo-homobono',
+    descricao: 'Nove dias de orações intensivas para momentos de crise econômica, expansão ou preparação para 13/Nov.',
+    icone: '🕯️',
+  },
+  {
+    titulo: 'Ladainha de Santo Homobono',
+    subtitulo: 'Culto Litúrgico e Comunitário',
+    href: '/oracoes/ladainha',
+    descricao: 'As invocações históricas das virtudes do santo padroeiro de Cremona e dos negócios.',
+    icone: '📜',
+  },
+];
+---
+
+<BaseLayout
+  title="Orações a Santo Homobono: Devoções para Empresas e Comércio"
+  description="Coletânea completa de orações a Santo Homobono: oração tradicional, oração do empresário, prece do comerciante, novena de 9 dias e ladainha."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <header class="text-center my-8">
+      <span class="text-xs uppercase tracking-widest font-['Cinzel'] text-[var(--ouro)] font-bold">
+        Devocionário Católico
+      </span>
+      <h1 class="font-['Cormorant_Garamond'] text-4xl sm:text-6xl font-bold text-[var(--cardinal)] mt-2">
+        Orações a Santo Homobono
+      </h1>
+      <p class="text-base sm:text-lg text-[var(--pedra)] font-['Source_Serif_4'] mt-3 max-w-2xl mx-auto leading-relaxed">
+        Preces católicas consagradas pela tradição da Igreja para pedir discernimento nas negociações, bênçãos para as empresas e honestidade no trabalho.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-12">
+      {colecaoOracoes.map((item) => (
+        <a
+          href={item.href}
+          class="group p-6 rounded-2xl bg-[var(--pergaminho-escuro)]/60 hover:bg-[var(--pergaminho-escuro)] border border-[var(--ouro-claro)] hover:border-[var(--ouro)] transition-all shadow-sm hover:shadow-md flex flex-col justify-between"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-3xl select-none" aria-hidden="true">{item.icone}</span>
+              <span class="font-['Cinzel'] text-xs uppercase tracking-wider text-[var(--ouro)] font-bold">
+                Devoção
+              </span>
+            </div>
+            <h2 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)] group-hover:text-[var(--ouro)] transition-colors">
+              {item.titulo}
+            </h2>
+            <p class="font-['Cinzel'] text-xs uppercase tracking-wider text-[var(--pedra)] mt-1">
+              {item.subtitulo}
+            </p>
+            <p class="text-sm text-[var(--pedra)] font-['Source_Serif_4'] mt-3 leading-relaxed">
+              {item.descricao}
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[var(--ouro-claro)]/40 flex items-center justify-between text-xs font-['Cinzel'] font-bold text-[var(--cardinal)]">
+            <span>Rezar agora</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-14">
+      <CTAComunidade variante="compacta" />
+    </div>
+  </div>
+</BaseLayout>

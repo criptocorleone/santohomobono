@@ -1,0 +1,269 @@
+---
+import { Image } from 'astro:assets';
+import img2 from '../assets/images/santo-homobono-bartolomeo-montagna-berlim.jpg';
+import img3 from '../assets/images/santo-homobono-sao-bonifacio-gravura-de-jode-met.jpg';
+import img4 from '../assets/images/santo-homobono-pietro-lianori-bolonha.jpg';
+import img11 from '../assets/images/estatua-santo-homobono-bruxelas-chaloupe-dor.jpg';
+
+export interface ObraItem {
+  id: number;
+  titulo: string;
+  autor: string;
+  ano: string;
+  local: string;
+  licenca: string;
+  urlLicenca?: string;
+  urlOrigem: string;
+  alt: string;
+  imageObj: ImageMetadata;
+  descricaoBreve: string;
+}
+
+export interface Props {
+  limite?: number;
+  mostrarLinkTodas?: boolean;
+}
+
+const obrasAcervo: ObraItem[] = [
+  {
+    id: 2,
+    titulo: 'A Virgem com o Menino e Santo Homobono',
+    autor: 'Bartolomeo Montagna',
+    ano: 'c. 1490–1500',
+    local: 'Gemäldegalerie, Berlim',
+    licenca: 'Domínio Público',
+    urlOrigem: 'https://commons.wikimedia.org/wiki/File:Bartolomeo_Montagna_(1450_-_1523)_-_The_Virgin_and_Child_Enthroned_and_St._Homobonus,_Francis_of_Assisi,_Catherine_of_Alexandria_and_the_-_44_-_Gem%C3%A4ldegalerie.jpg',
+    alt: 'Retábulo de Bartolomeo Montagna com a Virgem e o Menino entronizados, Santo Homobono, São Francisco e Santa Catarina',
+    imageObj: img2,
+    descricaoBreve: 'O santo é retratado no centro com capuz de mercador medieval e bolsa de esmolas na cintura.',
+  },
+  {
+    id: 3,
+    titulo: 'São Bonifácio e Santo Homobono, Padroeiros dos Alfaiates',
+    autor: 'Pieter de Jode II',
+    ano: 'Séc. XVII',
+    local: 'Metropolitan Museum of Art (MET), Nova York',
+    licenca: 'CC0 (Domínio Público)',
+    urlLicenca: 'http://creativecommons.org/publicdomain/zero/1.0/deed.en',
+    urlOrigem: 'https://commons.wikimedia.org/wiki/File:St._Bonifacius_and_St._Homobonus,_Patron_Saints_of_Tailors_MET_DP836102.jpg',
+    alt: 'Gravura do século XVII de Pieter de Jode II com São Bonifácio e Santo Homobono, padroeiros dos alfaiates',
+    imageObj: img3,
+    descricaoBreve: 'Gravura flamenga dos santos padroeiros das corporações de alfaiates e tecelões.',
+  },
+  {
+    id: 4,
+    titulo: 'Santos Homobono e Cristóvão',
+    autor: 'Pietro Lianori (Foto: Sailko)',
+    ano: 'c. 1440–1460',
+    local: 'Pinacoteca Nazionale, Bolonha',
+    licenca: 'CC BY 3.0',
+    urlLicenca: 'https://creativecommons.org/licenses/by/3.0',
+    urlOrigem: 'https://commons.wikimedia.org/wiki/File:Pietro_lianori,_ss._omobono_e_cristoforo,_bologna,_1440-60_ca._01.jpg',
+    alt: 'Pintura de Pietro Lianori, c. 1450, com Santo Homobono como mercador ao lado de São Cristóvão',
+    imageObj: img4,
+    descricaoBreve: 'Rara pintura bolonhesa do Quattrocento apresentando Homobono com traje burguês e bolsa.',
+  },
+  {
+    id: 11,
+    titulo: 'Estátua de Santo Homobono na Grand-Place de Bruxelas',
+    autor: 'Foto: EmDee',
+    ano: '1697',
+    local: 'Maison de la Chaloupe d\'Or, Grand-Place, Bruxelas',
+    licenca: 'CC BY-SA 4.0',
+    urlLicenca: 'https://creativecommons.org/licenses/by-sa/4.0',
+    urlOrigem: 'https://commons.wikimedia.org/wiki/File:Belgique_-_Bruxelles_-_Maison_de_la_Chaloupe_d%27Or_-_05.jpg',
+    alt: 'Estátua de Santo Homobono no alto da Casa da Chaloupe d\'Or, antiga sede dos alfaiates na Grand-Place de Bruxelas',
+    imageObj: img11,
+    descricaoBreve: 'Escultura barroca coroando a fachada da antiga sede corporativa dos alfaiates na Bélgica.',
+  },
+];
+
+const { limite, mostrarLinkTodas = true } = Astro.props;
+const exibidas = limite ? obrasAcervo.slice(0, limite) : obrasAcervo;
+---
+
+<div class="galeria-arte-wrapper my-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    {exibidas.map((obra) => (
+      <figure class="group flex flex-col justify-between rounded-2xl bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] moldura-sacra p-3.5 overflow-hidden transition-all">
+        <!-- Contêiner de Imagem com Lightbox -->
+        <button
+          type="button"
+          class="lightbox-trigger relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-[var(--pergaminho-escuro)] cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-[var(--ouro)]"
+          data-src={obra.imageObj.src}
+          data-titulo={obra.titulo}
+          data-autor={obra.autor}
+          data-ano={obra.ano}
+          data-local={obra.local}
+          data-licenca={obra.licenca}
+          data-url-licenca={obra.urlLicenca || ''}
+          data-url-origem={obra.urlOrigem}
+          data-desc={obra.descricaoBreve}
+          aria-label={`Ver imagem ampliada: ${obra.titulo}`}
+        >
+          <Image
+            src={obra.imageObj}
+            alt={obra.alt}
+            width={600}
+            height={800}
+            format="webp"
+            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+          />
+
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-['Cinzel'] tracking-wider gap-1.5 backdrop-blur-[2px]">
+            <svg class="w-4 h-4 text-[var(--ouro-claro)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+            </svg>
+            <span>Ampliar</span>
+          </div>
+        </button>
+
+        <!-- Legenda com Crédito Curto e Links Obrigatórios -->
+        <figcaption class="pt-3.5 text-xs text-[var(--pedra)] flex flex-col gap-1.5">
+          <strong class="font-['Cormorant_Garamond'] text-base text-[var(--cardinal)] font-bold leading-tight block">
+            {obra.titulo}
+          </strong>
+          <div class="flex items-center justify-between text-[0.75rem] font-medium text-[var(--tinta)]">
+            <span class="truncate max-w-[170px]">{obra.autor}</span>
+            <span class="text-[var(--pedra)] shrink-0">{obra.ano}</span>
+          </div>
+          <div class="flex items-center justify-between text-[0.7rem] text-[var(--pedra)] border-t border-[var(--ouro-claro)]/30 pt-1.5 mt-1">
+            <span class="truncate max-w-[140px]">{obra.local}</span>
+            {obra.urlLicenca ? (
+              <a
+                href={obra.urlLicenca}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[var(--ouro)] font-semibold hover:underline shrink-0"
+              >
+                {obra.licenca}
+              </a>
+            ) : (
+              <span class="text-[var(--ouro)] font-semibold shrink-0">{obra.licenca}</span>
+            )}
+          </div>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+
+  {mostrarLinkTodas && (
+    <div class="text-center mt-8">
+      <a
+        href="/arte-e-iconografia"
+        class="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-[var(--ouro)] text-[var(--cardinal)] hover:bg-[var(--ouro-claro)]/30 font-['Cinzel'] text-xs uppercase tracking-wider font-bold transition-all shadow-sm"
+      >
+        <span>Ver Todas as Obras & Iconografia Completa</span>
+        <span>→</span>
+      </a>
+    </div>
+  )}
+</div>
+
+<!-- Modal Lightbox Acessível (Dialog) -->
+<dialog id="arte-lightbox-modal" class="hidden open:flex fixed inset-0 z-50 bg-black/85 backdrop-blur-sm p-4 sm:p-8 items-center justify-center max-w-none max-h-none w-full h-full m-0 border-0 outline-none backdrop:bg-transparent">
+  <div class="relative max-w-4xl w-full bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] rounded-2xl border-2 border-[var(--ouro)] shadow-2xl p-6 sm:p-8 overflow-y-auto max-h-[90vh]">
+    <button
+      id="lightbox-close"
+      type="button"
+      class="absolute top-4 right-4 p-2 rounded-full bg-[var(--pergaminho-escuro)] text-[var(--tinta)] hover:text-[var(--cardinal)] border border-[var(--ouro-claro)] focus:outline-none focus:ring-2 focus:ring-[var(--ouro)] cursor-pointer"
+      aria-label="Fechar modal"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <div class="flex flex-col md:flex-row gap-6 items-center">
+      <div class="w-full md:w-1/2 aspect-[3/4] bg-[var(--pergaminho-escuro)] rounded-xl border border-[var(--ouro-claro)] overflow-hidden flex items-center justify-center">
+        <img id="modal-obra-img" src="" alt="" class="w-full h-full object-contain" />
+      </div>
+
+      <div class="w-full md:w-1/2 space-y-4 text-left">
+        <span class="text-xs font-['Cinzel'] uppercase tracking-widest text-[var(--ouro)] font-bold">
+          Acervo Histórico & Iconografia
+        </span>
+        <h3 id="modal-obra-titulo" class="font-['Cormorant_Garamond'] text-2xl sm:text-3xl font-bold text-[var(--cardinal)]"></h3>
+        
+        <div class="space-y-1.5 text-xs sm:text-sm text-[var(--tinta)] font-['Source_Serif_4']">
+          <p><strong>Autor / Foto:</strong> <span id="modal-obra-autor"></span></p>
+          <p><strong>Datação:</strong> <span id="modal-obra-ano"></span></p>
+          <p><strong>Custódia / Local:</strong> <span id="modal-obra-local"></span></p>
+          <p>
+            <strong>Licença:</strong>{' '}
+            <span id="modal-obra-licenca-wrapper" class="text-[var(--ouro)] font-semibold"></span>
+          </p>
+          <p>
+            <strong>Fonte Original:</strong>{' '}
+            <a id="modal-obra-origem" href="" target="_blank" rel="noopener noreferrer" class="text-[var(--cardinal)] hover:underline">
+              Wikimedia Commons ↗
+            </a>
+          </p>
+        </div>
+
+        <p id="modal-obra-desc" class="text-sm text-[var(--pedra)] leading-relaxed italic border-t border-[var(--ouro-claro)]/40 pt-3 font-['Source_Serif_4']"></p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script is:inline>
+  const dialog = document.getElementById('arte-lightbox-modal');
+  const closeBtn = document.getElementById('lightbox-close');
+
+  const modalImg = document.getElementById('modal-obra-img');
+  const modalTitulo = document.getElementById('modal-obra-titulo');
+  const modalAutor = document.getElementById('modal-obra-autor');
+  const modalAno = document.getElementById('modal-obra-ano');
+  const modalLocal = document.getElementById('modal-obra-local');
+  const modalLicencaWrapper = document.getElementById('modal-obra-licenca-wrapper');
+  const modalOrigem = document.getElementById('modal-obra-origem');
+  const modalDesc = document.getElementById('modal-obra-desc');
+
+  document.querySelectorAll('.lightbox-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (!dialog) return;
+
+      const src = btn.getAttribute('data-src') || '';
+      const titulo = btn.getAttribute('data-titulo') || '';
+      const autor = btn.getAttribute('data-autor') || '';
+      const ano = btn.getAttribute('data-ano') || '';
+      const local = btn.getAttribute('data-local') || '';
+      const licenca = btn.getAttribute('data-licenca') || '';
+      const urlLicenca = btn.getAttribute('data-url-licenca') || '';
+      const urlOrigem = btn.getAttribute('data-url-origem') || '';
+      const desc = btn.getAttribute('data-desc') || '';
+
+      if (modalImg) {
+        modalImg.src = src;
+        modalImg.alt = titulo;
+      }
+      if (modalTitulo) modalTitulo.textContent = titulo;
+      if (modalAutor) modalAutor.textContent = autor;
+      if (modalAno) modalAno.textContent = ano;
+      if (modalLocal) modalLocal.textContent = local;
+      if (modalDesc) modalDesc.textContent = desc;
+      if (modalOrigem) modalOrigem.href = urlOrigem;
+
+      if (modalLicencaWrapper) {
+        if (urlLicenca) {
+          modalLicencaWrapper.innerHTML = `<a href="${urlLicenca}" target="_blank" rel="noopener noreferrer" class="hover:underline">${licenca}</a>`;
+        } else {
+          modalLicencaWrapper.textContent = licenca;
+        }
+      }
+
+      dialog.showModal();
+    });
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    dialog?.close();
+  });
+
+  dialog?.addEventListener('click', (e) => {
+    if (e.target === dialog) {
+      dialog.close();
+    }
+  });
+</script>

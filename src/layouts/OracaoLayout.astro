@@ -1,0 +1,172 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs, { type BreadcrumbItem } from '../components/Breadcrumbs.astro';
+import ContinueLendo, { type LinkInterno } from '../components/ContinueLendo.astro';
+import type { FAQItem } from '../components/SEO.astro';
+
+import { Image } from 'astro:assets';
+import img3Gravura from '../assets/images/santo-homobono-sao-bonifacio-gravura-de-jode-met.jpg';
+
+export interface Props {
+  title: string;
+  description: string;
+  subtitulo?: string;
+  tipo?: 'oracao' | 'novena' | 'ladainha';
+  diaNovena?: number;
+  sources?: string[];
+  breadcrumbs?: BreadcrumbItem[];
+  faqs?: FAQItem[];
+  linksRelacionados?: LinkInterno[];
+}
+
+const {
+  title,
+  description,
+  subtitulo = 'Devoção tradicional da Igreja Católica para empresários, comerciantes e trabalhadores',
+  tipo = 'oracao',
+  diaNovena,
+  sources = ['Manual de Piedade e Devoção a Santo Homobono', 'Tradição da Diocese de Cremona'],
+  breadcrumbs = [
+    { name: 'Orações & Devoções', item: '/oracoes/oracao-a-santo-homobono' },
+    { name: title, item: Astro.url.pathname },
+  ],
+  faqs = [],
+  linksRelacionados,
+} = Astro.props;
+
+const cardId = 'oracao-page-card';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  type="article"
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <!-- Breadcrumbs -->
+    <Breadcrumbs items={breadcrumbs} />
+
+    <!-- Cabeçalho -->
+    <header class="text-center my-8">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--ouro)]/15 text-[var(--cardinal)] text-xs font-['Cinzel'] font-bold tracking-widest uppercase mb-4 border border-[var(--ouro)]/30">
+        <span>✝</span>
+        {tipo === 'novena' ? `Novena a Santo Homobono ${diaNovena ? `· Dia ${diaNovena}` : ''}` : tipo === 'ladainha' ? 'Ladainha Tradicional' : 'Oração Devocional'}
+        <span>✝</span>
+      </div>
+
+      <h1 class="font-['Cormorant_Garamond'] text-3xl sm:text-5xl lg:text-6xl font-bold text-[var(--cardinal)] leading-tight">
+        {title}
+      </h1>
+
+      {subtitulo && (
+        <p class="text-base sm:text-lg text-[var(--pedra)] font-['Source_Serif_4'] mt-3 max-w-2xl mx-auto italic">
+          {subtitulo}
+        </p>
+      )}
+    </header>
+
+    <!-- Card Sacro com Texto e Botões de Ação -->
+    <div id={cardId} class="rounded-2xl bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] border-2 border-[var(--ouro)] p-6 sm:p-12 shadow-xl relative my-8">
+      <div class="flex items-center justify-center gap-3 mb-6">
+        <div class="h-px bg-gradient-to-r from-transparent via-[var(--ouro)] to-transparent flex-1"></div>
+        <span class="text-[var(--ouro)] text-2xl font-['Cinzel'] select-none">✠</span>
+        <div class="h-px bg-gradient-to-r from-transparent via-[var(--ouro)] to-transparent flex-1"></div>
+      </div>
+
+      <!-- Vinheta Devocional com Tratamento Sépia / Duotone -->
+      <figure class="my-6 max-w-xs mx-auto rounded-xl overflow-hidden border border-[var(--ouro)]/50 shadow-sm moldura-sacra bg-[var(--pergaminho-escuro)]">
+        <div class="relative overflow-hidden aspect-[4/3]">
+          <Image
+            src={img3Gravura}
+            alt="Gravura do século XVII de Pieter de Jode II com São Bonifácio e Santo Homobono, padroeiros dos alfaiates"
+            width={400}
+            height={300}
+            format="webp"
+            class="w-full h-full object-cover object-top sepia-[0.85] contrast-[1.1] brightness-[0.95] dark:brightness-[0.8] hover:sepia-0 transition-all duration-500"
+          />
+        </div>
+        <figcaption class="p-2 text-[0.65rem] text-[var(--pedra)] text-center border-t border-[var(--ouro-claro)]/30 font-['Cinzel']">
+          Gravura séc. XVII · Pieter de Jode II (MET) · CC0
+        </figcaption>
+      </figure>
+
+      <!-- Texto da Oração -->
+      <div class="oracao-texto prose prose-lg dark:prose-invert max-w-none text-base sm:text-xl leading-relaxed text-[var(--tinta)] font-['Source_Serif_4'] text-center space-y-5 my-8">
+        <slot />
+      </div>
+
+      <!-- Invocação Final Padronizada -->
+      <div class="text-center pt-6 border-t border-[var(--ouro-claro)]/40">
+        <p class="font-['Cormorant_Garamond'] text-xl font-bold text-[var(--cardinal)] italic">
+          Santo Homobono, homem bom de nome e de fato,<br />
+          rogai por nós e abençoai o fruto honesto de nosso trabalho! Amém.
+        </p>
+      </div>
+
+      <!-- Botões de Ação -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mt-8 pt-6 border-t border-[var(--ouro-claro)]/30">
+        <button
+          type="button"
+          class="btn-copiar inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-[var(--ouro)] bg-[var(--pergaminho-escuro)] hover:bg-[var(--ouro-claro)]/40 text-[var(--tinta)] text-sm font-semibold transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--ouro)] cursor-pointer"
+          data-card-id={cardId}
+          aria-label="Copiar oração"
+        >
+          <svg class="w-5 h-5 text-[var(--ouro)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+          </svg>
+          <span class="btn-copiar-label">Copiar Oração</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Guia Prático de Intenções -->
+    <div class="my-8 p-6 rounded-xl bg-[var(--pergaminho-escuro)]/50 border border-[var(--ouro-claro)] text-sm">
+      <h3 class="font-['Cinzel'] font-bold text-xs uppercase tracking-wider text-[var(--cardinal)] mb-2">
+        Como oferecer esta oração:
+      </h3>
+      <ul class="list-disc list-inside space-y-1.5 text-[var(--pedra)]">
+        <li>Reze antes de abrir as portas de sua empresa ou comércio.</li>
+        <li>Ofereça em momentos de tomadas de decisões financeiras complexas.</li>
+        <li>Peça a intercessão pela fidelidade nos compromissos com fornecedores e pela prosperidade de seus colaboradores.</li>
+      </ul>
+      {sources && sources.length > 0 && (
+        <div class="mt-4 pt-3 border-t border-[var(--ouro-claro)]/30 text-xs text-[var(--pedra)] font-['Cinzel']">
+          <span>Fonte da fórmula devocional: </span>
+          <span class="text-[var(--tinta)]">{sources.join(' · ')}</span>
+        </div>
+      )}
+    </div>
+
+    <!-- Continue Lendo Obrigatório -->
+    <ContinueLendo links={linksRelacionados} />
+  </div>
+
+  <script>
+    document.querySelectorAll('.btn-copiar').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const cardId = btn.getAttribute('data-card-id');
+        const card = document.getElementById(cardId || '');
+        const textoEl = card?.querySelector('.oracao-texto');
+        const label = btn.querySelector('.btn-copiar-label');
+        
+        if (textoEl && label) {
+          const textToCopy = (textoEl as HTMLElement).innerText;
+          try {
+            await navigator.clipboard.writeText(textToCopy);
+            const original = label.textContent;
+            label.textContent = 'Oração Copiada!';
+            btn.classList.add('bg-emerald-100', 'text-emerald-800', 'border-emerald-500');
+            setTimeout(() => {
+              label.textContent = original;
+              btn.classList.remove('bg-emerald-100', 'text-emerald-800', 'border-emerald-500');
+            }, 2500);
+          } catch (err) {
+            console.error('Erro ao copiar texto:', err);
+          }
+        }
+      });
+    });
+  </script>
+</BaseLayout>

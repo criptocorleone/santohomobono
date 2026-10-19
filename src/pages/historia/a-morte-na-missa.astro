@@ -1,0 +1,88 @@
+---
+import ArtigoLayout from '../../layouts/ArtigoLayout.astro';
+import CitacaoLatina from '../../components/CitacaoLatina.astro';
+import SeloFonte from '../../components/SeloFonte.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'História', item: '/historia' },
+  { name: 'A Morte na Missa (1197)', item: '/historia/a-morte-na-missa' },
+];
+
+const sources = [
+  'Sicardi Cremonensis Chronicon, Monumenta Germaniae Historica (MGH), Scriptores XXXI.',
+  'Bula Quia pietas, Papa Inocêncio III (1199).',
+  'Vita Antiquior Sancti Homoboni, transcrição do Arquivo Capitular de Cremona.',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'A Canonização Recorde em 14 Meses',
+    href: '/historia/a-canonizacao',
+    categoria: 'História',
+    descricao: 'Como a rápida confirmação dos milagres acelerou o processo papal.',
+  },
+  {
+    titulo: 'Festa de 13 de Novembro',
+    href: '/festa-13-de-novembro',
+    categoria: 'Liturgia',
+    descricao: 'Como a Igreja e as empresas celebram anualmente a passagem do santo.',
+  },
+  {
+    titulo: 'Catedral e Cripta em Cremona',
+    href: '/cremona/catedral-e-cripta',
+    categoria: 'Lugares',
+    descricao: 'Conheça o local onde o corpo do padroeiro repousa há oito séculos.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="A Morte de Santo Homobono Durante a Missa: 13 de Novembro de 1197"
+  description="O relato comovente e historicamente documentado do falecimento de Santo Homobono na igreja de Sant'Egidio em Cremona, prostrado em oração aos pés do crucifixo."
+  subtitulo="O término glorioso de uma vida consumida no amor a Deus e ao próximo: a morte suave durante o cântico do Gloria in Excelsis Deo."
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  tipoFonte="documental"
+  linksRelacionados={linksRelacionados}
+>
+  <p>
+    A morte dos santos frequentemente espelha a essência de suas vidas. No caso de <strong>Santo Homobono</strong>, o momento de seu trânsito para a eternidade foi tão límpido, sereno e impregnado de mistério litúrgico que se converteu de imediato na principal comprovação ocular de sua intimidade sobrenatural com Deus. Ocorreu na alvorada de <strong>13 de novembro de 1197</strong>, na igreja paroquial de Sant'Egidio (hoje dedicada ao próprio santo), em Cremona.
+  </p>
+
+  <div class="my-6">
+    <SeloFonte tipo="documental" label="Fato Histórico Notarial" detalhe="Relato do Bispo Sicardo contemporâneo aos acontecimentos" />
+  </div>
+
+  <h2>A Rotina de Oração de um Ancião Mercador</h2>
+  <p>
+    Aos cerca de oitenta anos de idade, Homobono mantinha o hábito inquebrantável de acordar antes do amanhecer para a oração mental. Ao toque dos primeiros sinos, dirigia-se à igreja para participar do ofício matutino das Matinas e da celebração da Santa Missa. Naquela quinta-feira fria de novembro, ele tomou seu lugar habitual próximo ao presbitério, de joelhos sobre as lajes de pedra.
+  </p>
+
+  <h2>O Cântico do Gloria e a Prostração em Cruz</h2>
+  <p>
+    Durante o rito eucarístico, quando o sacerdote celebrante e os clérigos entoaram o hino <em>Gloria in excelsis Deo</em> ("Glória a Deus nas alturas"), Homobono prostrou-se com a face contra o solo e estendeu os braços em forma de cruz, em profunda adoração perante o grande crucifixo medieval da igreja.
+  </p>
+  <p>
+    Era um gesto comum de piedade penitencial na Idade Média. Os fiéis presentes continuaram o canto e, ao término do hino, colocaram-se de pé para a proclamação do Santo Evangelho. Homobono, porém, permaneceu na mesma postura humilde, imóvel aos pés do altar.
+  </p>
+
+  <CitacaoLatina
+    latim="Dum 'Gloria in excelsis Deo' caneretur, expansis in modum crucis brachiis, orans coram crucifixi imagine, spiritum Creatori reddidit."
+    traducao="Enquanto se cantava o 'Glória a Deus nas alturas', com os braços abertos em forma de cruz, orando diante da imagem do crucificado, entregou seu espírito ao Criador."
+    autorOuFonte="Sicardo de Cremona · Chronicon (c. 1213)"
+  />
+
+  <h2>A Constatação da Passagem Serena</h2>
+  <p>
+    Julgando que o venerando ancião estivesse profundamente absorvido em êxtase místico ou que precisasse de auxílio devido ao peso da idade, alguns homens aproximaram-se com reverência para ajudá-lo a se erguer. Ao tocarem seus ombros, constataram com comoção indescritível que seu corpo já não respirava: sem agonia, sem gemidos, sem contração de dor, sua alma desprendera-se suavemente da carne precisamente no instante de maior louvor à Trindade Santa.
+  </p>
+
+  <h2>A Comoção Popular e o Sepultamento na Catedral</h2>
+  <p>
+    A notícia correu as praças e oficinas de Cremona como fogo em palha seca: <em>“O santo mercador morreu na igreja!”</em>. As atividades comerciais foram espontaneamente paralisadas; lojistas fecharam as portas, tecelões abandonaram os teares e milhares de pobres afluíram para chorar seu pai e protetor.
+  </p>
+  <p>
+    Devido à multidão comovida e aos sinais de santidade, o Bispo Sicardo ordenou que os funerais solenes ocorressem na própria Catedral de Cremona. O corpo de Homobono foi conduzido em triunfo cívico pelas corporações de ofício e sepultado com honras reservadas a bispos e príncipes, iniciando-se imediatamente uma torrente ininterrupta de curas e graças comprovadas.
+  </p>
+</ArtigoLayout>
