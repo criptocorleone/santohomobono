@@ -7,11 +7,10 @@ const { currentPath = Astro.url.pathname } = Astro.props;
 
 const navLinks = [
   { href: '/quem-foi-santo-homobono', label: 'Biografia' },
+  { href: '/padroeiro-dos-empresarios', label: 'Santo dos Empresários' },
+  { href: '/santo-dos-comerciantes', label: 'Santo dos Comerciantes' },
   { href: '/oracoes/oracao-a-santo-homobono', label: 'Orações' },
-  { href: '/padroeiro-dos-empresarios', label: 'Ética nos Negócios' },
-  { href: '/historia/linha-do-tempo', label: 'Linha do Tempo' },
   { href: '/festa-13-de-novembro', label: '13 de Novembro' },
-  { href: '/comunidade', label: 'Comunidade' },
 ];
 ---
 
@@ -56,6 +55,18 @@ const navLinks = [
             </a>
           );
         })}
+
+        <!-- Botão Destaque Comunidade no Menu -->
+        <a
+          href="/comunidade"
+          class={`ml-2 inline-flex items-center px-4 py-2 rounded-lg font-['Cinzel'] text-xs font-bold tracking-wider uppercase transition-all shadow-sm ${
+            currentPath === '/comunidade'
+              ? 'bg-[var(--ouro)] text-[var(--cardinal)] ring-2 ring-[var(--cardinal)]'
+              : 'bg-[var(--cardinal)] hover:bg-[#681322] text-white hover:scale-105'
+          }`}
+        >
+          Comunidade
+        </a>
       </nav>
 
       <!-- Ações: Alternar Tema & Menu Mobile -->
@@ -115,10 +126,16 @@ const navLinks = [
         </a>
       );
     })}
-    <div class="pt-2 border-t border-[var(--ouro-claro)]/30 mt-3">
+    <div class="pt-3 border-t border-[var(--ouro-claro)]/30 mt-3 space-y-2">
+      <a
+        href="/comunidade"
+        class="block w-full text-center px-4 py-3 rounded-lg bg-[var(--cardinal)] text-white font-['Cinzel'] font-bold text-sm tracking-wider uppercase shadow-md hover:bg-[#681322]"
+      >
+        Comunidade Santo Homobono
+      </a>
       <a
         href="/oracoes/oracao-do-empresario"
-        class="block w-full text-center px-4 py-3 rounded-lg bg-[var(--cardinal)] text-white font-semibold tracking-wide shadow-sm hover:opacity-90"
+        class="block w-full text-center px-4 py-2.5 rounded-lg border border-[var(--ouro)] text-[var(--cardinal)] font-['Cinzel'] text-xs font-bold uppercase tracking-wider hover:bg-[var(--ouro)]/15"
       >
         Rezar a Oração do Empresário
       </a>

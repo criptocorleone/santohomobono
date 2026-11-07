@@ -1,11 +1,30 @@
 ---
 import ArtigoLayout from '../layouts/ArtigoLayout.astro';
-import GaleriaArte from '../components/GaleriaArte.astro';
+import GaleriaArte, { obrasAcervo } from '../components/GaleriaArte.astro';
 import SeloFonte from '../components/SeloFonte.astro';
 import PlaceholderArte from '../components/PlaceholderArte.astro';
 import { Image } from 'astro:assets';
 
 import img10Roma from '../assets/images/igreja-sant-omobono-roma.jpg';
+
+const imageObjects = [
+  ...obrasAcervo.map((o) => ({
+    url: o.imageObj.src,
+    name: o.titulo,
+    caption: `${o.titulo} (${o.ano}) por ${o.autor}, ${o.local}`,
+    description: o.descricaoBreve,
+    author: o.autor,
+    dateCreated: o.ano,
+  })),
+  {
+    url: img10Roma.src,
+    name: "Igreja de Sant'Omobono em Roma",
+    caption: "Chiesa di Sant'Omobono em Roma, junto ao Monte Capitolino, sede histórica da corporação dos alfaiates (1575)",
+    description: "Igreja consagrada aos pés do Capitólio em Roma dedicada ao padroeiro dos alfaiates e comerciantes.",
+    author: "IlMarcheseDelGrillo",
+    dateCreated: "1575",
+  },
+];
 
 const breadcrumbs = [
   { name: 'Início', item: '/' },
@@ -41,12 +60,13 @@ const linksRelacionados = [
 ---
 
 <ArtigoLayout
-  title="Arte e Iconografia de Santo Homobono: Símbolos e Representações"
-  description="Explore as pinturas sacras, afrescos e os atributos iconográficos de Santo Homobono: a bolsa de esmolas, a tesoura de alfaiate e as vestes burguesas."
+  title="Imagens de Santo Homobono: Arte e Iconografia"
+  description="Veja imagens de Santo Homobono em pinturas, estátuas e ícones. Entenda os símbolos da sua iconografia: a bolsa, o pão e as roupas de mercador."
   subtitulo="Como a arte sacra da Renascença e do Barroco italiano eternizou a figura do mercador de Cremona nos altares e museus."
   image="/og-arte.jpg"
   breadcrumbs={breadcrumbs}
   sources={sources}
+  imageObjects={imageObjects}
   tipoFonte="documental"
   linksRelacionados={linksRelacionados}
 >

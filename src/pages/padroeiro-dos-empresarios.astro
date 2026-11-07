@@ -1,25 +1,51 @@
 ---
 import ArtigoLayout from '../layouts/ArtigoLayout.astro';
 import CitacaoLatina from '../components/CitacaoLatina.astro';
-import SeloFonte from '../components/SeloFonte.astro';
+import CTAComunidade from '../components/CTAComunidade.astro';
 
 const breadcrumbs = [
   { name: 'Início', item: '/' },
-  { name: 'Padroeiro dos Empresários', item: '/padroeiro-dos-empresarios' },
+  { name: 'Santo dos Empresários', item: '/padroeiro-dos-empresarios' },
+];
+
+const faqs = [
+  {
+    question: 'Qual é o santo dos empresários?',
+    answer: 'O santo e padroeiro dos empresários é Santo Homobono de Cremona (c. 1150–1197), mercador italiano canonizado pelo Papa Inocêncio III em 1199.',
+  },
+  {
+    question: 'Qual é o santo dos empreendedores?',
+    answer: 'Santo Homobono de Cremona é o santo dos empreendedores, comerciantes e profissionais autônomos na tradição da Igreja Católica.',
+  },
+  {
+    question: 'Qual é o santo protetor dos negócios?',
+    answer: 'Santo Homobono é o protetor dos negócios legítimos, invocação tradicional para pedir bênçãos, retidão e prosperidade justa nas transações comerciais.',
+  },
+  {
+    question: 'Por que Santo Homobono é o padroeiro dos empresários?',
+    answer: 'Porque ele provou que o trabalho comercial, os contratos honestos e o lucro partilhado com os necessitados são caminhos reais de santificação sem precisar abandonar a profissão.',
+  },
 ];
 
 const sources = [
   'Compêndio da Doutrina Social da Igreja (Pontifício Conselho Justiça e Paz).',
   'Papa João Paulo II, Carta à Diocese de Cremona no VIII Centenário da Morte de Santo Homobono (1997).',
   'G. Todeschini, I mercanti e il tempio: La società cristiana ed il circolo virtuoso della ricchezza fra Medioevo ed Età Moderna.',
+  'Papa Inocêncio III, Bula Pontifícia Quia pietas (1199).',
 ];
 
 const linksRelacionados = [
   {
-    titulo: 'Oração do Empresário e do Comerciante',
+    titulo: 'Oração do Empresário a Santo Homobono',
     href: '/oracoes/oracao-do-empresario',
     categoria: 'Devoção',
     descricao: 'Prece consagrando o negócio, as decisões de liderança e os funcionários.',
+  },
+  {
+    titulo: 'Qual é o Santo dos Comerciantes?',
+    href: '/santo-dos-comerciantes',
+    categoria: 'Devoção Comercial',
+    descricao: 'Conheça o patrono dos lojistas, vendedores e a prática do justo preço.',
   },
   {
     titulo: 'Quem Foi Santo Homobono?',
@@ -27,58 +53,75 @@ const linksRelacionados = [
     categoria: 'Biografia',
     descricao: 'A história do comerciante que se tornou o primeiro leigo canonizado na Idade Média.',
   },
-  {
-    titulo: 'Comunidade de Empresários Católicos',
-    href: '/comunidade',
-    categoria: 'Comunidade',
-    descricao: 'Faça parte da lista de espera da irmandade de empreendedores e líderes de mercado.',
-  },
 ];
 ---
 
 <ArtigoLayout
-  title="Santo Homobono: O Padroeiro dos Empresários e a Ética no Mercado"
-  description="Como Santo Homobono inspira empresários e comerciantes hoje: princípios cristãos de justo preço, honestidade nos contratos e a dignidade do trabalho como vocação."
+  title="Qual é o santo dos empresários? Conheça Santo Homobono"
+  description="O padroeiro dos empresários e empreendedores é Santo Homobono, comerciante de Cremona canonizado em 1199. Saiba quem foi e reze a oração do empresário."
   subtitulo="A santidade através do comércio: princípios históricos e teológicos para liderar empresas com integridade e propósito eterno."
   breadcrumbs={breadcrumbs}
   sources={sources}
+  faqs={faqs}
   tipoFonte="documental"
   linksRelacionados={linksRelacionados}
 >
-  <p>
-    Para muitos homens e mulheres contemporâneos, a atividade empresarial e a vida de fé cristã parecem habitar mundos irreconciliáveis. O ambiente corporativo é frequentemente retratado como uma arena impiedosa de competição sem escrúpulos, na qual o lucro justifica qualquer expediente. No entanto, mais de oito séculos atrás, nas movimentadas ruas de Cremona, um homem quebrou para sempre essa dicotomia: <strong>Santo Homobono provou que a atividade empresarial, quando exercida com retidão, é um caminho legítimo e glorioso de santificação pessoal.</strong>
+  <!-- Resposta Direta Imediata para Buscas (Featured Snippet) -->
+  <p class="text-xl sm:text-2xl font-['Source_Serif_4'] text-[var(--tinta)] font-semibold leading-relaxed border-l-4 border-[var(--ouro)] pl-4 py-1 my-6 bg-[var(--pergaminho-escuro)]/40 rounded-r-xl">
+    O padroeiro dos empresários, comerciantes e empreendedores é <strong>Santo Homobono de Cremona</strong> (c. 1150–1197), um mercador italiano canonizado em 1199. A festa dele é em 13 de novembro.
   </p>
 
-  <h2>Por que os empresários precisam de Santo Homobono?</h2>
+  <h2>Qual é o santo dos empresários?</h2>
   <p>
-    A maioria dos santos do calendário litúrgico católico era composta por eremitas, monges enclausurados, mártires dos primeiros séculos, bispos ou reis. Para quem vive no século XXI calculando folhas de pagamento, negociando prazos com bancos, gerindo equipes e atendendo clientes exigentes, muitas dessas hagiografias tradicionais parecem distantes da realidade cotidiana.
+    Se você já se perguntou <strong>qual é o santo dos empresários</strong> na Igreja Católica, a resposta oficial é <strong>Santo Homobono de Cremona</strong> (conhecido na Itália como <em>Sant'Omobono Tucenghi</em>). 
   </p>
   <p>
-    Homobono, por outro lado, enfrentava as mesmas preocupações materiais que tiram o sono de um comerciante moderno: a flutuação do preço das matérias-primas têxteis, a cobrança de tributos municipais abusivos, o risco de inadimplência de compradores e o compromisso ético de remunerar pontualmente seus artesãos.
+    Diferente de papas, bispos e religiosos de ordens contemplativas que preenchem boa parte do santoral, Homobono era um homem de negócios do mundo secular: administrava sua própria fábrica de tecidos e sua loja, negociava preços com fornecedores de lã, pagava tributos civis e liderava funcionários na cidade mercantil de Cremona, no norte da Itália medieval.
   </p>
 
-  <div class="my-6">
-    <SeloFonte tipo="historico" label="Doutrina Social Aplicada" detalhe="Precursor da Ética Mercantil Cristã" />
-  </div>
+  <h2>Qual é o santo dos empreendedores?</h2>
+  <p>
+    Para quem busca <strong>qual é o santo dos empreendedores</strong>, das startups, dos pequenos e médios negócios e dos trabalhadores autônomos, Santo Homobono é a figura patronal por excelência.
+  </p>
+  <p>
+    Ele herdou o comércio têxtil da família e o expandiu com notável tino administrativo. Homobono compreendia o risco inerente à atividade econômica, a importância de manter as contas equilibradas e a nobreza de gerar valor e oportunidades reais para a sociedade civil.
+  </p>
 
-  <h2>Os Quatro Pilares do Empreendedorismo de Santo Homobono</h2>
+  <h2>Qual é o santo protetor dos negócios?</h2>
+  <p>
+    Quando católicos em todo o mundo recorrem ao <strong>santo protetor dos negócios</strong> e da prosperidade íntegra, recorrem a Santo Homobono. A sua proteção é pedida especialmente em momentos de:
+  </p>
+  <ul>
+    <li>Assinatura de contratos importantes e decisões estratégicas de expansão.</li>
+    <li>Superação de crises econômicas, dívidas e desequilíbrios de fluxo de caixa.</li>
+    <li>Pacificação de disputas judiciais, trabalhistas ou societárias.</li>
+    <li>Preservação do bom nome da empresa e lealdade nas relações com clientes.</li>
+  </ul>
+
+  <h2>Por que Santo Homobono é o padroeiro dos empresários?</h2>
+  <p>
+    Santo Homobono foi elevado aos altares pelo <strong>Papa Inocêncio III</strong> através da bula <em>Quia pietas</em> em 12 de janeiro de 1199 — apenas quatorze meses após sua morte santa —, tornando-se o <strong>primeiro santo leigo não-nobre canonizado na história da Igreja</strong>.
+  </p>
+  <p>
+    O Papa proclamou célebremente que Homobono era <em>"Homo bonus et nomine et actu"</em> (Homem bom de nome e de fato). Ele foi escolhido como padroeiro dos empresários porque provou que a atividade empresarial, quando exercida sob os princípios da justiça e da caridade, não é um obstáculo para a salvação, mas um verdadeiro apostolado cristão:
+  </p>
 
   <div class="space-y-6 my-8">
     <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border-l-4 border-[var(--ouro)]">
       <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
-        1. A Teologia do Justo Preço
+        1. A Prática do Justo Preço
       </h3>
       <p class="text-sm sm:text-base text-[var(--tinta)] mt-2 leading-relaxed font-['Source_Serif_4']">
-        Décadas antes de São Tomás de Aquino sistematizar o conceito filosófico do <em>justum pretium</em> na <em>Suma Teológica</em>, Homobono já o praticava diariamente no balcão da sua alfaiataria. Cobrar o preço justo significa nunca se aproveitar da vulnerabilidade ou da ignorância do cliente para inflacionar margens de lucro, oferecendo mercadorias com a exata qualidade e metragem prometidas.
+        Homobono nunca se aproveitou da ignorância de compradores nem inflacionou mercadorias em tempos de escassez. Entregava produtos com qualidade comprovada e medidas exatas.
       </p>
     </div>
 
     <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border-l-4 border-[var(--ouro)]">
       <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
-        2. A Dignidade e Pontualidade com os Colaboradores
+        2. Justiça e Pontualidade com Colaboradores
       </h3>
       <p class="text-sm sm:text-base text-[var(--tinta)] mt-2 leading-relaxed font-['Source_Serif_4']">
-        Para Homobono, quem tecia, cortava e costurava os tecidos em sua oficina não era mera "mão de obra", mas irmãos em Cristo dotados de dignidade inviolável. Ele cumpria com estrito zelo o mandamento bíblico de jamais reter o salário do diarista até o dia seguinte, garantindo sustento digno e estabilidade aos lares que dependiam do seu negócio.
+        Para ele, os tecelões e artesãos eram irmãos em Cristo. Pagava os salários pontualmente e mantinha condições dignas para todas as famílias dependentes da oficina.
       </p>
     </div>
 
@@ -87,16 +130,7 @@ const linksRelacionados = [
         3. A Função Social do Lucro
       </h3>
       <p class="text-sm sm:text-base text-[var(--tinta)] mt-2 leading-relaxed font-['Source_Serif_4']">
-        O cristianismo não condena a prosperidade nem a geração de lucro; condena a avareza idólatra. Homobono acumulou patrimônio substancial graças à sua competência técnica e diligência, mas compreendia que o excedente financeiro pertencia aos pobres. O empresário católico é convidado a enxergar sua empresa como uma fonte geradora de bem comum e de amparo aos vulneráveis da comunidade.
-      </p>
-    </div>
-
-    <div class="p-6 rounded-xl bg-[var(--pergaminho-escuro)]/70 border-l-4 border-[var(--ouro)]">
-      <h3 class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--cardinal)]">
-        4. A Pacificação no Mercado e nas Relações
-      </h3>
-      <p class="text-sm sm:text-base text-[var(--tinta)] mt-2 leading-relaxed font-['Source_Serif_4']">
-        Num ambiente dominado por brigas judiciais e deslealdade entre corporações, Homobono servia como árbitro imparcial. Ele demonstra que o verdadeiro líder sabe resolver controvérsias com diálogo, humildade e serenidade, mantendo seu nome ilibado mesmo nas circunstâncias mais adversas.
+        O lucro honesto era visto não como fim idolátrico em si mesmo, mas como instrumento para sustentar sua casa e socorrer órfãos, viúvas e enfermos desamparados em Cremona.
       </p>
     </div>
   </div>
@@ -107,22 +141,22 @@ const linksRelacionados = [
     autorOuFonte="Ofício Próprio da Liturgia de Cremona"
   />
 
-  <h2>A Mensagem de São João Paulo II aos Empresários</h2>
+  <h2>Oração do empresário a Santo Homobono</h2>
   <p>
-    Em 1997, por ocasião dos oitocentos anos da morte de Santo Homobono, o Papa João Paulo II dirigiu uma carta solene destacando que a mensagem deste mercador é mais urgente hoje do que na Idade Média:
+    Para consagrar a sua empresa, seus colaboradores e suas decisões financeiras diárias, reze a oração oficial do empresário:
   </p>
-  <blockquote class="p-6 bg-[var(--pergaminho-escuro)] border-l-4 border-[var(--cardinal)] italic text-base sm:text-lg text-[var(--tinta)] my-6">
-    “Santo Homobono recorda aos homens e mulheres de negócios de nosso tempo que a vida profissional é o lugar teológico onde se manifesta a caridade evangélica. O lucro econômico nunca pode ser obtido ao preço da dignidade da pessoa humana nem ao custo da verdade nas relações comerciais.”
-  </blockquote>
+  <div class="my-6 p-6 rounded-xl bg-[var(--pergaminho-escuro)] border border-[var(--ouro)]">
+    <p class="font-['Source_Serif_4'] italic text-[var(--tinta)] leading-relaxed mb-4">
+      “Senhor Jesus Cristo, divino Trabalhador de Nazaré, que consagrastes o labor humano e nos ensinastes a servir com amor, coloco hoje diante de Vós a minha empresa, a minha liderança e todos os que dependem do fruto de nossa atividade. Pela intercessão de Santo Homobono, dai-me prudência nos investimentos, sabedoria nas decisões e retidão moral...”
+    </p>
+    <a
+      href="/oracoes/oracao-do-empresario"
+      class="inline-flex items-center gap-2 text-sm font-['Cinzel'] font-bold text-[var(--cardinal)] hover:text-[var(--ouro-escuro)] uppercase tracking-wider"
+    >
+      Rezar a Oração Completa do Empresário →
+    </a>
+  </div>
 
-  <h2>Como colocar isso em prática na sua empresa amanhã</h2>
-  <p>
-    Ser devoto de Santo Homobono não é apenas carregar uma medalha na carteira; é tomar decisões diárias baseadas no seu exemplo:
-  </p>
-  <ul>
-    <li>Revisar contratos para assegurar que não haja cláusulas obscuras ou desvantagens desleais para os clientes e parceiros.</li>
-    <li>Honrar pontualmente os compromissos com fornecedores, considerando que cada empresa depende da sua palavra para honrar seus próprios pagamentos.</li>
-    <li>Destinar uma porcentagem constante dos lucros da empresa para obras concretas de caridade e apoio a famílias necessitadas.</li>
-    <li>Começar cada dia de trabalho com uma prece pedindo sabedoria, calma e honestidade.</li>
-  </ul>
+  <!-- Bloco de CTA da Comunidade -->
+  <CTAComunidade paginaOrigem="/padroeiro-dos-empresarios" />
 </ArtigoLayout>

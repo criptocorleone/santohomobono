@@ -15,6 +15,16 @@ export interface EventData {
   endDate: string;
   description: string;
   locationName?: string;
+  attendanceMode?: 'Online' | 'Offline' | 'Mixed';
+}
+
+export interface ImageItem {
+  url: string;
+  name?: string;
+  caption?: string;
+  description?: string;
+  author?: string;
+  dateCreated?: string;
 }
 
 export interface Props {
@@ -29,6 +39,7 @@ export interface Props {
   breadcrumbs?: BreadcrumbItem[];
   faqs?: FAQItem[];
   event?: EventData;
+  imageObjects?: ImageItem[];
   includePerson?: boolean;
   includeWebsite?: boolean;
   includeEvent?: boolean;
@@ -40,17 +51,24 @@ const {
   description,
   image = '/og-default.jpg',
   imageAlt = 'Santo Homobono de Cremona - O Padroeiro dos Empresários',
-  canonicalURL = new URL(Astro.url.pathname, Astro.site || siteUrl).href,
+  canonicalURL: propCanonical,
   type = 'website',
   publishDate,
   updatedDate,
   breadcrumbs = [],
   faqs = [],
   event,
+  imageObjects = [],
   includePerson = true,
   includeWebsite = Astro.url.pathname === '/',
   includeEvent = false,
 } = Astro.props;
+
+const cleanPath = Astro.url.pathname === '/' ? '' : Astro.url.pathname.replace(/\/+$/, '');
+const computedCanonical = `${siteUrl}${cleanPath}`;
+const canonicalURL = propCanonical
+  ? (typeof propCanonical === 'string' ? propCanonical.replace(/\/+$/, '') : propCanonical.href.replace(/\/+$/, ''))
+  : computedCanonical;
 
 const siteName = 'Santo Homobono — O Padroeiro dos Empresários';
 const fullTitle = title.includes('Santo Homobono') ? title : `${title} | Santo Homobono`;
@@ -168,6 +186,15 @@ if (faqs && faqs.length > 0) {
 // 6. Event (Festa de 13 de Novembro)
 if (includeEvent || event) {
   const currentYear = new Date().getFullYear();
+  const attendanceModeMap = {
+    Online: 'https://schema.org/OnlineEventAttendanceMode',
+    Offline: 'https://schema.org/OfflineEventAttendanceMode',
+    Mixed: 'https://schema.org/MixedEventAttendanceMode',
+  };
+  const attendanceMode = event?.attendanceMode 
+    ? (attendanceModeMap[event.attendanceMode] || 'https://schema.org/OnlineEventAttendanceMode')
+    : 'https://schema.org/OnlineEventAttendanceMode';
+
   schemas.push({
     '@context': 'https://schema.org',
     '@type': 'Event',
@@ -176,21 +203,42 @@ if (includeEvent || event) {
     startDate: event?.startDate || `${currentYear}-11-13T08:00:00-03:00`,
     endDate: event?.endDate || `${currentYear}-11-13T20:00:00-03:00`,
     eventStatus: 'https://schema.org/EventScheduled',
-    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-    location: {
-      '@type': 'Place',
-      name: event?.locationName || 'Catedral de Cremona / Paróquias e Comunidades Católicas',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Cremona / Global',
-        addressCountry: 'IT / BR',
-      },
-    },
+    eventAttendanceMode: attendanceMode,
+    location: attendanceMode.includes('Online')
+      ? {
+          '@type': 'VirtualLocation',
+          url: `${siteUrl}/festa-13-de-novembro`,
+        }
+      : {
+          '@type': 'Place',
+          name: event?.locationName || 'Catedral de Cremona / Paróquias e Comunidades Católicas',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Cremona / Global',
+            addressCountry: 'IT / BR',
+          },
+        },
     organizer: {
       '@type': 'Organization',
       name: 'Igreja Católica / Devoção Popular a Santo Homobono',
       url: siteUrl,
     },
+  });
+}
+
+// 7. ImageObjects
+if (imageObjects && imageObjects.length > 0) {
+  imageObjects.forEach((img) => {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'ImageObject',
+      contentUrl: img.url.startsWith('http') ? img.url : `${siteUrl}${img.url.startsWith('/') ? '' : '/'}${img.url}`,
+      name: img.name || img.caption,
+      caption: img.caption,
+      description: img.description,
+      ...(img.author ? { creator: { '@type': 'Person', name: img.author } } : {}),
+      ...(img.dateCreated ? { dateCreated: img.dateCreated } : {}),
+    });
   });
 }
 ---

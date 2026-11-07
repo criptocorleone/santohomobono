@@ -1,7 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import SEO, { type BreadcrumbItem, type FAQItem, type EventData } from '../components/SEO.astro';
+import SEO, { type BreadcrumbItem, type FAQItem, type EventData, type ImageItem } from '../components/SEO.astro';
 import '../styles/global.css';
 
 export interface Props {
@@ -16,6 +16,7 @@ export interface Props {
   breadcrumbs?: BreadcrumbItem[];
   faqs?: FAQItem[];
   event?: EventData;
+  imageObjects?: ImageItem[];
   includePerson?: boolean;
   includeWebsite?: boolean;
   includeEvent?: boolean;

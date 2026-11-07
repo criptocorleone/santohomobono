@@ -1,5 +1,6 @@
 ---
 import OracaoLayout from '../../layouts/OracaoLayout.astro';
+import CTAComunidade from '../../components/CTAComunidade.astro';
 
 const breadcrumbs = [
   { name: 'Início', item: '/' },
@@ -78,8 +79,8 @@ const linksRelacionados = [
 ---
 
 <OracaoLayout
-  title="Novena de Santo Homobono: 9 Dias de Prece para os Negócios"
-  description="Novena completa de 9 dias a Santo Homobono com navegação dia a dia. Para alcançar graças no comércio, prosperidade justa e paz nas empresas."
+  title="Novena de Santo Homobono: 9 dias de oração pelo trabalho"
+  description="Reze a novena completa de Santo Homobono, padroeiro dos empresários e comerciantes. Uma oração para cada dia, pelo seu trabalho e pelos seus negócios."
   subtitulo="Rezada tradicionalmente de 4 a 12 de novembro em preparação para a festa litúrgica, ou em momentos de necessidade urgente nos negócios."
   tipo="novena"
   breadcrumbs={breadcrumbs}
@@ -160,4 +161,5 @@ const linksRelacionados = [
       });
     });
   </script>
+  <CTAComunidade paginaOrigem="/oracoes/novena-de-santo-homobono" />
 </OracaoLayout>

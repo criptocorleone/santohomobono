@@ -36,20 +36,55 @@ const faqHome = [
 ---
 
 <BaseLayout
-  title="Santo Homobono — O Padroeiro dos Empresários"
-  description="A referência em português sobre Santo Homobono de Cremona: o mercador do séc. XII que provou que é possível ser santo fazendo negócios com integridade e caridade."
+  title="Santo Homobono: Padroeiro dos Empresários e Comerciantes"
+  description="Conheça Santo Homobono de Cremona, o santo dos empresários, comerciantes e empreendedores. História, novena, orações e a festa de 13 de novembro."
   faqs={faqHome}
   includeWebsite={true}
   includePerson={true}
   includeEvent={true}
 >
+  <!-- BANNER FESTA 13 DE NOVEMBRO (Até o dia 13) -->
+  <aside class="bg-[var(--cardinal)] text-white py-3 px-4 border-b border-[var(--ouro)] text-center text-xs sm:text-sm font-['Cinzel'] tracking-wide relative z-20">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2">
+      <span class="font-bold text-[var(--ouro-claro)]">⚜ 13 de novembro é dia de Santo Homobono</span>
+      <span class="hidden sm:inline">·</span>
+      <span>Padroeiro dos empresários e comerciantes.</span>
+      <a href="/festa-13-de-novembro" class="underline font-bold hover:text-[var(--ouro-claro)] ml-1 transition-colors">
+        Saiba como celebrar com sua empresa e família →
+      </a>
+    </div>
+  </aside>
+
   <!-- SEÇÃO 1: HERO -->
   <Hero
-    h1="Santo Homobono, o padroeiro dos empresários"
+    h1="Santo Homobono: Padroeiro dos Empresários e Comerciantes"
     subtitulo="O mercador de Cremona que se tornou o primeiro leigo comum canonizado na Idade Média."
     linkHistoria="/quem-foi-santo-homobono"
     linkOracao="/oracoes/oracao-a-santo-homobono"
   />
+
+  <!-- BLOCO EM DESTAQUE LOGO ABAIXO DA DOBRA: QUAL É O SANTO DOS EMPRESÁRIOS? -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 relative z-20 mb-4">
+    <div class="p-6 sm:p-8 rounded-2xl bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] border-2 border-[var(--ouro)] shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 text-center md:text-left">
+        <span class="inline-block px-3 py-1 rounded-full bg-[var(--ouro)]/15 text-[var(--cardinal)] text-xs font-['Cinzel'] font-bold uppercase tracking-wider border border-[var(--ouro)]/30">
+          Resposta para Buscas · Padroeiro Oficial
+        </span>
+        <h2 class="font-['Cormorant_Garamond'] text-2xl sm:text-3xl font-bold text-[var(--cardinal)]">
+          Qual é o santo dos empresários?
+        </h2>
+        <p class="text-sm sm:text-base text-[var(--tinta)] font-['Source_Serif_4'] leading-relaxed max-w-2xl">
+          O padroeiro dos empresários, comerciantes e empreendedores é <strong>Santo Homobono de Cremona</strong> (c. 1150–1197), um mercador italiano canonizado em 1199. Conheça sua história de honestidade e sucesso nos negócios.
+        </p>
+      </div>
+      <a
+        href="/padroeiro-dos-empresarios"
+        class="shrink-0 px-6 py-3.5 rounded-xl bg-[var(--cardinal)] hover:bg-[#681322] text-white font-['Cinzel'] font-bold text-xs uppercase tracking-wider transition-all shadow-md hover:scale-[1.02] text-center"
+      >
+        Conheça Santo Homobono →
+      </a>
+    </div>
+  </section>
 
   <!-- SEÇÃO 2: FAIXA DE NÚMEROS HISTÓRICOS -->
   <section class="border-y border-[var(--ouro-claro)]/40 bg-[var(--pergaminho-escuro)]/60 py-8 lg:py-10 transition-colors">

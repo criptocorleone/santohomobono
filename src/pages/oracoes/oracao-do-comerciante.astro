@@ -1,5 +1,6 @@
 ---
 import OracaoLayout from '../../layouts/OracaoLayout.astro';
+import CTAComunidade from '../../components/CTAComunidade.astro';
 
 const breadcrumbs = [
   { name: 'Início', item: '/' },
@@ -30,8 +31,8 @@ const linksRelacionados = [
 ---
 
 <OracaoLayout
-  title="Oração do Comerciante e Lojista a Santo Homobono"
-  description="Oração especial para comerciantes, lojistas e prestadores de serviços, pedindo honestidade nas vendas, acolhimento aos clientes e bênção financeira."
+  title="Oração do Comerciante a Santo Homobono (completa)"
+  description="A oração do comerciante a Santo Homobono, o santo do comércio. Peça proteção para sua loja, suas vendas e seus clientes com esta oração completa."
   subtitulo="Para rezar ao abrir o comércio, na abertura do caixa ou ao iniciar o expediente nas vendas."
   tipo="oracao"
   breadcrumbs={breadcrumbs}
@@ -52,4 +53,7 @@ const linksRelacionados = [
   <p>
     Santo Homobono, padroeiro dos comerciantes, rogai por nós! Amém.
   </p>
+
+  <!-- Bloco de CTA da Comunidade -->
+  <CTAComunidade paginaOrigem="/oracoes/oracao-do-comerciante" />
 </OracaoLayout>

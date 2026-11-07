@@ -1,5 +1,6 @@
 ---
 import OracaoLayout from '../../layouts/OracaoLayout.astro';
+import CTAComunidade from '../../components/CTAComunidade.astro';
 
 const breadcrumbs = [
   { name: 'Início', item: '/' },
@@ -30,8 +31,8 @@ const linksRelacionados = [
 ---
 
 <OracaoLayout
-  title="Oração do Empresário Católico a Santo Homobono"
-  description="Prece diária do líder empresarial para pedir sabedoria nas decisões estratégicas, retidão moral, prosperidade justa e bom clima organizacional."
+  title="Oração do Empresário a Santo Homobono pelos Negócios"
+  description="Oração do empresário para pedir a intercessão de Santo Homobono por sua empresa, seus funcionários e suas decisões. Texto completo para rezar hoje."
   subtitulo="Para ser rezada antes de reuniões decisivas, ao assinar contratos ou no início do dia de expediente."
   tipo="oracao"
   breadcrumbs={breadcrumbs}
@@ -52,4 +53,7 @@ const linksRelacionados = [
   <p>
     Santo Homobono, protetor dos empresários, rogai por nós e abençoai o nosso trabalho! Amém.
   </p>
+
+  <!-- Bloco de CTA da Comunidade -->
+  <CTAComunidade paginaOrigem="/oracoes/oracao-do-empresario" />
 </OracaoLayout>

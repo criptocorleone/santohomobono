@@ -1,0 +1,131 @@
+---
+import ArtigoLayout from '../layouts/ArtigoLayout.astro';
+import CitacaoLatina from '../components/CitacaoLatina.astro';
+import SeloFonte from '../components/SeloFonte.astro';
+import CTAComunidade from '../components/CTAComunidade.astro';
+
+const breadcrumbs = [
+  { name: 'Início', item: '/' },
+  { name: 'Santo dos Comerciantes', item: '/santo-dos-comerciantes' },
+];
+
+const faqs = [
+  {
+    question: 'Qual é o santo dos comerciantes?',
+    answer: 'O santo dos comerciantes, do comércio e dos lojistas é Santo Homobono de Cremona (c. 1150–1197), um comerciante de tecidos e alfaiate canonizado em 1199 pelo Papa Inocêncio III.',
+  },
+  {
+    question: 'Quem é o santo protetor do comércio e das vendas?',
+    answer: 'Santo Homobono é o protetor do comércio e das boas vendas, venerado há séculos por mercadores, vendedores, lojistas e corporações de ofício em toda a Europa e no mundo cristão.',
+  },
+  {
+    question: 'O que Santo Homobono ensina sobre o comércio?',
+    answer: 'Homobono ensina que atender o cliente com sorriso sincero, cobrar o justo preço sem usura, vender mercadorias legítimas e repartir o ganho com quem tem fome transforma o comércio em um serviço a Deus.',
+  },
+  {
+    question: 'Existe uma oração para os comerciantes rezarem no trabalho?',
+    answer: 'Sim, a Oração do Comerciante a Santo Homobono é rezada tradicionalmente no início do expediente, ao abrir as portas da loja ou do comércio, pedindo retidão, bons clientes e prosperidade justa.',
+  },
+];
+
+const sources = [
+  'Bula Quia pietas do Papa Inocêncio III (12 de janeiro de 1199).',
+  'São Tomás de Aquino, Suma Teológica, II-II, q. 77 (Do comércio e do preço justo).',
+  'Statuta et Ordinamenta Mercatorum Cremonae (Séculos XIII–XIV).',
+];
+
+const linksRelacionados = [
+  {
+    titulo: 'Oração do Comerciante a Santo Homobono',
+    href: '/oracoes/oracao-do-comerciante',
+    categoria: 'Devoção',
+    descricao: 'A prece tradicional para abençoar a loja, os clientes e as vendas de cada dia.',
+  },
+  {
+    titulo: 'O Que É o Justo Preço na Prática?',
+    href: '/blog/o-que-e-o-justo-preco-na-pratica',
+    categoria: 'Ética Comercial',
+    descricao: 'Como aplicar a precificação cristã justa sem inviabilizar o lucro da empresa.',
+  },
+  {
+    titulo: 'Qual é o Santo dos Empresários?',
+    href: '/padroeiro-dos-empresarios',
+    categoria: 'Padroeiro',
+    descricao: 'Conheça Santo Homobono como modelo para empreendedores e gestores.',
+  },
+];
+---
+
+<ArtigoLayout
+  title="Qual é o santo dos comerciantes? Santo Homobono"
+  description="O santo dos comerciantes e do comércio é Santo Homobono, mercador de Cremona que ficou conhecido pelo justo preço e pela caridade. Conheça a história."
+  subtitulo="A vida do mercador têxtil que transformou o balcão de vendas em testemunho de fé, retidão nos preços e amor ao próximo."
+  breadcrumbs={breadcrumbs}
+  sources={sources}
+  faqs={faqs}
+  tipoFonte="documental"
+  linksRelacionados={linksRelacionados}
+>
+  <!-- Resposta Direta Imediata -->
+  <p class="text-xl sm:text-2xl font-['Source_Serif_4'] text-[var(--tinta)] font-semibold leading-relaxed border-l-4 border-[var(--ouro)] pl-4 py-1 my-6 bg-[var(--pergaminho-escuro)]/40 rounded-r-xl">
+    O santo dos comerciantes, do comércio e dos lojistas é <strong>Santo Homobono de Cremona</strong> (c. 1150–1197). Comerciante de tecidos e alfaiate italiano, ele foi canonizado pelo Papa Inocêncio III em 1199 e ficou conhecido pela prática do justo preço e pela generosidade com os pobres.
+  </p>
+
+  <h2>A vida de Santo Homobono como comerciante de tecidos</h2>
+  <p>
+    Homobono Tucenghi nasceu em Cremona, uma das cidades mercantis mais prósperas da Lombardia medieval. Filho de um próspero comerciante de panos, aprendeu desde cedo a arte de selecionar tecidos, avaliar o valor da lã, negociar com tintureiros e atender clientes no varejo.
+  </p>
+  <p>
+    Ao assumir o negócio, destacou-se pela dedicação ao trabalho. Enquanto muitos mercadores da época eram tentados pela usura e pelo enriquecimento desmedido, Homobono operava seu comércio com fidelidade às leis e às balanças: nunca vendia tecidos defeituosos como perfeitos e sempre garantia a metragem correta no corte.
+  </p>
+
+  <div class="my-6">
+    <SeloFonte tipo="historico" label="Tradição Mercantil Lombarda" detalhe="Membro ativo da Guilda dos Alfaiates e Mercadores" />
+  </div>
+
+  <h2>O Justo Preço: a ética do comércio vivida no balcão</h2>
+  <p>
+    Uma das marcas registradas de Santo Homobono era a recusa veemente à exploração. Ele compreendia séculos antes dos tratados modernos o conceito do <strong>justo preço</strong> (*justum pretium*):
+  </p>
+  <ul>
+    <li><strong>Transparência total com o consumidor:</strong> cada cliente recebia exatamente o que contratou, sem artifícios ou taxas dissimuladas.</li>
+    <li><strong>Margem de lucro razoável e honesta:</strong> cobrava o necessário para remunerar seus artesãos com dignidade e manter seu negócio forte, sem extorquir o comprador em tempos de crise.</li>
+    <li><strong>Honra com os fornecedores:</strong> pagava pontualmente todas as faturas aos artesãos que teciam e fiavam para sua loja.</li>
+  </ul>
+  <p>
+    Para entender profundamente como essa visão se aplica à gestão moderna, leia nosso artigo completo sobre <a href="/blog/o-que-e-o-justo-preco-na-pratica" class="text-[var(--cardinal)] font-semibold underline hover:text-[var(--ouro-escuro)]">o que é o justo preço na prática</a>.
+  </p>
+
+  <CitacaoLatina
+    latim="Homo bonus et nomine et actu."
+    traducao="Homem bom de nome e de fato."
+    autorOuFonte="Papa Inocêncio III, Bula Quia pietas (1199)"
+  />
+
+  <h2>A bolsa de esmolas: a caridade que não esvaziou a loja</h2>
+  <p>
+    A esposa de Homobono temia que a extrema caridade do marido levasse a casa à falência, pois ele costumava repartir parte do lucro do dia e os estoques de pão com os mendigos da cidade. No entanto, os relatos históricos documentam que a oficina continuava próspera e os depósitos miraculosamente nunca se esgotavam.
+  </p>
+  <p>
+    Santo Homobono provou que abrir a mão para a caridade não empobrece o comerciante; pelo contrário, atrai a bênção de Deus para as vendas e o trabalho.
+  </p>
+
+  <h2>Oração do Comerciante a Santo Homobono</h2>
+  <p>
+    Se você trabalha no comércio, no varejo, nas vendas digitais ou no atacado, pode consagrar suas atividades diárias com a oração do comerciante:
+  </p>
+  <div class="my-6 p-6 rounded-xl bg-[var(--pergaminho-escuro)] border border-[var(--ouro)]">
+    <p class="font-['Source_Serif_4'] italic text-[var(--tinta)] leading-relaxed mb-4">
+      “Senhor Deus, fonte de todo bem e providência de todas as criaturas, abençoai este comércio e todas as pessoas que hoje cruzarem suas portas. Por intercessão de Santo Homobono, que com sorriso acolhedor e medidas exatas atendia aos seus clientes em Cremona, dai-me paciência, cordialidade nas vendas e honestidade em cada negociação...”
+    </p>
+    <a
+      href="/oracoes/oracao-do-comerciante"
+      class="inline-flex items-center gap-2 text-sm font-['Cinzel'] font-bold text-[var(--cardinal)] hover:text-[var(--ouro-escuro)] uppercase tracking-wider"
+    >
+      Rezar a Oração Completa do Comerciante →
+    </a>
+  </div>
+
+  <!-- Bloco de CTA da Comunidade -->
+  <CTAComunidade paginaOrigem="/santo-dos-comerciantes" />
+</ArtigoLayout>
