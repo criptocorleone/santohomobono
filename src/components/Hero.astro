@@ -8,13 +8,15 @@ export interface Props {
   subtitulo?: string;
   linkHistoria?: string;
   linkOracao?: string;
+  textoOracao?: string;
 }
 
 const {
   h1 = 'Santo Homobono, o padroeiro dos empresários',
   subtitulo = 'O mercador de Cremona que se tornou o primeiro leigo comum canonizado na Idade Média.',
   linkHistoria = '/quem-foi-santo-homobono',
-  linkOracao = '/oracoes/oracao-a-santo-homobono',
+  linkOracao = '/oracoes/novena-de-santo-homobono',
+  textoOracao = 'Rezar a Novena',
 } = Astro.props;
 ---
 
@@ -76,7 +78,7 @@ const {
             class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-[var(--pergaminho)] dark:bg-[var(--pergaminho-escuro)] hover:bg-[var(--pergaminho-escuro)] text-[var(--cardinal)] border-2 border-[var(--ouro)] font-['Cinzel'] font-bold text-sm tracking-wider uppercase transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--ouro)]"
           >
             <span class="text-[var(--ouro)]">✝</span>
-            <span>Rezar a Oração</span>
+            <span>{textoOracao}</span>
           </a>
         </div>
 
